@@ -1,21 +1,21 @@
 import {atom} from 'recoil';
-
 import {localStorageEffect} from 'store/local-storage-effect';
 import {WORRY_LIST_KEY} from 'constants/atom-constant';
+import {DateType} from 'types/common';
 
 export interface WorryItem {
   id: string;
   worryContent: string;
   worryPrepareContent: string;
-  worryExpectedDate: Date | '';
-  regDate: Date;
+  worryExpectedDate: DateType | '';
+  regDate: DateType;
   worryStatus: WorryStatus;
 }
 
 export type WorryStatus = '진행중' | '일어남' | '안일어남';
 
 export interface WorryList extends Array<WorryItem> {}
-export interface initialStateType {
+export interface InitialStateType {
   worryList: WorryList;
   selectedI: WorryItem['id'];
 }
@@ -23,7 +23,7 @@ export interface initialStateType {
 /**
  * 초기값 지정
  */
-const initialState: initialStateType = {
+const initialState: InitialStateType = {
   selectedI: '',
   worryList: [],
 };
