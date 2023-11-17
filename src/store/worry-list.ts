@@ -18,6 +18,7 @@ export interface WorryList extends Array<WorryItem> {}
 export interface InitialStateType {
   worryList: WorryList;
   selectedI: WorryItem['id'];
+  page: 'list' | 'editor' | 'register';
 }
 
 /**
@@ -26,6 +27,7 @@ export interface InitialStateType {
 const initialState: InitialStateType = {
   selectedI: '',
   worryList: [],
+  page: 'list',
 };
 
 export const worryListState = atom({
