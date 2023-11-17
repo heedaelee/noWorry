@@ -4,14 +4,14 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import {BrowserRouter} from 'react-router-dom';
 import {RecoilRoot} from 'recoil';
-import GlobalStyles from 'styles/globalStyles';
+import GlobalHtmlStyles from 'styles/globalHtmlStyles';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <GlobalStyles />
+    <GlobalHtmlStyles />
     <BrowserRouter>
       <RecoilRoot>
         <App />
