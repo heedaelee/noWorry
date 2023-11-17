@@ -77,7 +77,7 @@ const Text = ({children, type, style}: TextProps) => {
 
 type textStyledType = Partial<TextProps> & {size: string; family: string};
 
-const TextStyled = styled.p<textStyledType>`
+const TextStyled = styled.div<textStyledType>`
   font-size: ${({size}) => size};
   font-family: ${({family}) => family};
   color: ${({color}) => color || GlobalStyles.ColorText.Default};
