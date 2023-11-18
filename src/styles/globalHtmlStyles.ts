@@ -1,20 +1,23 @@
 import {createGlobalStyle} from 'styled-components';
+import NotoSansKRBold from '../assets/fonts/NotoSansKR-Bold.woff';
+import NotoSansKRMedium from '../assets/fonts/NotoSansKR-Medium.woff';
+import NotoSansKRRegular from '../assets/fonts/NotoSansKR-Bold.woff';
 
 const GlobalHtmlStyles = createGlobalStyle`
 /*아래 폰트*/
 @font-face {
   font-family: "NotoSansKR-Bold";
-  src: url("src/assets/fonts/NotoSansKR-Bold.ttf");
+  src: url(${NotoSansKRBold}) format('woff') ;
 }
 
 @font-face {
   font-family: "NotoSansKR-Medium";
-  src: url("src/assets/fonts/NotoSansKR-Medium.ttf");
+  src: url(${NotoSansKRMedium}) format('woff');
 }
 
 @font-face {
   font-family: "NotoSansKR-Regular" ;
-  src: url("src/assets/fonts/NotoSansKR-Regular.ttf");
+  src: url(${NotoSansKRRegular}) format('woff');
 }
 
 body {
