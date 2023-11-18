@@ -12,7 +12,7 @@ export interface WorryItem {
   worryStatus: WorryStatus;
 }
 
-export type WorryStatus = '진행중' | '일어남' | '안일어남';
+export type WorryStatus = '현재 걱정' | '일어나지 않음' | '일어남';
 
 export interface WorryList extends Array<WorryItem> {}
 export interface InitialStateType {
