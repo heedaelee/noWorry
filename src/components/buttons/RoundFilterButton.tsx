@@ -15,7 +15,6 @@ const RoundFilterButton = ({
   $isSelected,
   onClick,
 }: RoundFilterButtonProps) => {
-  console.log($isSelected);
   return (
     <RoundFilterButtonStyled
       $isSelected={$isSelected}
