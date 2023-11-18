@@ -6,7 +6,7 @@ const GlobalStyles = {
     blue: '#2663D6',
   },
   ColorText: {
-    Default: '#000',
+    Default: '#000000',
     SubText: '#808080',
     NotSelectedBottomIcons: '#979797',
     Disabled: '#717680',
