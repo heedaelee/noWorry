@@ -15,10 +15,11 @@ interface TextProps {
     | 'button'
     | 'caption1'
     | 'caption2';
+  color?: string;
   style?: React.CSSProperties;
 }
 
-const Text = ({children, type, style}: TextProps) => {
+const Text = ({children, type, color, style}: TextProps) => {
   const fontFamilyType = {
     bold: 'NotoSansKR-Bold',
     medium: 'NotoSansKR-Medium',
@@ -28,7 +29,7 @@ const Text = ({children, type, style}: TextProps) => {
   const fontType = {
     h1: {
       size: '32px',
-      family: fontFamilyType.medium,
+      family: fontFamilyType.bold,
     },
     h2: {
       size: '24px',
@@ -69,7 +70,7 @@ const Text = ({children, type, style}: TextProps) => {
   };
 
   return (
-    <TextStyled {...fontType[type]} color=''>
+    <TextStyled {...fontType[type]} color={color} style={style}>
       {children}
     </TextStyled>
   );
