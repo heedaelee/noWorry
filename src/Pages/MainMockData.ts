@@ -8,7 +8,7 @@ export const worryMockList: WorryList = [
     worryContent: '면접 때 어려운 질문이 나와서 대답 못하면 어떡하지?',
     worryPrepareContent: '모르는 질문은 어떻게 대답할 지 보고 가야겠다.',
     worryExpectedDate: dayjs().add(3, 'd'),
-    worryStatus: '진행중',
+    worryStatus: '현재 걱정',
   },
   {
     id: '2',
@@ -16,7 +16,7 @@ export const worryMockList: WorryList = [
     worryContent: '면접 때 어려운 질문이 나와서 대답 못하면 어떡하지?',
     worryPrepareContent: '모르는 질문은 어떻게 대답할 지 보고 가야겠다.',
     worryExpectedDate: dayjs().add(3, 'd'),
-    worryStatus: '진행중',
+    worryStatus: '현재 걱정',
   },
   {
     id: '3',
@@ -24,7 +24,7 @@ export const worryMockList: WorryList = [
     worryContent: '면접 때 어려운 질문이 나와서 대답 못하면 어떡하지?',
     worryPrepareContent: '모르는 질문은 어떻게 대답할 지 보고 가야겠다.',
     worryExpectedDate: dayjs().add(3, 'd'),
-    worryStatus: '진행중',
+    worryStatus: '현재 걱정',
   },
   {
     id: '4',
@@ -32,7 +32,7 @@ export const worryMockList: WorryList = [
     worryContent: '면접 때 어려운 질문이 나와서 대답 못하면 어떡하지?',
     worryPrepareContent: '모르는 질문은 어떻게 대답할 지 보고 가야겠다.',
     worryExpectedDate: dayjs().add(3, 'd'),
-    worryStatus: '진행중',
+    worryStatus: '현재 걱정',
   },
   {
     id: '5',
@@ -40,7 +40,7 @@ export const worryMockList: WorryList = [
     worryContent: '면접 때 어려운 질문이 나와서 대답 못하면 어떡하지?',
     worryPrepareContent: '모르는 질문은 어떻게 대답할 지 보고 가야겠다.',
     worryExpectedDate: dayjs().subtract(1, 'd'),
-    worryStatus: '안일어남',
+    worryStatus: '일어나지 않음',
   },
   {
     id: '6',
