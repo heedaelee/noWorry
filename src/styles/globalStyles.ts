@@ -24,6 +24,11 @@ const GlobalStyles = {
   Fonts: {
     Default: 'Noto Sans KR',
   },
+  fontFamilyType: {
+    bold: 'NotoSansKR-Bold',
+    medium: 'NotoSansKR-Medium',
+    regular: 'NotoSansKR-Regular',
+  },
   backgroundColor: '#F5F5F5',
   BoxShadow: {
     shadowColor: '#000',

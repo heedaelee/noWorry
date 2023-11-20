@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import {GlobalStyles} from 'styles/globalStyles';
-('styles/globalStyles');
 
 interface TextProps {
   children: string;
@@ -20,11 +19,7 @@ interface TextProps {
 }
 
 const Text = ({children, type, color, style}: TextProps) => {
-  const fontFamilyType = {
-    bold: 'NotoSansKR-Bold',
-    medium: 'NotoSansKR-Medium',
-    regular: 'NotoSansKR-Regular',
-  };
+  const {fontFamilyType} = GlobalStyles;
 
   const fontType = {
     h1: {
