@@ -1,4 +1,14 @@
 const GlobalStyles = {
+  Layout: {
+    mainPadding: 16,
+    heights: {
+      fullHeight: window.innerHeight,
+      headWrapper: 40,
+      monthWrapper: 50,
+      switchWrapper: 25 + 28 + 25,
+      bottomTapWrapper: 54,
+    },
+  },
   Colors: {
     black: '#000',
     white: '#FFF',
@@ -29,16 +39,24 @@ const GlobalStyles = {
   },
 };
 
-//  const ColorBase = {
-//   Primary: '#7547F2',
-//   PrimaryBorder: '#B195FF',
-//   Secondary: '#F4F0FF',
-// };
+const {headWrapper, monthWrapper, switchWrapper, bottomTapWrapper, fullHeight} =
+  GlobalStyles.Layout.heights;
+const {mainPadding} = GlobalStyles.Layout;
 
-//  const ColorContents = {
-//   Line: '#DEDEDE',
-//   messageLine: '#6327FF',
-//   tooltipBg: '#393D40',
-// };
+/* 컨텐츠 제외한 높이 : 이유, 컨텐츠 높이 dynamic하게 fix하기 위해 */
+const heightOhterThanContents =
+  headWrapper + monthWrapper + switchWrapper + bottomTapWrapper;
+/* 컨텐츠 높이 = 전체 높이 - (컨텐츠 제외한 탑, 바텀 높이 + 상단 마진 높이) */
+const contentsHeight = fullHeight - (heightOhterThanContents + mainPadding);
 
-export default GlobalStyles;
+export {
+  GlobalStyles,
+  headWrapper,
+  monthWrapper,
+  switchWrapper,
+  bottomTapWrapper,
+  fullHeight,
+  heightOhterThanContents,
+  mainPadding,
+  contentsHeight,
+};
