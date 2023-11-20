@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import GlobalStyles from 'styles/globalStyles';
+import {GlobalStyles} from 'styles/globalStyles';
 ('styles/globalStyles');
 
 interface TextProps {

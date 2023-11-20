@@ -1,7 +1,7 @@
 import Text from 'components/text/Text';
 import {useState} from 'react';
 import styled from 'styled-components';
-import GlobalStyles from 'styles/globalStyles';
+import {GlobalStyles} from 'styles/globalStyles';
 
 interface RoundFilterButtonProps {
   buttonText: string;
