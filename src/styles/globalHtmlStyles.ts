@@ -26,9 +26,6 @@ body {
   font-family: NotoSansKR-Medium, sans-serif;
   /* box-sizing: border-box; */
 }
-
-
-
 * {
   box-sizing: inherit;
 }
