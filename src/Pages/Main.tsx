@@ -56,7 +56,7 @@ const Main = () => {
         <RxGear size={28} />
       </HeadWrapper>
       <MonthWrapper>
-        <Text style={{marginRight: 10}} type='h3'>
+        <Text style={{marginRight: 10}} type='h2'>
           23년 11월
         </Text>
         {/* TODO:캘린더 달아야함 */}
@@ -87,8 +87,18 @@ const Main = () => {
           )}
         </DropdownWrapper>
       </SwitchWrapper>
-      <ContentsWrapper>본문</ContentsWrapper>
-      <BottomTapWrapper>하단탭</BottomTapWrapper>
+      <ContentsWrapper>
+        {/* 데이터 없을 때 */}
+        <Card>
+          <Text
+            type='sub2'
+            style={{
+              whiteSpace: 'pre-wrap',
+            }}>{`+ 버튼을 눌러서\n지금의 걱정을 기록해 보세요.`}</Text>
+        </Card>
+        {/* TODO:데이터 있을 때 */}
+      </ContentsWrapper>
+      <BottomTapWrapper></BottomTapWrapper>
     </Wrapper>
   );
 };
@@ -141,10 +151,14 @@ const UpDonwIcon = styled.div`
   margin-left: 5px;
 `;
 const ContentsWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   /* border: 1px solid black; */
   height: ${contentsHeight}px;
+  /* 아이템 사이 여백 */
+  &:last-child {
+    margin-bottom: 0px;
+  }
 `;
 const BottomTapWrapper = styled.div`
   display: flex;
@@ -152,6 +166,20 @@ const BottomTapWrapper = styled.div`
   height: ${bottomTapWrapper}px;
   width: 100%;
   /* border: 1px solid black; */
+`;
+const Card = styled.div`
+  max-width: 390px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 16px;
+`;
+const NoDataText = styled.div`
+  font-size: 16px;
+  font-family: ${GlobalStyles.fontFamilyType.regular};
+  color: #4c4c4c;
+  white-space: pre-wrap;
 `;
 
 export default Main;
