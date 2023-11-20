@@ -26,15 +26,16 @@ const Wrapper = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  /* border: 1px solid black; */
+  background-color: white;
   border-radius: 8px;
+  border: 1px solid black;
 `;
 const ButtonStyled = styled.button`
   background-color: white;
   text-align: right;
   border: none;
-  border-radius: 8px;
   padding: 10px 5px;
+  border-radius: 8px;
   /* width: 90%; */
 `;
 
