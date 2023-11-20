@@ -1,12 +1,22 @@
-import styled from 'styled-components';
-import {RxGear} from 'react-icons/rx';
-import Text from 'components/text/Text';
-import GlobalStyles from 'styles/globalStyles';
-import {FaChevronDown} from 'react-icons/fa';
-import {useCallback, useMemo, useRef, useState} from 'react';
 import RoundFilterButton from 'components/buttons/RoundFilterButton';
-import {WorryStatus} from 'store/worry-list';
 import Dropdown from 'components/dropdown/Dropdown';
+import Text from 'components/text/Text';
+import {useCallback, useMemo, useRef, useState} from 'react';
+import {FaChevronDown} from 'react-icons/fa';
+import {RxGear} from 'react-icons/rx';
+import {WorryStatus} from 'store/worry-list';
+import styled from 'styled-components';
+import {
+  GlobalStyles,
+  fullHeight,
+  headWrapper,
+  heightOhterThanContents,
+  mainPadding,
+  monthWrapper,
+  switchWrapper,
+  bottomTapWrapper,
+  contentsHeight,
+} from 'styles/globalStyles';
 import {useOutsideClickType} from './useOutsideClick';
 
 const Main = () => {
@@ -77,7 +87,7 @@ const Main = () => {
           )}
         </DropdownWrapper>
       </SwitchWrapper>
-      <CardListWrapper>본문</CardListWrapper>
+      <ContentsWrapper>본문</ContentsWrapper>
       <BottomTapWrapper>하단탭</BottomTapWrapper>
     </Wrapper>
   );
@@ -88,7 +98,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   /* border: 1px solid black; */
-  padding: 16px 16px 0px 16px;
+  padding: ${mainPadding}px ${mainPadding}px 0px ${mainPadding}px;
   background-color: ${GlobalStyles.backgroundColor};
 `;
 const HeadWrapper = styled.div`
@@ -96,6 +106,7 @@ const HeadWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   text-align: center;
+  height: ${headWrapper}px;
   /* border: 1px solid black; */
 `;
 const MonthWrapper = styled.div`
@@ -103,7 +114,8 @@ const MonthWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* padding: 16px; */
+  /* margin-top: 25px; */
+  height: ${monthWrapper}px;
   /* border: 1px solid black; */
 `;
 const SwitchWrapper = styled.div`
@@ -111,7 +123,8 @@ const SwitchWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 25px 0px;
+  height: ${switchWrapper}px;
+  /* margin: 25px 0px; */
   /* border: 1px solid black; */
 `;
 const DropdownWrapper = styled.div`
@@ -127,17 +140,18 @@ const UpDonwIcon = styled.div`
   font-size: 10px;
   margin-left: 5px;
 `;
-const CardListWrapper = styled.div`
+const ContentsWrapper = styled.div`
   display: flex;
   justify-content: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  height: ${contentsHeight}px;
 `;
 const BottomTapWrapper = styled.div`
   display: flex;
   justify-content: row;
-  height: 54px;
+  height: ${bottomTapWrapper}px;
   width: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 export default Main;
