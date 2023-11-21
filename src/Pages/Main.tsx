@@ -1,23 +1,20 @@
-import RoundFilterButton from 'components/buttons/RoundFilterButton';
-import Dropdown from 'components/dropdown/Dropdown';
-import Text from 'components/text/Text';
 import {useCallback, useMemo, useRef, useState} from 'react';
 import {FaChevronDown} from 'react-icons/fa';
-import {RxGear} from 'react-icons/rx';
-import {WorryStatus} from 'store/worry-list';
 import styled from 'styled-components';
+
+import RoundFilterButton from 'components/buttons/RoundFilterButton';
+import Dropdown from 'components/dropdown/Dropdown';
+import Headers from 'components/headers/Headers';
+import Text from 'components/text/Text';
+import {WorryStatus} from 'store/worry-list';
 import {
-  GlobalStyles,
-  fullHeight,
-  headWrapper,
-  heightOhterThanContents,
-  mainPadding,
-  monthWrapper,
-  switchWrapper,
+  PaddingWrapper,
   bottomTapWrapper,
   contentsHeight,
+  monthWrapper,
+  switchWrapper,
 } from 'styles/globalStyles';
-import {useOutsideClickType} from './useOutsideClick';
+import {useOutsideClickType} from '../hooks/useOutsideClick';
 
 const Main = () => {
   const [filterState, setFilterState] = useState<WorryStatus>('현재 걱정');
@@ -50,11 +47,8 @@ const Main = () => {
   }, []);
 
   return (
-    <Wrapper>
-      <HeadWrapper>
-        <Text type='h1'>나의 걱정들</Text>
-        <RxGear size={28} />
-      </HeadWrapper>
+    <PaddingWrapper>
+      <Headers />
       <MonthWrapper>
         <Text style={{marginRight: 10}} type='h2'>
           23년 11월
@@ -98,27 +92,10 @@ const Main = () => {
         </Card>
         {/* TODO:데이터 있을 때 */}
       </ContentsWrapper>
-      <BottomTapWrapper></BottomTapWrapper>
-    </Wrapper>
+    </PaddingWrapper>
   );
 };
 
-const Wrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* border: 1px solid black; */
-  padding: ${mainPadding}px ${mainPadding}px 0px ${mainPadding}px;
-  background-color: ${GlobalStyles.backgroundColor};
-`;
-const HeadWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  height: ${headWrapper}px;
-  /* border: 1px solid black; */
-`;
 const MonthWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -175,11 +152,6 @@ const Card = styled.div`
   background-color: white;
   border-radius: 16px;
 `;
-const NoDataText = styled.div`
-  font-size: 16px;
-  font-family: ${GlobalStyles.fontFamilyType.regular};
-  color: #4c4c4c;
-  white-space: pre-wrap;
-`;
+const BottomTapButton = styled.div``;
 
 export default Main;
