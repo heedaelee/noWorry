@@ -2,47 +2,15 @@
 import styled from 'styled-components';
 
 import {GlobalStyles, bottomTapWrapper, mainPadding} from 'styles/globalStyles';
-import {MdOutlineHome, MdDataSaverOff} from 'react-icons/md';
-import {useMemo, useState} from 'react';
-import {IconType} from 'react-icons/lib';
 import Text from 'components/text/Text';
-import {useNavigate} from 'react-router-dom';
+import {useBottomNavigation} from 'hooks/useBottomNavigation';
+import {TapItems} from 'constants/bottomTap-constant';
 
 interface BottomNavigationProps {}
 
-type BottomTaType = '홈' | '통계';
-
 const BottomNavigation = ({}: BottomNavigationProps) => {
-  const [activeTapName, setActiveTapName] = useState<BottomTaType>('홈');
-  const navigate = useNavigate();
-  const TapItems: {
-    title: BottomTaType;
-    component: IconType;
-  }[] = [
-    {
-      title: '홈',
-      component: MdOutlineHome,
-    },
-    {
-      title: '통계',
-      component: MdDataSaverOff,
-    },
-  ];
-
-  const handleBottomTapPress = (title: BottomTaType) => {
-    setActiveTapName(title);
-    switch (title) {
-      case '통계':
-        navigate('/Statics');
-        break;
-      case '홈':
-        navigate('/');
-        break;
-      default:
-        navigate('/');
-        break;
-    }
-  };
+  const [activeTapName, setActiveTapName, handleBottomTapPress] =
+    useBottomNavigation();
 
   return (
     <BottomTapWrapper>
