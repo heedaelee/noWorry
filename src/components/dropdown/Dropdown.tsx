@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   background-color: white;
   border-radius: 8px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 const ButtonStyled = styled.button`
   background-color: white;
