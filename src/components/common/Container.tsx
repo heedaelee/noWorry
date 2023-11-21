@@ -1,6 +1,9 @@
 import {Outlet} from 'react-router-dom';
 import styled from 'styled-components';
 
+import {GlobalStyles, bottomTapWrapper, mainPadding} from 'styles/globalStyles';
+import BottomNavigation from 'components/bottomNavigation/BottomNavigation';
+
 interface ContainerProps {}
 
 const Container = ({}: ContainerProps) => {
@@ -9,6 +12,7 @@ const Container = ({}: ContainerProps) => {
       {/* 자식 라우터 시작 --> */}
       <Outlet />
       {/*  -->  끝 */}
+      <BottomNavigation />
     </Wrapper>
   );
 };
@@ -19,9 +23,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   /* max-width로 가로 크기 최대값을 고정해준다 */
   max-width: 390px;
-  height: 100vh;
   margin: auto;
-  /* border: 4px solid black; */
+  padding: 0px;
+  background-color: ${GlobalStyles.backgroundColor};
 `;
 
 export default Container;
