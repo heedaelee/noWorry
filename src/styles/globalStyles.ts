@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 const GlobalStyles = {
   Layout: {
     mainPadding: 16,
@@ -14,6 +16,7 @@ const GlobalStyles = {
     white: '#FFF',
     green: '#42AA9D',
     blue: '#2663D6',
+    gray: '#ACACAC',
   },
   ColorText: {
     Default: '#000000',
@@ -54,6 +57,20 @@ const heightOhterThanContents =
 /* 컨텐츠 높이 = 전체 높이 - (컨텐츠 제외한 탑, 바텀 높이 + 상단 마진 높이) */
 const contentsHeight = fullHeight - (heightOhterThanContents + mainPadding);
 
+/* 높이 체크:log */
+
+console.log(`fullHeight : ${fullHeight}`);
+console.log(
+  `heightOhterThanContents + mainPadding : ${
+    heightOhterThanContents + mainPadding
+  }`,
+);
+console.log(`contentsHeight : ${contentsHeight}`);
+
+const PaddingWrapper = styled.div`
+  padding: ${mainPadding}px ${mainPadding}px 0px ${mainPadding}px;
+`;
+
 export {
   GlobalStyles,
   headWrapper,
@@ -64,4 +81,5 @@ export {
   heightOhterThanContents,
   mainPadding,
   contentsHeight,
+  PaddingWrapper,
 };
