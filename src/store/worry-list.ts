@@ -15,7 +15,7 @@ export interface WorryItem {
 export type WorryStatus = '현재 걱정' | '일어나지 않음' | '일어남';
 
 export interface WorryList extends Array<WorryItem> {}
-export interface InitialStateType {
+interface InitialStateType {
   worryList: WorryList;
   selectedI: WorryItem['id'];
   page: 'list' | 'editor' | 'register';
