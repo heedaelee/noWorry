@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import {PaddingWrapper} from 'styles/globalStyles';
+import {HorizontalPaddingWrapper} from 'styles/globalStyles';
 
 const Statics = () => {
-  return <PaddingWrapper>테스트</PaddingWrapper>;
+  return <HorizontalPaddingWrapper>테스트</HorizontalPaddingWrapper>;
 };
 
 export default Statics;
