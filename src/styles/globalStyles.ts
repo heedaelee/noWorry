@@ -67,8 +67,8 @@ console.log(
 );
 console.log(`contentsHeight : ${contentsHeight}`);
 
-const PaddingWrapper = styled.div`
-  padding: ${mainPadding}px ${mainPadding}px 0px ${mainPadding}px;
+const HorizontalPaddingWrapper = styled.div`
+  padding: 0px ${mainPadding}px 0px ${mainPadding}px;
 `;
 
 export {
@@ -81,5 +81,5 @@ export {
   heightOhterThanContents,
   mainPadding,
   contentsHeight,
-  PaddingWrapper,
+  HorizontalPaddingWrapper as PaddingWrapper,
 };
