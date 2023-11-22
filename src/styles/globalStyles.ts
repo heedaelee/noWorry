@@ -81,5 +81,5 @@ export {
   heightOhterThanContents,
   mainPadding,
   contentsHeight,
-  HorizontalPaddingWrapper as PaddingWrapper,
+  HorizontalPaddingWrapper,
 };
