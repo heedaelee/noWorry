@@ -1,13 +1,11 @@
-import {Dispatch, SetStateAction, useEffect} from 'react';
-import {MdOutlineHome, MdDataSaverOff} from 'react-icons/md';
-import {useMemo, useState} from 'react';
-import {IconType} from 'react-icons/lib';
+import {Dispatch, SetStateAction, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {BottomTapType} from 'store/bottom-tap';
+import {SetterOrUpdater, useRecoilState} from 'recoil';
+import {BottomTapType, bottomTapState} from 'store/bottom-tap';
 
 type useBottomNavigationType = () => [
   BottomTapType,
-  Dispatch<SetStateAction<BottomTapType>>,
+  SetterOrUpdater<BottomTapType>,
   (title: BottomTapType) => void,
 ];
 
@@ -16,7 +14,8 @@ type useBottomNavigationType = () => [
  * @return [activeTapName, setActiveTapName, handleBottomTapPress]
  */
 export const useBottomNavigation: useBottomNavigationType = () => {
-  const [activeTapName, setActiveTapName] = useState<BottomTapType>('홈');
+  const [activeTapName, setActiveTapName] = useRecoilState(bottomTapState);
+
   const navigate = useNavigate();
 
   const handleBottomTapPress = (title: BottomTapType) => {
