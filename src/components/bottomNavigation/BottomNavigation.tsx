@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components';
 
-import {GlobalStyles, bottomTapWrapper, mainPadding} from 'styles/globalStyles';
 import Text from 'components/text/Text';
-import {useBottomNavigation} from 'hooks/useBottomNavigation';
 import {TapItems} from 'constants/bottomTap-constant';
+import {useBottomNavigation} from 'hooks/useBottomNavigation';
+import {GlobalStyles, bottomTapWrapper} from 'styles/globalStyles';
 
 interface BottomNavigationProps {}
 
