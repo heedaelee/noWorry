@@ -51,10 +51,11 @@ const {headWrapper, monthWrapper, switchWrapper, bottomTapWrapper, fullHeight} =
   GlobalStyles.Layout.heights;
 const {mainPadding} = GlobalStyles.Layout;
 
+/* MainComponent */
 /* 컨텐츠 제외한 높이 : 이유, 컨텐츠 높이 dynamic하게 fix하기 위해 */
 const heightOhterThanContents =
   headWrapper + monthWrapper + switchWrapper + bottomTapWrapper;
-/* 컨텐츠 높이 = 전체 높이 - (컨텐츠 제외한 탑, 바텀 높이 + 상단 마진 높이) */
+/* 컨텐츠 높이 = 전체 높이 - (컨텐츠 제외한 top,bottom padding 높이 + 상단 마진 높이) */
 const contentsHeight = fullHeight - (heightOhterThanContents + mainPadding);
 
 /* 높이 체크:log */
