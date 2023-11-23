@@ -1,28 +1,29 @@
-import styled from 'styled-components';
 import {IoIosArrowBack} from 'react-icons/io';
+import styled from 'styled-components';
 
 import Text from 'components/text/Text';
 import {headerConstant} from 'constants/hedaer-constant';
 import {useChangePages} from 'hooks/useChagePages';
-import {
-  HorizontalPaddingWrapper,
-  headWrapper,
-  mainPadding,
-} from 'styles/globalStyles';
+import {headWrapper, mainPadding} from 'styles/globalStyles';
+import {useCallback} from 'react';
 
 const Headers = () => {
   const [pages, setPages] = useChangePages();
-
   const {page: pageConstants} = headerConstant;
 
   /* page랑 page상수값이랑 일치할때, title,Icon 가져옴 */
   const {title, ...Others} = pageConstants[pages];
   const isActiveBackButton = ['register', 'editor', 'setting'].includes(pages);
+
+  const handleBackButtonPress = useCallback(() => {
+    setPages('list');
+  }, []);
+
   return (
     <HeadWrapper $isActiveBackButton={isActiveBackButton}>
       {isActiveBackButton && (
-        <BackButton>
-          <IoIosArrowBack size='20px' color='#00201C' />
+        <BackButton onClick={handleBackButtonPress}>
+          <IoIosArrowBack size='25px' color='#00201C' />
         </BackButton>
       )}
       <Text type='h1'>{title}</Text>
@@ -50,5 +51,5 @@ const BackButton = styled.button`
   padding: 0px;
   text-align: center;
   border: none;
-  background-color: none;
+  background-color: #f5f5f5;
 `;
