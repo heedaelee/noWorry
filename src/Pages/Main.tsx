@@ -2,30 +2,32 @@ import {useCallback, useMemo, useRef, useState} from 'react';
 import {FaChevronDown} from 'react-icons/fa';
 import styled from 'styled-components';
 
+import RoundAddButton from 'components/buttons/RoundAddButton';
 import RoundFilterButton from 'components/buttons/RoundFilterButton';
 import Dropdown from 'components/dropdown/Dropdown';
 import Headers from 'components/headers/Headers';
 import Text from 'components/text/Text';
 import {WorryStatus} from 'store/worry-list';
 import {
-  PaddingWrapper,
-  bottomTapWrapper,
+  HorizontalPaddingWrapper,
   contentsHeight,
   monthWrapper,
   switchWrapper,
 } from 'styles/globalStyles';
 import {useOutsideClickType} from '../hooks/useOutsideClick';
+import {useChangePages} from '../hooks/useChagePages';
 
 const Main = () => {
   const [filterState, setFilterState] = useState<WorryStatus>('현재 걱정');
-  // const [view, setView] = useState<boolean>(false);
   const sortDropdownRef = useRef<HTMLDivElement>(null);
+
+  const [pages, changePages] = useChangePages();
 
   const [isSortActive, setIsSortActive] = useOutsideClickType(
     sortDropdownRef,
     false,
   );
-  console.log(`isSortActive : ${isSortActive}`);
+  // console.log(`isSortActive : ${isSortActive}`);
 
   const onClickSortBtn = useCallback(() => {
     setIsSortActive(prev => !prev);
@@ -39,6 +41,7 @@ const Main = () => {
     /* TODO: 로직 */
     setFilterState(text as WorryStatus);
   }, []);
+
   const handleDropdownPress = useCallback((text: string) => {
     /* TODO: 로직 */
     console.log(text);
@@ -46,9 +49,13 @@ const Main = () => {
     // setView(!view);
   }, []);
 
+  const handleAddButton = useCallback(() => {
+    changePages('register');
+  }, []);
+
   return (
-    <PaddingWrapper>
-      <Headers />
+    <HorizontalPaddingWrapper>
+      {/* <Headers /> */}
       <MonthWrapper>
         <Text style={{marginRight: 10}} type='h2'>
           23년 11월
@@ -91,8 +98,12 @@ const Main = () => {
             }}>{`+ 버튼을 눌러서\n지금의 걱정을 기록해 보세요.`}</Text>
         </Card>
         {/* TODO:데이터 있을 때 */}
+
+        {/* 데이터 있을 때  끝*/}
+
+        <RoundAddButton onClick={handleAddButton} />
       </ContentsWrapper>
-    </PaddingWrapper>
+    </HorizontalPaddingWrapper>
   );
 };
 
@@ -101,7 +112,6 @@ const MonthWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* margin-top: 25px; */
   height: ${monthWrapper}px;
   /* border: 1px solid black; */
 `;
@@ -137,13 +147,6 @@ const ContentsWrapper = styled.div`
     margin-bottom: 0px;
   }
 `;
-const BottomTapWrapper = styled.div`
-  display: flex;
-  justify-content: row;
-  height: ${bottomTapWrapper}px;
-  width: 100%;
-  /* border: 1px solid black; */
-`;
 const Card = styled.div`
   max-width: 390px;
   padding: 10px;
@@ -152,6 +155,5 @@ const Card = styled.div`
   background-color: white;
   border-radius: 16px;
 `;
-const BottomTapButton = styled.div``;
 
 export default Main;
