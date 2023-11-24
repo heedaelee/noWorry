@@ -1,17 +1,10 @@
-import Text from 'components/text/Text';
+import InputBox from 'components/input/InputBox';
 import styled from 'styled-components';
-import {FaPersonCircleQuestion} from 'react-icons/fa6';
 
 const Form = () => {
   return (
     <Wrapper>
-      <QuestionWrapper>
-        <IconWrapper>
-          <FaPersonCircleQuestion size={22} />
-        </IconWrapper>
-        <Text type='body2'>어떤 걱정을 하고 계시나요?*</Text>
-      </QuestionWrapper>
-      <TextareaStyled rows={1} />
+      <InputBox />
     </Wrapper>
   );
 };
@@ -20,16 +13,12 @@ const Wrapper = styled.div`
   width: 100%;
   margin-top: 30px;
 `;
-const QuestionWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+
+/* const TextareaStyled = styled.textarea<{$row: number}>`
   width: 100%;
-`;
-const IconWrapper = styled.div`
-  margin-right: 5px;
-`;
-const TextareaStyled = styled.textarea`
-  width: 100%;
-`;
+  height: ${({$row}) => 4 * $row + 4}px;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
+`; */
 export default Form;
