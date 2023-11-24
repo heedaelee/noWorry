@@ -143,9 +143,11 @@ const ContentsWrapper = styled.div`
   /* border: 1px solid black; */
   height: ${contentsHeight}px;
   /* 아이템 사이 여백 */
+  /* 
   &:last-child {
     margin-bottom: 0px;
-  }
+  } 
+  */
 `;
 const Card = styled.div`
   max-width: 390px;
