@@ -7,7 +7,7 @@ import RoundFilterButton from 'components/buttons/RoundFilterButton';
 import Dropdown from 'components/dropdown/Dropdown';
 import Headers from 'components/headers/Headers';
 import Text from 'components/text/Text';
-import {WorryStatus} from 'store/worry-list';
+import {WorryStatus} from 'types/common';
 import {
   HorizontalPaddingWrapper,
   contentsHeight,

@@ -1,7 +1,6 @@
 import {BOTTOM_TAP_NAME} from 'constants/atom-constant';
 import {atom} from 'recoil';
-
-export type BottomTapType = '홈' | '통계';
+import {BottomTapType} from 'types/common';
 
 // 사용 X: 한동안만 두자.. 기억하도록
 // export const bottomTapState = atom({

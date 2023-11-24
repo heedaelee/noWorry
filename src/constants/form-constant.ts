@@ -1,15 +1,8 @@
-import {IconType} from 'react-icons/lib';
-import {FaPersonCircleQuestion, FaLightbulb} from 'react-icons/fa6';
 import {CiCalendar} from 'react-icons/ci';
+import {FaLightbulb, FaPersonCircleQuestion} from 'react-icons/fa6';
+import {FormConstantType} from 'types/common';
 
-type formConstantType = Array<{
-  name: string;
-  question: string;
-  placeholder: string;
-  component: IconType;
-}>;
-
-const formConstant: formConstantType = [
+const formConstant: FormConstantType = [
   {
     name: 'worryContent',
     question: '어떤 걱정을 하고 계시나요?*',

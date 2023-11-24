@@ -1,7 +1,8 @@
 import {useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {SetterOrUpdater, useRecoilState} from 'recoil';
-import {PageType, pagesState} from 'store/pages';
+import {pagesState} from 'store/pages';
+import {PageType} from 'types/common';
 
 type useChagePagesType = () => [PageType, SetterOrUpdater<PageType>];
 /**

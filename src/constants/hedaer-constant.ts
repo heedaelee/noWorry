@@ -1,6 +1,6 @@
 import {IconType} from 'react-icons/lib';
 import {RxGear} from 'react-icons/rx';
-import {PageType} from 'store/pages';
+import {PageType} from 'types/common';
 
 interface headerConstantType {
   page: {

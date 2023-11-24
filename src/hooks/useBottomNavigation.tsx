@@ -1,7 +1,8 @@
 import {Dispatch, SetStateAction, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {SetterOrUpdater, useRecoilState} from 'recoil';
-import {BottomTapType, bottomTapState} from 'store/bottom-tap';
+import {bottomTapState} from 'store/bottom-tap';
+import {BottomTapType} from 'types/common';
 
 type useBottomNavigationType = () => [
   BottomTapType,
