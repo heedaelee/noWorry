@@ -19,16 +19,15 @@ interface InitialStateType {
   worryList: WorryList;
   selectedI: WorryItem['id'];
 }
-
 /**
  * 초기값 지정
  */
-const initialState: InitialStateType = {
+const initialState = {
   selectedI: '',
   worryList: [],
 };
 
-export const worryListState = atom({
+export const worryListState = atom<InitialStateType>({
   key: WORRY_LIST_KEY,
   default: initialState,
   effects: [localStorageEffect(WORRY_LIST_KEY)],
