@@ -5,10 +5,7 @@ type UseOutsideClickType = (
   initialState: boolean,
 ) => [boolean, Dispatch<SetStateAction<boolean>>];
 
-export const useOutsideClickType: UseOutsideClickType = (
-  element,
-  initialState,
-) => {
+export const useOutsideClick: UseOutsideClickType = (element, initialState) => {
   const [isActive, setIsActive] = useState(initialState);
 
   useEffect(() => {
