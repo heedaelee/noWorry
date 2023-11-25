@@ -21,10 +21,14 @@ export interface WorryList extends Array<WorryItem> {}
 
 /* 폼 상수 데이터 */
 export type FormConstantType = Array<{
-  name: string;
+  name: keyof InputTypes;
   question: string;
   placeholder: string;
   component: IconType;
 }>;
 
-export type InputTypes = '';
+/* 폼에서 받는 인풋 타입, {}형식이라 키로 사용하려면 keyof InputTypes */
+export type InputTypes = Pick<
+  WorryItem,
+  'worryContent' | 'worryPrepareContent' | 'worryExpectedDate'
+>;
