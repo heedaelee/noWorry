@@ -14,7 +14,7 @@ import {
   monthWrapper,
   switchWrapper,
 } from 'styles/globalStyles';
-import {useOutsideClickType} from '../hooks/useOutsideClick';
+import {useOutsideClick} from '../hooks/useOutsideClick';
 import {useChangePages} from '../hooks/useChagePages';
 
 const Main = () => {
@@ -23,7 +23,7 @@ const Main = () => {
 
   const [pages, changePages] = useChangePages();
 
-  const [isSortActive, setIsSortActive] = useOutsideClickType(
+  const [isSortActive, setIsSortActive] = useOutsideClick(
     sortDropdownRef,
     false,
   );
