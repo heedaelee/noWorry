@@ -2,7 +2,7 @@ import {IoIosArrowBack} from 'react-icons/io';
 import styled from 'styled-components';
 
 import Text from 'components/text/Text';
-import {headerConstant} from 'constants/hedaer-constant';
+import {headerConstant} from 'constants/header-constant';
 import {useChangePages} from 'hooks/useChagePages';
 import {headWrapper, mainPadding} from 'styles/globalStyles';
 import {useCallback} from 'react';
