@@ -1,5 +1,6 @@
 import {DateType} from 'types/common';
 import dayjs, {type Dayjs} from 'dayjs';
+import 'dayjs/locale/ko';
 
 /* 한국어 */
 dayjs.locale('ko');
@@ -22,11 +23,11 @@ export const normalizeDate = (date: DateType): Dayjs => {
  * @param date
  */
 export const fullDayFormat = (date: DateType) =>
-  normalizeDate(date).format('MM월 DD일 dddd');
+  normalizeDate(date).format('M월 D일 dddd');
 
 /**
  * xx년 x월 포맷 형식
  * @param date
  */
 export const yearMonth = (date: DateType) =>
-  normalizeDate(date).format('YY년 MM월');
+  normalizeDate(date).format('Y년 M월');
