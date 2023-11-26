@@ -11,7 +11,6 @@ const Form = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  margin-top: 30px;
 `;
 
 /* const TextareaStyled = styled.textarea<{$row: number}>`
