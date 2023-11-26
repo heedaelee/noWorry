@@ -1,5 +1,6 @@
 import {ChangeEvent, useState} from 'react';
 import {DateType, InputTypes} from 'types/common';
+import {normalizeDate} from 'utils/data';
 
 /* TODO: NOTE: 정리하기 */
 type InitialValue = {
@@ -13,6 +14,7 @@ type InitialValue = {
 const useForm = (initialValue: InitialValue) => {
   /* 기능 : 데이터 보관 */
   const [values, setValues] = useState(initialValue);
+  console.log(values);
   /* 기능 : 클릭시 포커싱 인지*/
   const [focused, setFocused] = useState<Record<keyof InitialValue, boolean>>({
     worryContent: false,
@@ -76,10 +78,11 @@ const useForm = (initialValue: InitialValue) => {
         value.length === 201 && (message = '200자 이내로 입력해주세요:)');
         break;
     }
-    setError({
-      ...error,
-      [inputName]: message,
-    });
+    message !== '' &&
+      setError({
+        ...error,
+        [inputName]: message,
+      });
   };
   /*  */
   const getInputProps = (inputName: keyof InputTypes) => {
@@ -88,7 +91,13 @@ const useForm = (initialValue: InitialValue) => {
       handleChangeValue(inputName, value);
       handleValidationError(inputName, value);
     };
-    const handleDateChange = (value: DateType) => {
+    const handleDateChange = (
+      value: DateType,
+      event: React.MouseEvent<HTMLButtonElement>,
+    ) => {
+      // console.log('데이터테스트 : ', inputName, value);
+      // console.log('노멀라이징 : ', normalizeDate(value));
+
       handleChangeValue(inputName, value);
     };
     // const onBlur = () => handleBlur(inputName);
