@@ -7,6 +7,8 @@ type InitialValue = {
   [K in keyof InputTypes]: InputTypes[K];
 };
 
+export type handleDateChangeType = (value: DateType | '' | null) => void;
+
 /**
  * @param initialValue
  * @returns
@@ -15,12 +17,6 @@ const useForm = (initialValue: InitialValue) => {
   /* 기능 : 데이터 보관 */
   const [values, setValues] = useState(initialValue);
   console.log(values);
-  /* 기능 : 클릭시 포커싱 인지*/
-  const [focused, setFocused] = useState<Record<keyof InitialValue, boolean>>({
-    worryContent: false,
-    worryPrepareContent: false,
-    worryExpectedDate: false,
-  });
   /* 기능 : 유효성 에러시 메시지 */
   const [error, setError] = useState<InitialValue>({
     worryContent: '',
@@ -28,29 +24,10 @@ const useForm = (initialValue: InitialValue) => {
     worryExpectedDate: '',
   });
 
-  /**
-   * 포커싱 될때
-   */
-  const handleFocus = (inputName: Partial<keyof InitialValue>) => {
-    setFocused({
-      ...focused,
-      [inputName]: true,
-    });
-  };
-  /**
-   * 포커싱 떠날때
-   * */
-  const handleBlur = (name: Partial<keyof InitialValue>) => {
-    setFocused({
-      ...focused,
-      [name]: false,
-    });
-  };
-
   /* 데이터 삽입 로직 */
   const handleChangeValue = (
     inputName: keyof InputTypes,
-    value: string | DateType,
+    value: string | DateType | null,
   ) => {
     /* 데이터 저장 원리 
       inputName과 value를 받으면 여기 setValues 를 통해 객체에 차곡차곡 쌓아나감. 
@@ -91,28 +68,24 @@ const useForm = (initialValue: InitialValue) => {
       handleChangeValue(inputName, value);
       handleValidationError(inputName, value);
     };
-    const handleDateChange = (
-      value: DateType,
-      event: React.MouseEvent<HTMLButtonElement>,
+    const handleDateChange: handleDateChangeType = (
+      value: DateType | '' | null,
+      // event: React.MouseEvent<HTMLButtonElement>,
     ) => {
       // console.log('데이터테스트 : ', inputName, value);
       // console.log('노멀라이징 : ', normalizeDate(value));
 
       handleChangeValue(inputName, value);
     };
-    // const onBlur = () => handleBlur(inputName);
-    // const onFocus = () => handleFocus(inputName);
     const value = values[inputName];
     return {
       value,
-      // onBlur,
-      // onFocus,
       handleTextAreatChange,
       handleDateChange,
     };
   };
 
-  return {getInputProps, values, error, focused};
+  return {getInputProps, values, error};
 };
 
 export default useForm;
