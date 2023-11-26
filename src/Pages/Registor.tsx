@@ -8,18 +8,21 @@ import {
 } from 'styles/globalStyles';
 
 const Registor = () => {
+  const $marginTop = 30;
+
   return (
-    <HorizontalPaddingWrapper>
-      <Wrapper>
+    <HorizontalPaddingWrapper style={{marginTop: `${$marginTop}px`}}>
+      <Wrapper $marginTop={$marginTop}>
         <Form />
       </Wrapper>
     </HorizontalPaddingWrapper>
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{$marginTop: number}>`
   /* background-color: yellow; */
-  height: ${fullHeight - (headWrapper + mainPadding)}px;
+  height: ${({$marginTop}) =>
+    fullHeight - (headWrapper + mainPadding + $marginTop)}px;
 `;
 
 export default Registor;
