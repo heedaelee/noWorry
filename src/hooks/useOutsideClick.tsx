@@ -19,7 +19,6 @@ export const useOutsideClick: UseOutsideClickType = (element, initialState) => {
         element.current !== null &&
         !element.current.contains(e.target as Node | null)
       ) {
-        console.log('반응');
         setIsActive(!isActive);
       }
     };
