@@ -14,11 +14,12 @@ interface TextProps {
     | 'button'
     | 'caption1'
     | 'caption2';
+  onClick?: () => void;
   color?: string;
   style?: React.CSSProperties;
 }
 
-const Text = ({children, type, color, style}: TextProps) => {
+const Text = ({children, type, color, style, onClick}: TextProps) => {
   const {fontFamilyType} = GlobalStyles;
 
   const fontType = {
@@ -65,7 +66,11 @@ const Text = ({children, type, color, style}: TextProps) => {
   };
 
   return (
-    <TextStyled {...fontType[type]} color={color} style={style}>
+    <TextStyled
+      {...fontType[type]}
+      color={color}
+      style={style}
+      onClick={onClick}>
       {children}
     </TextStyled>
   );
