@@ -8,11 +8,14 @@ export type PageType = 'list' | 'editor' | 'register' | 'statics' | 'setting';
 
 export type BottomTapType = '홈' | '통계';
 
+/**
+ * @key worryExpectedDate : 날짜 | 아직 모름 | 선택안함(초기값)
+ * */
 export interface WorryItem {
   id: string;
   worryContent: string;
   worryPrepareContent: string;
-  worryExpectedDate: DateType | '';
+  worryExpectedDate: DateType | '' | null;
   regDate: DateType;
   worryStatus: WorryStatus;
 }
