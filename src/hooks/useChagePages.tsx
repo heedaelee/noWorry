@@ -14,25 +14,24 @@ export const useChangePages: useChagePagesType = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
+    const changePages = (page: PageType) => {
+      switch (page) {
+        case 'list':
+          navigate('/');
+          break;
+        case 'editor':
+          navigate(`/${page}`);
+          break;
+        case 'register':
+          navigate(`/${page}`);
+          break;
+        default:
+          navigate('/');
+          break;
+      }
+    };
     changePages(pages);
-  }, [pages]);
-
-  const changePages = (page: PageType) => {
-    switch (page) {
-      case 'list':
-        navigate('/');
-        break;
-      case 'editor':
-        navigate(`/${page}`);
-        break;
-      case 'register':
-        navigate(`/${page}`);
-        break;
-      default:
-        navigate('/');
-        break;
-    }
-  };
+  }, [navigate, pages]);
 
   return [pages, setPages];
 };

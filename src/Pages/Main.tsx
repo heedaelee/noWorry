@@ -42,16 +42,19 @@ const Main = () => {
     setFilterState(text as WorryStatus);
   }, []);
 
-  const handleDropdownPress = useCallback((text: string) => {
-    /* TODO: 로직 */
-    console.log(text);
-    onClickSortBtn();
-    // setView(!view);
-  }, []);
+  const handleDropdownPress = useCallback(
+    (text: string) => {
+      /* TODO: 로직 */
+      console.log(text);
+      onClickSortBtn();
+      // setView(!view);
+    },
+    [onClickSortBtn],
+  );
 
   const handleAddButton = useCallback(() => {
     changePages('register');
-  }, []);
+  }, [changePages]);
 
   return (
     <HorizontalPaddingWrapper>

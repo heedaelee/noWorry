@@ -3,7 +3,7 @@ import {DateType, InputTypes} from 'types/common';
 import {normalizeDate} from 'utils/data';
 
 /* TODO: NOTE: 정리하기 */
-type InitialValue = {
+export type InitialValue = {
   [K in keyof InputTypes]: InputTypes[K];
 };
 
