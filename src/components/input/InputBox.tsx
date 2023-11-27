@@ -5,19 +5,24 @@ import styled from 'styled-components';
 
 import Text from 'components/text/Text';
 import formConstant from 'constants/form-constant';
-import useForm, {handleDateChangeType} from 'hooks/useForm';
+import useForm, {InitialValue, handleDateChangeType} from 'hooks/useForm';
 import {useOutsideClick} from 'hooks/useOutsideClick';
-import {useRef, useState} from 'react';
+import {ChangeEvent, useRef, useState} from 'react';
 import {GlobalStyles} from 'styles/globalStyles';
 import {fullDayFormat} from 'utils/data';
+import {DateType, InputTypes} from 'types/common';
 
-const InputBox = () => {
-  const formHookProps = useForm({
-    worryContent: '',
-    worryPrepareContent: '',
-    worryExpectedDate: null,
-  });
-  const {values, error, getInputProps} = formHookProps;
+interface InputBoxType {
+  getInputProps: (inputName: keyof InputTypes) => {
+    value: string | DateType | null;
+    handleTextAreatChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+    handleDateChange: handleDateChangeType;
+  };
+  values: InitialValue;
+  error: InitialValue;
+}
+
+const InputBox = ({getInputProps, values, error}: InputBoxType) => {
   console.log(values);
 
   const calendarRef = useRef<HTMLDivElement>(null);
@@ -32,18 +37,6 @@ const InputBox = () => {
     isChecked ? handleDateChange(null) : handleDateChange('');
     setIsChecked(!isChecked);
   };
-
-  /* TODO: 버튼, 함수 연결*/
-  const handlePress = () => {
-    console.log('handlePress 클릭');
-  };
-  const activeSubmitButton =
-    !!values.worryContent &&
-    !(error.worryContent && error.worryPrepareContent) &&
-    values.worryExpectedDate !== null;
-
-  console.log('activeSubmitButton 상태 : ', activeSubmitButton);
-
   return (
     <Block>
       {formConstant.map((Input, index) => {
@@ -134,6 +127,7 @@ const InputBox = () => {
 };
 
 const Block = styled.div`
+  flex: 1;
   /*2번째 자식부터 margin을 줌*/
   > :nth-child(n + 2) {
     margin-top: 15px;
