@@ -17,7 +17,7 @@ const Headers = () => {
 
   const handleBackButtonPress = useCallback(() => {
     setPages('list');
-  }, []);
+  }, [setPages]);
 
   return (
     <HeadWrapper $isActiveBackButton={isActiveBackButton}>
