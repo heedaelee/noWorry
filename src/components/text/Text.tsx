@@ -13,7 +13,8 @@ interface TextProps {
     | 'body2'
     | 'button'
     | 'caption1'
-    | 'caption2';
+    | 'caption2'
+    | 'caption3';
   onClick?: () => void;
   color?: string;
   style?: React.CSSProperties;
@@ -61,6 +62,10 @@ const Text = ({children, type, color, style, onClick}: TextProps) => {
     },
     caption2: {
       $size: '32px',
+      $family: fontFamilyType.regular,
+    },
+    caption3: {
+      $size: '10px',
       $family: fontFamilyType.regular,
     },
   };
