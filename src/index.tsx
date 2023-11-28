@@ -5,7 +5,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import {BrowserRouter} from 'react-router-dom';
 import {RecoilRoot} from 'recoil';
 import GlobalHtmlStyles from 'styles/globalHtmlStyles';
-import Modals from 'components/modals/modals';
+import Modals from 'components/modals/Modals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

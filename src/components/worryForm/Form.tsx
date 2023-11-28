@@ -12,7 +12,7 @@ import {v4 as uuidv4} from 'uuid';
 const Form = () => {
   const [page, setPage] = useChangePages();
   const [worryState, setWorryState] = useRecoilState(worryListState);
-  const {worryList, selectedI} = worryState;
+  const {worryList, selectedId} = worryState;
   /**
    * Reocoil의 데이터를 useForm에 초기값 할당하기 (register | editor)
    */
@@ -22,7 +22,7 @@ const Form = () => {
     worryExpectedDate: null,
   };
   /* 페이지가 수정일떄 */
-  if (selectedI !== '' && page === 'editor') {
+  if (selectedId !== '' && page === 'editor') {
     worryList.forEach((v, i) => {
       initialValue = {
         worryContent: v.worryContent,
@@ -60,7 +60,7 @@ const Form = () => {
         newWorryList = {
           ...worryState,
           worryList: worryList.map(v =>
-            v.id === selectedI
+            v.id === selectedId
               ? {
                   ...v,
                   worryContent: values.worryContent,
@@ -79,7 +79,7 @@ const Form = () => {
     }
   }, [
     page,
-    selectedI,
+    selectedId,
     setPage,
     setWorryState,
     values.worryContent,
