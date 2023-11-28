@@ -33,7 +33,7 @@ const InputBox = ({getInputProps, values, error}: InputBoxType) => {
     setShowCalendar(!showCalendar);
   };
   const handleCheckboxChange = (handleDateChange: handleDateChangeType) => {
-    // 체크가 되었다가 푼상황 value=null : 안되었다가 하는 상황 value=''
+    // 체크 했다가 해제 한 상황 -> value=null : 체크 안되어 있다가 한 상황 value=''
     isChecked ? handleDateChange(null) : handleDateChange('');
     setIsChecked(!isChecked);
   };
