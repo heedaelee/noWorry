@@ -8,13 +8,13 @@ export type WorryStatus = '현재 걱정' | '일어나지 않음' | '일어남';
 export interface WorryList extends Array<WorryItem> {}
 interface InitialStateType {
   worryList: WorryList;
-  selectedI: WorryItem['id'];
+  selectedId: WorryItem['id'];
 }
 /**
  * 초기값 지정
  */
 const initialState = {
-  selectedI: '',
+  selectedId: '',
   worryList: [],
 };
 
