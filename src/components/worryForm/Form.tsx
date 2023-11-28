@@ -41,6 +41,7 @@ const Form = () => {
   const handlePressSave = useCallback(() => {
     let newWorryList;
     try {
+      /* 걱정등록 */
       if (page === 'register') {
         const newWorryItme: WorryItem = {
           id: uuidv4(),
@@ -55,6 +56,7 @@ const Form = () => {
           worryList: worryList.concat(newWorryItme),
         };
       } else {
+        /* 걱정수정 */
         newWorryList = {
           ...worryState,
           worryList: worryList.map(v =>
