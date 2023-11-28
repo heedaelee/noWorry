@@ -30,4 +30,4 @@ export const fullDayFormat = (date: DateType) =>
  * @param date
  */
 export const yearMonth = (date: DateType) =>
-  normalizeDate(date).format('Y년 M월');
+  normalizeDate(date).format('YY. M. D.');
