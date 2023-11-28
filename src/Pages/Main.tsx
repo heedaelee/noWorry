@@ -4,38 +4,40 @@ import styled from 'styled-components';
 
 import RoundAddButton from 'components/buttons/RoundAddButton';
 import RoundFilterButton from 'components/buttons/RoundFilterButton';
+import {Card as CardStyled} from 'components/card/Card';
 import Dropdown from 'components/dropdown/Dropdown';
-import Headers from 'components/headers/Headers';
 import Text from 'components/text/Text';
-import {WorryStatus} from 'types/common';
+import {useRecoilState} from 'recoil';
+import {worryListState} from 'store/worry-list';
 import {
   HorizontalPaddingWrapper,
   contentsHeight,
   monthWrapper,
   switchWrapper,
 } from 'styles/globalStyles';
-import {useOutsideClick} from '../hooks/useOutsideClick';
+import {WorryStatus} from 'types/common';
 import {useChangePages} from '../hooks/useChagePages';
+import {useOutsideClick} from '../hooks/useOutsideClick';
 
 const Main = () => {
   const [filterState, setFilterState] = useState<WorryStatus>('현재 걱정');
   const sortDropdownRef = useRef<HTMLDivElement>(null);
-
   const [pages, changePages] = useChangePages();
+  const [worryState, setWorryState] = useRecoilState(worryListState);
+  const {selectedI, worryList} = worryState;
 
   const [isSortActive, setIsSortActive] = useOutsideClick(
     sortDropdownRef,
     false,
   );
-  // console.log(`isSortActive : ${isSortActive}`);
-
+  const filterTextType = useMemo<Array<WorryStatus>>(() => {
+    return ['현재 걱정', '일어나지 않음', '일어남'];
+  }, []);
   const onClickSortBtn = useCallback(() => {
     setIsSortActive(prev => !prev);
   }, [setIsSortActive]);
 
-  const filterTextType = useMemo<Array<WorryStatus>>(() => {
-    return ['현재 걱정', '일어나지 않음', '일어남'];
-  }, []);
+  // console.log(`isSortActive : ${isSortActive}`);
 
   const handleFilterButtonPress = useCallback((text: string) => {
     /* TODO: 로직 */
@@ -55,6 +57,21 @@ const Main = () => {
   const handleAddButton = useCallback(() => {
     changePages('register');
   }, [changePages]);
+
+  const handleThreeDoctsDropDownPress = useCallback(
+    (text: string, data?: string) => {
+      /* TODO: */
+      //수정 삭제 텍스트가 올라오면 분기하셈
+      console.log(text, data);
+      if (text === '수정') {
+        setWorryState({worryList, selectedI: data ? data : ''});
+        changePages('editor');
+      } else {
+        alert('삭제');
+      }
+    },
+    [changePages, setWorryState, worryList],
+  );
 
   return (
     <HorizontalPaddingWrapper>
@@ -85,6 +102,7 @@ const Main = () => {
           <UpDonwIcon>{isSortActive ? '▲' : '▼'}</UpDonwIcon>
           {isSortActive && (
             <Dropdown
+              WrapperStyle={{top: 30, left: -23, width: '130%'}}
               onClick={handleDropdownPress}
               menuTexts={['최근 작성순', '예상날짜 빠른순']}
             />
@@ -92,17 +110,18 @@ const Main = () => {
         </DropdownWrapper>
       </SwitchWrapper>
       <ContentsWrapper>
-        {/* 데이터 없을 때 */}
-        <Card>
-          <Text
-            type='sub2'
-            style={{
-              whiteSpace: 'pre-wrap',
-            }}>{`+ 버튼을 눌러서\n지금의 걱정을 기록해 보세요.`}</Text>
-        </Card>
-        {/* TODO:데이터 있을 때 */}
-
-        {/* 데이터 있을 때  끝*/}
+        {worryList.length === 0 ? (
+          <CardStyled addButtonClick={handleAddButton} type={'NoData'} />
+        ) : (
+          worryList.map((cardItem, i) => (
+            <CardStyled
+              key={i}
+              cardItem={cardItem}
+              data={cardItem.id}
+              dropDownClick={handleThreeDoctsDropDownPress}
+            />
+          ))
+        )}
 
         <RoundAddButton onClick={handleAddButton} />
       </ContentsWrapper>
@@ -141,9 +160,6 @@ const UpDonwIcon = styled.div`
   margin-left: 5px;
 `;
 const ContentsWrapper = styled.div`
-  /* display: flex;
-  justify-content: center; */
-  /* border: 1px solid black; */
   height: ${contentsHeight}px;
   /* 아이템 사이 여백 */
   /* 
@@ -151,14 +167,6 @@ const ContentsWrapper = styled.div`
     margin-bottom: 0px;
   } 
   */
-`;
-const Card = styled.div`
-  max-width: 390px;
-  padding: 10px;
-  text-align: center;
-  cursor: pointer;
-  background-color: white;
-  border-radius: 16px;
 `;
 
 export default Main;

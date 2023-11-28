@@ -1,16 +1,28 @@
 import Text from 'components/text/Text';
-import styled from 'styled-components';
+import styled, {CSSProperties} from 'styled-components';
 
 interface DropdownProps {
-  onClick: (text: string) => void;
+  onClick: (text: string, data?: string) => void;
   menuTexts: string[];
+  WrapperStyle?: CSSProperties;
+  ButtonStyle?: CSSProperties;
+  data?: string;
 }
 
-const Dropdown = ({onClick, menuTexts}: DropdownProps) => {
+const Dropdown = ({
+  onClick,
+  menuTexts,
+  WrapperStyle,
+  ButtonStyle,
+  data,
+}: DropdownProps) => {
   return (
-    <Wrapper>
+    <Wrapper style={WrapperStyle}>
       {menuTexts.map((menuText, index) => (
-        <ButtonStyled key={index} onClick={() => onClick(menuText)}>
+        <ButtonStyled
+          key={index}
+          onClick={() => onClick(menuText, data)}
+          style={ButtonStyle}>
           <Text type='button'>{menuText}</Text>
         </ButtonStyled>
       ))}
@@ -20,9 +32,7 @@ const Dropdown = ({onClick, menuTexts}: DropdownProps) => {
 
 const Wrapper = styled.div`
   position: absolute;
-  top: 30px;
-  left: -23px;
-  width: 130%;
+  z-index: 1;
   display: flex;
   flex: 1;
   flex-direction: column;
