@@ -18,14 +18,18 @@ import {
 import {WorryStatus} from 'types/common';
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
+import useModals from 'hooks/useModals';
+import {modals} from 'components/modals/Modals';
 
 const Main = () => {
   const [filterState, setFilterState] = useState<WorryStatus>('현재 걱정');
   const sortDropdownRef = useRef<HTMLDivElement>(null);
   const [pages, changePages] = useChangePages();
   const [worryState, setWorryState] = useRecoilState(worryListState);
-  const {selectedI, worryList} = worryState;
+  const {selectedId, worryList} = worryState;
 
+  const {closeModal, openModal} = useModals();
+  const [loading, setLoading] = useState(false);
   const [isSortActive, setIsSortActive] = useOutsideClick(
     sortDropdownRef,
     false,
@@ -38,6 +42,23 @@ const Main = () => {
   }, [setIsSortActive]);
 
   // console.log(`isSortActive : ${isSortActive}`);
+
+  const onDelete = useCallback(() => {
+    try {
+      const newWorryState = {
+        selectedId,
+        worryList: worryList.filter((value, index) => value.id !== selectedId),
+      };
+      setWorryState(newWorryState);
+      setLoading(false);
+    } catch (error) {
+      alert(`에러 : ${error}`);
+    } finally {
+      setLoading(false);
+      changePages('list');
+      /* TODO: BUG: NOTE: 여기까지 함 */
+    }
+  }, []);
 
   const handleFilterButtonPress = useCallback((text: string) => {
     /* TODO: 로직 */
@@ -64,13 +85,21 @@ const Main = () => {
       //수정 삭제 텍스트가 올라오면 분기하셈
       console.log(text, data);
       if (text === '수정') {
-        setWorryState({worryList, selectedI: data ? data : ''});
+        setWorryState({worryList, selectedId: data ? data : ''});
         changePages('editor');
       } else {
-        alert('삭제');
+        /* 삭제 로직 */
+        openModal(modals.confirm, {
+          message: '해당 게시물을\n삭제하시겠습니까?',
+          onConfirmButtonClick: () => {
+            closeModal(modals.confirm);
+            onDelete();
+          },
+          onCancelButtonClick: () => closeModal(modals.confirm),
+        });
       }
     },
-    [changePages, setWorryState, worryList],
+    [changePages, closeModal, openModal, setWorryState, worryList],
   );
 
   return (
