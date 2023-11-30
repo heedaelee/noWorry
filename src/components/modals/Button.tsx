@@ -20,9 +20,9 @@ const ButtonStyled = styled.button<{$type: ButtonProps['type']}>`
   width: 115px;
   height: 46px;
   background-color: ${({$type}) =>
-    $type === 'cancel' ? GlobalStyles.Colors.blue : 'white'};
-  color: ${({$type}) =>
     $type === 'cancel' ? 'white' : GlobalStyles.Colors.blue};
+  color: ${({$type}) =>
+    $type === 'cancel' ? GlobalStyles.Colors.blue : 'white'};
   font-family: ${GlobalStyles.fontFamilyType.regular};
   border-radius: 16px;
   border: 1px solid ${GlobalStyles.Colors.blue};
