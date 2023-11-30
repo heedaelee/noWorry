@@ -28,6 +28,8 @@ body {
 }
 * {
   box-sizing: inherit;
+  /* 부모를 가릴경우 안보이게 함 */
+  /* overflow: hidden; */
 }
 `;
 

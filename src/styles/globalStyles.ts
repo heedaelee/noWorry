@@ -61,13 +61,13 @@ const contentsHeight = fullHeight - (heightOhterThanContents + mainPadding);
 
 /* 높이 체크:log */
 
-console.log(`fullHeight : ${fullHeight}`);
+/* console.log(`fullHeight : ${fullHeight}`);
 console.log(
   `heightOhterThanContents + mainPadding : ${
     heightOhterThanContents + mainPadding
   }`,
 );
-console.log(`contentsHeight : ${contentsHeight}`);
+console.log(`contentsHeight : ${contentsHeight}`); */
 
 const HorizontalPaddingWrapper = styled.div`
   padding: 0px ${mainPadding}px 0px ${mainPadding}px;
