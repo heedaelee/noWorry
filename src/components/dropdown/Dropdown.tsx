@@ -1,12 +1,18 @@
 import Text from 'components/text/Text';
+import {Dispatch} from 'react';
 import styled, {CSSProperties} from 'styled-components';
 
 interface DropdownProps {
-  onClick: (text: string, data?: string) => void;
+  onClick: (
+    text: string,
+    data?: string,
+    passFunction?: Dispatch<React.SetStateAction<boolean>>,
+  ) => void;
   menuTexts: string[];
   WrapperStyle?: CSSProperties;
   ButtonStyle?: CSSProperties;
   data?: string;
+  passFunction?: Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Dropdown = ({
@@ -15,13 +21,14 @@ const Dropdown = ({
   WrapperStyle,
   ButtonStyle,
   data,
+  passFunction,
 }: DropdownProps) => {
   return (
     <Wrapper style={WrapperStyle}>
       {menuTexts.map((menuText, index) => (
         <ButtonStyled
           key={index}
-          onClick={() => onClick(menuText, data)}
+          onClick={() => onClick(menuText, data, passFunction)}
           style={ButtonStyle}>
           <Text type='button'>{menuText}</Text>
         </ButtonStyled>
@@ -32,7 +39,7 @@ const Dropdown = ({
 
 const Wrapper = styled.div`
   position: absolute;
-  z-index: 1;
+  z-index: 10;
   display: flex;
   flex: 1;
   flex-direction: column;

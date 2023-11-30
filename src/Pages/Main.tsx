@@ -1,4 +1,11 @@
-import {useCallback, useMemo, useRef, useState} from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {FaChevronDown} from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -6,7 +13,9 @@ import RoundAddButton from 'components/buttons/RoundAddButton';
 import RoundFilterButton from 'components/buttons/RoundFilterButton';
 import {Card as CardStyled} from 'components/card/Card';
 import Dropdown from 'components/dropdown/Dropdown';
+import {modals} from 'components/modals/Modals';
 import Text from 'components/text/Text';
+import useModals from 'hooks/useModals';
 import {useRecoilState} from 'recoil';
 import {worryListState} from 'store/worry-list';
 import {
@@ -18,8 +27,6 @@ import {
 import {WorryStatus} from 'types/common';
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
-import useModals from 'hooks/useModals';
-import {modals} from 'components/modals/Modals';
 
 const Main = () => {
   const [filterState, setFilterState] = useState<WorryStatus>('현재 걱정');
@@ -34,14 +41,13 @@ const Main = () => {
     sortDropdownRef,
     false,
   );
+
   const filterTextType = useMemo<Array<WorryStatus>>(() => {
     return ['현재 걱정', '일어나지 않음', '일어남'];
   }, []);
   const onClickSortBtn = useCallback(() => {
     setIsSortActive(prev => !prev);
   }, [setIsSortActive]);
-
-  // console.log(`isSortActive : ${isSortActive}`);
 
   const onDelete = useCallback(() => {
     try {
@@ -56,9 +62,8 @@ const Main = () => {
     } finally {
       setLoading(false);
       changePages('list');
-      /* TODO: BUG: NOTE: 여기까지 함 */
     }
-  }, []);
+  }, [changePages, selectedId, setWorryState, worryList]);
 
   const handleFilterButtonPress = useCallback((text: string) => {
     /* TODO: 로직 */
@@ -80,7 +85,11 @@ const Main = () => {
   }, [changePages]);
 
   const handleThreeDoctsDropDownPress = useCallback(
-    (text: string, data?: string) => {
+    (
+      text: string,
+      data?: string,
+      setIsDropdownActive?: Dispatch<SetStateAction<boolean>>,
+    ) => {
       /* TODO: */
       //수정 삭제 텍스트가 올라오면 분기하셈
       console.log(text, data);
@@ -89,17 +98,19 @@ const Main = () => {
         changePages('editor');
       } else {
         /* 삭제 로직 */
-        openModal(modals.confirm, {
+        // console.log(text, data, setIsDropdownActive);
+        setIsDropdownActive && setIsDropdownActive(false);
+        /* openModal(modals.confirm, {
           message: '해당 게시물을\n삭제하시겠습니까?',
           onConfirmButtonClick: () => {
             closeModal(modals.confirm);
             onDelete();
           },
           onCancelButtonClick: () => closeModal(modals.confirm),
-        });
+        }); */
       }
     },
-    [changePages, closeModal, openModal, setWorryState, worryList],
+    [changePages, closeModal, onDelete, openModal, setWorryState, worryList],
   );
 
   return (
@@ -190,12 +201,12 @@ const UpDonwIcon = styled.div`
 `;
 const ContentsWrapper = styled.div`
   height: ${contentsHeight}px;
-  /* 아이템 사이 여백 */
-  /* 
-  &:last-child {
-    margin-bottom: 0px;
-  } 
-  */
+  padding: 0px 2px;
+
+  overflow-y: auto; /* 컨텐츠 부분에 대해서만 세로 스크롤 활성화 */
+  & > div {
+    margin-bottom: 10px; /* 여백 크기 조절 가능 */
+  }
 `;
 
 export default Main;
