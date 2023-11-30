@@ -38,6 +38,7 @@ const Dropdown = ({
 };
 
 const Wrapper = styled.div`
+  z-index: 1;
   position: absolute;
   display: flex;
   flex: 1;
