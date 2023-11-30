@@ -38,7 +38,7 @@ const Text = ({children, type, color, style, onClick}: TextProps) => {
     },
     sub1: {
       $size: '16px',
-      $family: fontFamilyType.regular,
+      $family: fontFamilyType.medium,
     },
     sub2: {
       $size: '14px',
