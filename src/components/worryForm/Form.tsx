@@ -24,12 +24,15 @@ const Form = () => {
   /* 페이지가 수정일떄 */
   if (selectedId !== '' && page === 'editor') {
     worryList.forEach((v, i) => {
-      initialValue = {
-        worryContent: v.worryContent,
-        worryPrepareContent: v.worryPrepareContent,
-        worryExpectedDate: v.worryExpectedDate,
-      };
+      if (v.id === selectedId) {
+        initialValue = {
+          worryContent: v.worryContent,
+          worryPrepareContent: v.worryPrepareContent,
+          worryExpectedDate: v.worryExpectedDate,
+        };
+      }
     });
+    console.log('initialValue :', initialValue);
   }
   /* 등록페이지면 초기값, 수정페이지면 위의 리코일 worryList 할당  */
   const formHookProps = useForm(initialValue);
@@ -59,7 +62,7 @@ const Form = () => {
       } else {
         /* 걱정수정 */
         newWorryList = {
-          ...worryState,
+          selectedId: '',
           worryList: worryList.map(v =>
             v.id === selectedId
               ? {

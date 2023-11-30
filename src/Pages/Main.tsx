@@ -41,7 +41,7 @@ const Main = () => {
     sortDropdownRef,
     false,
   );
-
+  console.log('worryState :', worryState);
   const filterTextType = useMemo<Array<WorryStatus>>(() => {
     return ['현재 걱정', '일어나지 않음', '일어남'];
   }, []);
@@ -49,21 +49,27 @@ const Main = () => {
     setIsSortActive(prev => !prev);
   }, [setIsSortActive]);
 
-  const onDelete = useCallback(() => {
-    try {
-      const newWorryState = {
-        selectedId,
-        worryList: worryList.filter((value, index) => value.id !== selectedId),
-      };
-      setWorryState(newWorryState);
-      setLoading(false);
-    } catch (error) {
-      alert(`에러 : ${error}`);
-    } finally {
-      setLoading(false);
-      changePages('list');
-    }
-  }, [changePages, selectedId, setWorryState, worryList]);
+  const onDelete = useCallback(
+    (id: string) => {
+      console.log('id: ', id);
+
+      try {
+        const newWorryState = {
+          selectedId: '',
+          worryList: worryList.filter((value, index) => value.id !== id),
+        };
+        console.log(newWorryState);
+        setWorryState(newWorryState);
+        setLoading(false);
+      } catch (error) {
+        alert(`에러 : ${error}`);
+      } finally {
+        setLoading(false);
+        changePages('list');
+      }
+    },
+    [changePages, setWorryState, worryList],
+  );
 
   const handleFilterButtonPress = useCallback((text: string) => {
     /* TODO: 로직 */
@@ -92,20 +98,20 @@ const Main = () => {
     ) => {
       /* TODO: */
       //수정 삭제 텍스트가 올라오면 분기하셈
+      // 수정이든 삭제든 우선 selectedId를 넣어줘야..
       console.log(text, data);
+      setWorryState({worryList, selectedId: data ? data : ''});
       if (text === '수정') {
-        setWorryState({worryList, selectedId: data ? data : ''});
         changePages('editor');
       } else {
         /* 삭제 로직 */
-        // console.log(text, data, setIsDropdownActive);
         setIsDropdownActive && setIsDropdownActive(false);
         openModal(modals.confirm, {
           message:
             '기록을 삭제하시겠습니까?\n삭제한 기록은 복구할 수 없습니다.',
           onConfirmButtonClick: () => {
+            data && onDelete(data);
             closeModal(modals.confirm);
-            onDelete();
           },
           onCancelButtonClick: () => closeModal(modals.confirm),
         });
