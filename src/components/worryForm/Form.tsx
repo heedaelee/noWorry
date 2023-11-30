@@ -51,6 +51,7 @@ const Form = () => {
           worryStatus: '현재 걱정',
           regDate: new Date(),
         };
+        console.log(newWorryItme);
         newWorryList = {
           ...worryState,
           worryList: worryList.concat(newWorryItme),
@@ -93,8 +94,6 @@ const Form = () => {
     !!values.worryContent &&
     !(error.worryContent && error.worryPrepareContent) &&
     values.worryExpectedDate !== null;
-
-  console.log('activeSubmitButton 상태 : ', activeSubmitButton);
 
   return (
     <Wrapper>
