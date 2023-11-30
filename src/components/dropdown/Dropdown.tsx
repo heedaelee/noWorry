@@ -39,7 +39,6 @@ const Dropdown = ({
 
 const Wrapper = styled.div`
   position: absolute;
-  z-index: 10;
   display: flex;
   flex: 1;
   flex-direction: column;
