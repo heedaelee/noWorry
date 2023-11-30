@@ -23,8 +23,6 @@ interface InputBoxType {
 }
 
 const InputBox = ({getInputProps, values, error}: InputBoxType) => {
-  console.log(values);
-
   const calendarRef = useRef<HTMLDivElement>(null);
   const [showCalendar, setShowCalendar] = useOutsideClick(calendarRef, false);
   const [isChecked, setIsChecked] = useState(false);

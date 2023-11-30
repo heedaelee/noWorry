@@ -7,7 +7,6 @@ type UseOutsideClickType = (
 
 export const useOutsideClick: UseOutsideClickType = (element, initialState) => {
   const [isActive, setIsActive] = useState(initialState);
-
   useEffect(() => {
     /**
      * e.target 이 아닌 이벤트에 클릭이 포함되면, active를 반대로 토글한다
@@ -30,6 +29,6 @@ export const useOutsideClick: UseOutsideClickType = (element, initialState) => {
     return () => {
       window.removeEventListener('click', pageClickEvent);
     };
-  });
+  }, [element, isActive]);
   return [isActive, setIsActive];
 };

@@ -1,6 +1,5 @@
 import {ChangeEvent, useState} from 'react';
 import {DateType, InputTypes} from 'types/common';
-import {normalizeDate} from 'utils/data';
 
 /* TODO: NOTE: 정리하기 */
 export type InitialValue = {
@@ -16,7 +15,6 @@ export type handleDateChangeType = (value: DateType | '' | null) => void;
 const useForm = (initialValue: InitialValue) => {
   /* 기능 : 데이터 보관 */
   const [values, setValues] = useState(initialValue);
-  console.log(values);
   /* 기능 : 유효성 에러시 메시지 */
   const [error, setError] = useState<InitialValue>({
     worryContent: '',
