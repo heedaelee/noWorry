@@ -1,7 +1,7 @@
 import Dropdown from 'components/dropdown/Dropdown';
 import Text from 'components/text/Text';
 import {useOutsideClick} from 'hooks/useOutsideClick';
-import {useCallback, useRef} from 'react';
+import {Dispatch, useCallback, useRef} from 'react';
 import {BsThreeDots} from 'react-icons/bs';
 import styled from 'styled-components';
 import {GlobalStyles, mainPadding} from 'styles/globalStyles';
@@ -12,7 +12,11 @@ import {FaLightbulb, FaPersonCircleQuestion} from 'react-icons/fa6';
 
 interface CardProps {
   addButtonClick?: () => void;
-  dropDownClick?: (text: string, data?: string) => void;
+  dropDownClick?: (
+    text: string,
+    data?: string,
+    setIsDropdownActive?: Dispatch<React.SetStateAction<boolean>>,
+  ) => void;
   cardItem?: WorryItem;
   type?: 'NoData' | 'Default';
   style?: React.CSSProperties;
@@ -28,12 +32,10 @@ export const Card = ({
   data,
 }: CardProps) => {
   const threeDotsDropdownRef = useRef<HTMLDivElement>(null);
-
   const [isDropdownActive, setIsDropdownActive] = useOutsideClick(
     threeDotsDropdownRef,
     false,
   );
-
   const onClickThreeDots = useCallback(() => {
     setIsDropdownActive(prev => !prev);
   }, [setIsDropdownActive]);
@@ -57,13 +59,14 @@ export const Card = ({
                 <Dropdown
                   WrapperStyle={{
                     top: 20,
-                    left: -28,
+                    left: -43,
                     width: 65,
                   }}
                   ButtonStyle={{textAlign: 'center'}}
                   onClick={dropDownClick}
                   menuTexts={['수정', '삭제']}
                   data={data}
+                  passFunction={setIsDropdownActive}
                 />
               )}
             </ThreeDotsWrapper>
@@ -92,7 +95,9 @@ export const Card = ({
                 <CiCalendar size={15} />
               </IconWrapper>
               <Text type='caption3'>{`예상 날짜 ${
-                cardItem.regDate! ? yearMonth(cardItem.regDate) : '모르겠어요'
+                cardItem.worryExpectedDate!
+                  ? yearMonth(cardItem.worryExpectedDate)
+                  : '모르겠어요'
               }`}</Text>
             </ExpectedDayRow>
             <QuestionRow>
