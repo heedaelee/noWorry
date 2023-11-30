@@ -100,14 +100,15 @@ const Main = () => {
         /* 삭제 로직 */
         // console.log(text, data, setIsDropdownActive);
         setIsDropdownActive && setIsDropdownActive(false);
-        /* openModal(modals.confirm, {
-          message: '해당 게시물을\n삭제하시겠습니까?',
+        openModal(modals.confirm, {
+          message:
+            '기록을 삭제하시겠습니까?\n삭제한 기록은 복구할 수 없습니다.',
           onConfirmButtonClick: () => {
             closeModal(modals.confirm);
             onDelete();
           },
           onCancelButtonClick: () => closeModal(modals.confirm),
-        }); */
+        });
       }
     },
     [changePages, closeModal, onDelete, openModal, setWorryState, worryList],
