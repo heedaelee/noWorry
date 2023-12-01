@@ -5,7 +5,7 @@ import {Dispatch, useCallback, useRef} from 'react';
 import {BsThreeDots} from 'react-icons/bs';
 import styled from 'styled-components';
 import {GlobalStyles, mainPadding} from 'styles/globalStyles';
-import {WorryItem} from 'types/common';
+import {WorryItem, WorryStatus, onCardButtonsClick} from 'types/common';
 import {fullDayFormat, yearMonth} from 'utils/data';
 import {CiCalendar} from 'react-icons/ci';
 import {FaLightbulb, FaPersonCircleQuestion} from 'react-icons/fa6';
@@ -18,10 +18,11 @@ interface CardProps {
     data?: string,
     setIsDropdownActive?: Dispatch<React.SetStateAction<boolean>>,
   ) => void;
+  onCardButtonsClick?: onCardButtonsClick;
   cardItem?: WorryItem;
   type?: 'NoData' | 'Default';
   style?: React.CSSProperties;
-  data?: string;
+  id: string;
 }
 
 export const Card = ({
@@ -29,8 +30,9 @@ export const Card = ({
   type = 'Default',
   addButtonClick,
   dropDownClick,
+  onCardButtonsClick,
   style,
-  data,
+  id,
 }: CardProps) => {
   const threeDotsDropdownRef = useRef<HTMLDivElement>(null);
   const [isDropdownActive, setIsDropdownActive] = useOutsideClick(
@@ -64,7 +66,7 @@ export const Card = ({
                   ButtonStyle={{textAlign: 'center'}}
                   onClick={dropDownClick}
                   menuTexts={['수정', '삭제']}
-                  data={data}
+                  data={id}
                   passFunction={setIsDropdownActive}
                 />
               )}
@@ -111,7 +113,11 @@ export const Card = ({
                 걱정한 일이 일어났나요?
               </Text>
               <ButtonsRow>
-                <Buttons type={cardItem.worryStatus} />
+                <Buttons
+                  id={id}
+                  onCardButtonsClick={onCardButtonsClick}
+                  type={cardItem.worryStatus}
+                />
               </ButtonsRow>
             </QuestionRow>
           </BottomRow>

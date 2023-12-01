@@ -24,7 +24,7 @@ import {
   monthWrapper,
   switchWrapper,
 } from 'styles/globalStyles';
-import {WorryStatus} from 'types/common';
+import {WorryItem, WorryStatus} from 'types/common';
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
 
@@ -50,14 +50,11 @@ const Main = () => {
 
   const onDelete = useCallback(
     (id: string) => {
-      console.log('id: ', id);
-
       try {
         const newWorryState = {
           selectedId: '',
-          worryList: worryList.filter((value, index) => value.id !== id),
+          worryList: worryList.filter(value => value.id !== id),
         };
-        console.log(newWorryState);
         setWorryState(newWorryState);
         setLoading(false);
       } catch (error) {
@@ -85,7 +82,7 @@ const Main = () => {
     [onClickSortBtn],
   );
 
-  const handleAddButton = useCallback(() => {
+  const handlePressAddButton = useCallback(() => {
     changePages('register');
   }, [changePages]);
 
@@ -95,10 +92,6 @@ const Main = () => {
       data?: string,
       setIsDropdownActive?: Dispatch<SetStateAction<boolean>>,
     ) => {
-      /* TODO: */
-      //수정 삭제 텍스트가 올라오면 분기하셈
-      // 수정이든 삭제든 우선 selectedId를 넣어줘야..
-      console.log(text, data);
       setWorryState({worryList, selectedId: data ? data : ''});
       if (text === '수정') {
         changePages('editor');
@@ -117,6 +110,33 @@ const Main = () => {
       }
     },
     [changePages, closeModal, onDelete, openModal, setWorryState, worryList],
+  );
+
+  const handlePressCardButtons = useCallback(
+    (buttonType: 'yes' | 'no', currentWorryStatus: WorryStatus, id: string) => {
+      console.log(id, currentWorryStatus, buttonType);
+
+      if (
+        (buttonType === 'yes' && currentWorryStatus === '일어남') ||
+        (buttonType === 'no' && currentWorryStatus == '일어나지 않음')
+      ) {
+        return;
+      }
+
+      const worryNewArray = worryList.map((v: WorryItem, i) => {
+        return v.id === id
+          ? {
+              ...v,
+              worryStatus:
+                buttonType === 'yes'
+                  ? ('일어남' as WorryStatus)
+                  : ('일어나지 않음' as WorryStatus),
+            }
+          : v;
+      });
+      setWorryState({selectedId: '', worryList: worryNewArray});
+    },
+    [setWorryState, worryList],
   );
 
   return (
@@ -157,19 +177,24 @@ const Main = () => {
       </SwitchWrapper>
       <ContentsWrapper>
         {worryList.length === 0 ? (
-          <CardStyled addButtonClick={handleAddButton} type={'NoData'} />
+          <CardStyled
+            id={''}
+            addButtonClick={handlePressAddButton}
+            type={'NoData'}
+          />
         ) : (
           worryList.map((cardItem, i) => (
             <CardStyled
               key={i}
               cardItem={cardItem}
-              data={cardItem.id}
+              id={cardItem.id}
               dropDownClick={handleThreeDoctsDropDownPress}
+              onCardButtonsClick={handlePressCardButtons}
             />
           ))
         )}
 
-        <RoundAddButton onClick={handleAddButton} />
+        <RoundAddButton onClick={handlePressAddButton} />
       </ContentsWrapper>
     </HorizontalPaddingWrapper>
   );
