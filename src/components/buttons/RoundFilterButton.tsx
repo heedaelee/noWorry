@@ -2,11 +2,12 @@ import Text from 'components/text/Text';
 import {useState} from 'react';
 import styled from 'styled-components';
 import {GlobalStyles} from 'styles/globalStyles';
+import {WorryStatus} from 'types/common';
 
 interface RoundFilterButtonProps {
-  buttonText: string;
+  buttonText: WorryStatus;
   $isSelected: boolean;
-  onClick: (text: string) => void;
+  onClick: (text: WorryStatus) => void;
   style?: React.CSSProperties;
 }
 
