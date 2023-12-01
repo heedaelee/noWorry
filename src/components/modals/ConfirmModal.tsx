@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Modal from './Modal';
 import Text from 'components/text/Text';
 import Button from './Button';
+import {MouseEventHandler} from 'react';
 
 interface ConfirmModalProps {
   open: boolean;
@@ -26,17 +27,21 @@ const ConfirmModal = ({
     onCancelButtonClick();
   };
 
+  const handleStopPropagation: MouseEventHandler<HTMLDivElement> = e => {
+    e.stopPropagation();
+  };
+
   console.log(open);
   1;
   return (
     <Modal isVisible={open} closeModal={onCancelButtonClick}>
-      <Wrapper>
+      <Wrapper onClick={handleStopPropagation}>
         <QuestionWrapper>
           <Text type={'sub1'}>{message}</Text>
         </QuestionWrapper>
         <ButtonRow>
-          <Button onClick={handleConfirm} text='취소' type='cancel' />
-          <Button onClick={handleCancel} text='확인' type='confirm' />
+          <Button onClick={handleCancel} text='취소' type='cancel' />
+          <Button onClick={handleConfirm} text='삭제' type='confirm' />
         </ButtonRow>
       </Wrapper>
     </Modal>
