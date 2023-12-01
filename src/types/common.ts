@@ -35,3 +35,9 @@ export type InputTypes = Pick<
   WorryItem,
   'worryContent' | 'worryPrepareContent' | 'worryExpectedDate'
 >;
+
+export type onCardButtonsClick = (
+  buttonType: 'yes' | 'no',
+  currentWorryStatus: WorryStatus,
+  id: string,
+) => void;
