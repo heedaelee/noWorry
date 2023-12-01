@@ -70,9 +70,6 @@ const useForm = (initialValue: InitialValue) => {
       value: DateType | '' | null,
       // event: React.MouseEvent<HTMLButtonElement>,
     ) => {
-      // console.log('데이터테스트 : ', inputName, value);
-      // console.log('노멀라이징 : ', normalizeDate(value));
-
       handleChangeValue(inputName, value);
     };
     const value = values[inputName];

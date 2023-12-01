@@ -41,7 +41,6 @@ const Main = () => {
     sortDropdownRef,
     false,
   );
-  console.log('worryState :', worryState);
   const filterTextType = useMemo<Array<WorryStatus>>(() => {
     return ['현재 걱정', '일어나지 않음', '일어남'];
   }, []);
