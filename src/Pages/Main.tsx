@@ -27,9 +27,9 @@ import {
 import {WorryItem, WorryStatus} from 'types/common';
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
+import useFilter from 'hooks/useFilter';
 
 const Main = () => {
-  const [filterState, setFilterState] = useState<WorryStatus>('현재 걱정');
   const sortDropdownRef = useRef<HTMLDivElement>(null);
   const [pages, changePages] = useChangePages();
   const [worryState, setWorryState] = useRecoilState(worryListState);
@@ -44,6 +44,10 @@ const Main = () => {
   const filterTextType = useMemo<Array<WorryStatus>>(() => {
     return ['현재 걱정', '일어나지 않음', '일어남'];
   }, []);
+  /* 정렬필터 hook */
+  const [filterState, setFilterState, worryListFiltered] = useFilter(worryList);
+
+  /* TODO: 최근 작성중 sort */
   const onClickSortBtn = useCallback(() => {
     setIsSortActive(prev => !prev);
   }, [setIsSortActive]);
@@ -67,10 +71,14 @@ const Main = () => {
     [changePages, setWorryState, worryList],
   );
 
-  const handleFilterButtonPress = useCallback((text: string) => {
-    /* TODO: 로직 */
-    setFilterState(text as WorryStatus);
-  }, []);
+  const handleFilterButtonPress = useCallback(
+    (worryStatus: WorryStatus) => {
+      /* TODO: 로직 */
+      console.log(worryStatus);
+      setFilterState(worryStatus);
+    },
+    [setFilterState],
+  );
 
   const handleDropdownPress = useCallback(
     (text: string) => {
@@ -176,14 +184,14 @@ const Main = () => {
         </DropdownWrapper>
       </SwitchWrapper>
       <ContentsWrapper>
-        {worryList.length === 0 ? (
+        {worryListFiltered.length === 0 ? (
           <CardStyled
             id={''}
             addButtonClick={handlePressAddButton}
             type={'NoData'}
           />
         ) : (
-          worryList.map((cardItem, i) => (
+          worryListFiltered.map((cardItem, i) => (
             <CardStyled
               key={i}
               cardItem={cardItem}
