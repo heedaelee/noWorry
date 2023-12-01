@@ -6,7 +6,7 @@ import {DateType, WorryItem} from 'types/common';
 export type WorryStatus = '현재 걱정' | '일어나지 않음' | '일어남';
 
 export interface WorryList extends Array<WorryItem> {}
-interface InitialStateType {
+export interface InitialStateType {
   worryList: WorryList;
   selectedId: WorryItem['id'];
 }
