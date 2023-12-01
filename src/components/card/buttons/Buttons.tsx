@@ -1,0 +1,45 @@
+import Text from 'components/text/Text';
+import styled from 'styled-components';
+import {GlobalStyles} from 'styles/globalStyles';
+import {WorryStatus} from 'types/common';
+
+interface ButtonsType {
+  type: WorryStatus;
+}
+
+const Buttons = ({type}: ButtonsType) => {
+  const doesHappen = type === '일어남';
+  const doesNotHappen = type === '일어나지 않음';
+
+  return (
+    <>
+      <YesButton $doesHappen={doesHappen}>
+        <Text color={doesHappen ? 'white' : 'black'} type='caption3'>
+          네
+        </Text>
+      </YesButton>
+      <NoButton $doesNotHappen={doesNotHappen}>
+        <Text color={doesNotHappen ? 'white' : 'black'} type='caption3'>
+          아니요
+        </Text>
+      </NoButton>
+    </>
+  );
+};
+
+const YesButton = styled.button<{$doesHappen: boolean}>`
+  background-color: ${({$doesHappen}) =>
+    $doesHappen ? GlobalStyles.Colors.green : 'white'};
+  border: ${({$doesHappen}) => ($doesHappen ? 'none' : '1px solid black')};
+  margin-right: 5px;
+  border-radius: 9px;
+`;
+
+const NoButton = styled.button<{$doesNotHappen: boolean}>`
+  background-color: ${({$doesNotHappen}) =>
+    $doesNotHappen ? GlobalStyles.Colors.green : 'white'};
+  border: ${({$doesNotHappen}) =>
+    $doesNotHappen ? 'none' : '1px solid black'};
+  border-radius: 9px;
+`;
+export default Buttons;

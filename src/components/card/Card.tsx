@@ -9,6 +9,7 @@ import {WorryItem} from 'types/common';
 import {fullDayFormat, yearMonth} from 'utils/data';
 import {CiCalendar} from 'react-icons/ci';
 import {FaLightbulb, FaPersonCircleQuestion} from 'react-icons/fa6';
+import Buttons from './buttons/Buttons';
 
 interface CardProps {
   addButtonClick?: () => void;
@@ -39,8 +40,6 @@ export const Card = ({
   const onClickThreeDots = useCallback(() => {
     setIsDropdownActive(prev => !prev);
   }, [setIsDropdownActive]);
-
-  // dconsole.log(cardItem && fullDayFormat(cardItem.regDate));
 
   return (
     <CardStyled style={style}>
@@ -112,14 +111,7 @@ export const Card = ({
                 걱정한 일이 일어났나요?
               </Text>
               <ButtonsRow>
-                <YesButton>
-                  <Text type='caption3'>네</Text>
-                </YesButton>
-                <NoButton>
-                  <Text color='white' type='caption3'>
-                    아니요
-                  </Text>
-                </NoButton>
+                <Buttons type={cardItem.worryStatus} />
               </ButtonsRow>
             </QuestionRow>
           </BottomRow>
@@ -197,18 +189,7 @@ const ButtonsRow = styled.div`
   align-items: center;
   justify-content: flex-end;
 `;
-const YesButton = styled.button`
-  border: 1px solid black;
-  background-color: white;
-  margin-right: 5px;
-  border-radius: 9px;
-`;
-const NoButton = styled.button`
-  background-color: ${GlobalStyles.Colors.green};
-  border: none;
-  color: white;
-  border-radius: 9px;
-`;
+
 const ThreeDotsWrapper = styled.div`
   position: relative;
   flex-direction: row;
