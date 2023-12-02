@@ -1,7 +1,6 @@
-import {type Dayjs} from 'dayjs';
 import {IconType} from 'react-icons/lib';
 
-export type DateType = Date | Dayjs | number;
+export type DateType = Date | number | string;
 
 /* Recoil 자료 */
 export type PageType = 'list' | 'editor' | 'register' | 'statics' | 'setting';
@@ -15,7 +14,7 @@ export interface WorryItem {
   id: string;
   worryContent: string;
   worryPrepareContent: string;
-  worryExpectedDate: DateType | '' | null;
+  worryExpectedDate: DateType | '';
   regDate: DateType;
   worryStatus: WorryStatus;
 }
