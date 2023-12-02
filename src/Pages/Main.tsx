@@ -24,7 +24,7 @@ import {
   monthWrapper,
   switchWrapper,
 } from 'styles/globalStyles';
-import {WorryItem, WorryStatus} from 'types/common';
+import {MenuTextType, WorryItem, WorryStatus, sortMenuType} from 'types/common';
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
 import useFilter from 'hooks/useFilter';
@@ -45,7 +45,13 @@ const Main = () => {
     return ['현재 걱정', '일어나지 않음', '일어남'];
   }, []);
   /* 정렬필터 hook */
-  const [filterState, setFilterState, worryListFiltered] = useFilter(worryList);
+  const [
+    filterState,
+    setFilterState,
+    sortState,
+    setSortState,
+    worryListCompleted,
+  ] = useFilter(worryList);
 
   /* TODO: 최근 작성중 sort */
   const onClickSortBtn = useCallback(() => {
@@ -82,13 +88,13 @@ const Main = () => {
   );
 
   const handleDropdownPress = useCallback(
-    (text: string) => {
+    (menuTypeText: string) => {
       /* TODO: 로직 */
-      console.log(text);
       onClickSortBtn();
-      // setView(!view);
+      console.log(menuTypeText);
+      setSortState(menuTypeText as sortMenuType);
     },
-    [onClickSortBtn],
+    [onClickSortBtn, setSortState],
   );
 
   const handlePressAddButton = useCallback(() => {
@@ -185,14 +191,14 @@ const Main = () => {
         </DropdownWrapper>
       </SwitchWrapper>
       <ContentsWrapper>
-        {worryListFiltered.length === 0 ? (
+        {worryListCompleted.length === 0 ? (
           <CardStyled
             id={''}
             addButtonClick={handlePressAddButton}
             type={'NoData'}
           />
         ) : (
-          worryListFiltered.map((cardItem, i) => (
+          worryListCompleted.map((cardItem, i) => (
             <CardStyled
               key={i}
               cardItem={cardItem}
