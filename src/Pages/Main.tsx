@@ -49,6 +49,7 @@ const Main = () => {
 
   /* TODO: 최근 작성중 sort */
   const onClickSortBtn = useCallback(() => {
+    /* sort 열고 닫기 */
     setIsSortActive(prev => !prev);
   }, [setIsSortActive]);
 
