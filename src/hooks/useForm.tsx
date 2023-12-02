@@ -6,7 +6,7 @@ export type InitialValue = {
   [K in keyof InputTypes]: InputTypes[K];
 };
 
-export type handleDateChangeType = (value: DateType | '' | null) => void;
+export type handleDateChangeType = (value: DateType | '') => void;
 
 /**
  * @param initialValue
@@ -67,7 +67,7 @@ const useForm = (initialValue: InitialValue) => {
       handleValidationError(inputName, value);
     };
     const handleDateChange: handleDateChangeType = (
-      value: DateType | '' | null,
+      value: DateType | '',
       // event: React.MouseEvent<HTMLButtonElement>,
     ) => {
       handleChangeValue(inputName, value);
