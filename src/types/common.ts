@@ -36,8 +36,18 @@ export type InputTypes = Pick<
   'worryContent' | 'worryPrepareContent' | 'worryExpectedDate'
 >;
 
+/* 카드 버튼 클릭 함수 타입 */
 export type onCardButtonsClick = (
   buttonType: 'yes' | 'no',
   currentWorryStatus: WorryStatus,
   id: string,
 ) => void;
+
+/* 드롭다운 컴포넌트 메뉴 타이틀 타입 */
+export type MenuTextType = cardMenuType | sortMenuType;
+
+/* cardMenuType : 수정 | 삭제 */
+export type cardMenuType = '수정' | '삭제';
+
+/* sortMenuType :  최근 작성중 | 예상날짜 빠른순 */
+export type sortMenuType = '최근 작성순' | '예상날짜 빠른순';

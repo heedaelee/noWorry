@@ -1,6 +1,7 @@
 import Text from 'components/text/Text';
 import {Dispatch} from 'react';
 import styled, {CSSProperties} from 'styled-components';
+import {MenuTextType} from 'types/common';
 
 interface DropdownProps {
   onClick: (
@@ -8,7 +9,7 @@ interface DropdownProps {
     data?: string,
     passFunction?: Dispatch<React.SetStateAction<boolean>>,
   ) => void;
-  menuTexts: string[];
+  menuTexts: Array<MenuTextType>;
   WrapperStyle?: CSSProperties;
   ButtonStyle?: CSSProperties;
   data?: string;
