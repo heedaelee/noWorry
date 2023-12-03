@@ -31,8 +31,6 @@ const ConfirmModal = ({
     e.stopPropagation();
   };
 
-  console.log(open);
-  1;
   return (
     <Modal isVisible={open} closeModal={onCancelButtonClick}>
       <Wrapper onClick={handleStopPropagation}>
