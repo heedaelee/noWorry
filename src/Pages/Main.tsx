@@ -15,6 +15,7 @@ import {Card as CardStyled} from 'components/card/Card';
 import Dropdown from 'components/dropdown/Dropdown';
 import {modals} from 'components/modals/Modals';
 import Text from 'components/text/Text';
+import useFilter from 'hooks/useFilter';
 import useModals from 'hooks/useModals';
 import {useRecoilState} from 'recoil';
 import {worryListState} from 'store/worry-list';
@@ -24,10 +25,9 @@ import {
   monthWrapper,
   switchWrapper,
 } from 'styles/globalStyles';
-import {MenuTextType, WorryItem, WorryStatus, sortMenuType} from 'types/common';
+import {WorryItem, WorryStatus, sortMenuType} from 'types/common';
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
-import useFilter from 'hooks/useFilter';
 
 const Main = () => {
   const sortDropdownRef = useRef<HTMLDivElement>(null);
@@ -154,14 +154,23 @@ const Main = () => {
     [setWorryState, worryList],
   );
 
+  const handleDatePickerPress = useCallback(() => {
+    openModal(modals.datePicker, {
+      message: '언제로 이동할까요?',
+      onConfirmButtonClick: () => {
+        closeModal(modals.datePicker);
+      },
+      onCancelButtonClick: () => closeModal(modals.datePicker),
+    });
+  }, [closeModal, openModal]);
+
   return (
     <HorizontalPaddingWrapper>
       {/* <Headers /> */}
-      <MonthWrapper>
+      <MonthWrapper onClick={handleDatePickerPress}>
         <Text style={{marginRight: 10}} type='h2'>
           23년 11월
         </Text>
-        {/* TODO:캘린더 달아야함 */}
         <FaChevronDown size={12} />
       </MonthWrapper>
       <SwitchWrapper>

@@ -6,10 +6,12 @@ import useModals from 'hooks/useModals';
 
 /* 코드스플리팅, 동적import */
 const ConfirmModal = lazy(() => import('./ConfirmModal'));
+const DatePickerModal = lazy(() => import('./DatePickerModal'));
 
 /* 사용할 전체 모달 컴포넌트를 담은 객체 */
 export const modals = {
   confirm: ConfirmModal,
+  datePicker: DatePickerModal,
 };
 
 /* 로딩 TODO: 추후 수정 */
