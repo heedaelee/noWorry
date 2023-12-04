@@ -1,5 +1,6 @@
 import {Dispatch, SetStateAction, useCallback, useState, useMemo} from 'react';
 import {WorryItem, WorryList, WorryStatus, sortMenuType} from 'types/common';
+import {compareMonth} from 'utils/data';
 
 type useFilterType = (
   worryList: WorryList,
@@ -8,17 +9,33 @@ type useFilterType = (
   Dispatch<SetStateAction<WorryStatus>>,
   sortMenuType,
   Dispatch<SetStateAction<sortMenuType>>,
+  Date,
+  Dispatch<SetStateAction<Date>>,
   WorryItem[],
 ];
 
 const useFilter: useFilterType = worryList => {
+  /* filter */
   const [filterState, setFilterState] = useState<WorryStatus>('현재 걱정');
+  /*  sort   */
   const [sortState, setSortState] = useState<sortMenuType>('최근 작성순');
+  /* calendar */
+  const [calendarDate, setCalendaDate] = useState(new Date());
 
   /* stauts에 따른 fiter */
   const worryListFiltered = useMemo(
-    () => worryList.filter(v => v.worryStatus === filterState),
-    [filterState, worryList],
+    () =>
+      worryList.filter(v => {
+        if (v.worryStatus === filterState) {
+          if (
+            v.worryExpectedDate === '' ||
+            compareMonth(calendarDate, v.worryExpectedDate as Date)
+          ) {
+            return v;
+          }
+        }
+      }),
+    [calendarDate, filterState, worryList],
   );
 
   let worryListCompleted = worryListFiltered;
@@ -50,6 +67,8 @@ const useFilter: useFilterType = worryList => {
     setFilterState,
     sortState,
     setSortState,
+    calendarDate,
+    setCalendaDate,
     worryListCompleted,
   ];
 };

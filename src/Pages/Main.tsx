@@ -28,19 +28,20 @@ import {
 import {WorryItem, WorryStatus, sortMenuType} from 'types/common';
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
+import {yearMonth, yearMonthDay} from 'utils/data';
 
 const Main = () => {
   const sortDropdownRef = useRef<HTMLDivElement>(null);
   const [pages, changePages] = useChangePages();
   const [worryState, setWorryState] = useRecoilState(worryListState);
   const {selectedId, worryList} = worryState;
-
   const {closeModal, openModal} = useModals();
   const [loading, setLoading] = useState(false);
   const [isSortActive, setIsSortActive] = useOutsideClick(
     sortDropdownRef,
     false,
   );
+
   const filterTextType = useMemo<Array<WorryStatus>>(() => {
     return ['현재 걱정', '일어나지 않음', '일어남'];
   }, []);
@@ -50,8 +51,12 @@ const Main = () => {
     setFilterState,
     sortState,
     setSortState,
+    calendarDate,
+    setCalendaDate,
     worryListCompleted,
   ] = useFilter(worryList);
+
+  console.log(calendarDate);
 
   /* TODO: 최근 작성중 sort */
   const onClickSortBtn = useCallback(() => {
@@ -157,7 +162,8 @@ const Main = () => {
   const handleDatePickerPress = useCallback(() => {
     openModal(modals.datePicker, {
       message: '언제로 이동할까요?',
-      onConfirmButtonClick: () => {
+      onConfirmButtonClick: (date: Date) => {
+        setCalendaDate(date);
         closeModal(modals.datePicker);
       },
       onCancelButtonClick: () => closeModal(modals.datePicker),
@@ -169,7 +175,7 @@ const Main = () => {
       {/* <Headers /> */}
       <MonthWrapper onClick={handleDatePickerPress}>
         <Text style={{marginRight: 10}} type='h2'>
-          23년 11월
+          {yearMonth(calendarDate)}
         </Text>
         <FaChevronDown size={12} />
       </MonthWrapper>
