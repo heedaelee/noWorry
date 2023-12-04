@@ -56,14 +56,20 @@ const Main = () => {
     worryListCompleted,
   ] = useFilter(worryList);
 
-  console.log(calendarDate);
-
-  /* TODO: 최근 작성중 sort */
+  let lastCalled = 0;
+  /* sort 열고 닫기 */
   const onClickSortBtn = useCallback(() => {
-    /* sort 열고 닫기 */
-    setIsSortActive(prev => !prev);
-  }, [setIsSortActive]);
-
+    /* 중복호출방지 : 디바운싱*/
+    const now = Date.now();
+    if (now - lastCalled < 1000) {
+      // 1초 내에 중복 호출 방지
+      return;
+    }
+    setIsSortActive(prev => {
+      return !prev;
+    });
+    lastCalled = now;
+  }, [isSortActive, setIsSortActive]);
   const onDelete = useCallback(
     (id: string) => {
       try {
@@ -95,9 +101,10 @@ const Main = () => {
   const handleDropdownPress = useCallback(
     (menuTypeText: string) => {
       /* TODO: 로직 */
-      onClickSortBtn();
-      console.log(menuTypeText);
       setSortState(menuTypeText as sortMenuType);
+
+      console.log('클릭');
+      onClickSortBtn();
     },
     [onClickSortBtn, setSortState],
   );
