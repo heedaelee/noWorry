@@ -143,6 +143,7 @@ const CardStyled = styled.div`
   text-align: center;
   cursor: pointer;
   background-color: white;
+  justify-content: center;
   border-radius: 16px;
 `;
 const Inner = styled.div`
