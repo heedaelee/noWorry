@@ -11,7 +11,7 @@ import {GlobalStyles} from 'styles/globalStyles';
 interface DatePickerModalProps {
   open: boolean;
   message: string;
-  onConfirmButtonClick: () => void;
+  onConfirmButtonClick: (date: Date) => void;
   onCancelButtonClick: () => void;
 }
 
@@ -25,7 +25,7 @@ const DatePickerModal = ({
 
   const handleConfirm = () => {
     // 확인 버튼
-    onConfirmButtonClick();
+    onConfirmButtonClick(date);
     onCancelButtonClick();
   };
 
@@ -55,7 +55,7 @@ const DatePickerModal = ({
             locale={'KO'}
             value={new Date()}
             onClickMonth={(value, e) => {
-              console.log(value);
+              handleSelect(value);
             }}
             formatMonth={(locale, date) => {
               return `${date.getMonth() + 1}월`;
@@ -143,9 +143,6 @@ const StyledCalendar = styled(Calendar)`
   .react-calendar__navigation__next2-button {
     display: none;
   }
-  .react-calendar__year-view__months__month--selected {
-    background: blue;
-  }
 
   .react-calendar__navigation__prev-button {
     position: absolute;
@@ -163,10 +160,6 @@ const StyledCalendar = styled(Calendar)`
     }
   }
 
-  .react-calendar__navigation__label {
-    flex-grow: 0.9 !important;
-  }
-
   .react-calendar__navigation__next-button {
     position: absolute;
     right: 51px;
@@ -176,7 +169,7 @@ const StyledCalendar = styled(Calendar)`
       display: block;
       width: 10px;
       height: 10px;
-      border-top: 2px solid #5f44ff;
+      border-top: 2px solid #8674e9;
       border-right: 2px solid #5f44ff;
       transform: rotate(-135deg);
       content: '';
@@ -189,24 +182,22 @@ const StyledCalendar = styled(Calendar)`
     border: none;
     text-align: center;
   }
-  .react-calendar__tile:disabled {
-    background-color: #f0f0f0;
-    border-radius: 5px;
-  }
 
   .react-calendar__tile--now {
-    background: ${GlobalStyles.Colors.white};
+    background-color: #2663d657;
+    color: white;
     border-radius: 5px;
   }
 
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
     background-color: ${GlobalStyles.Colors.blue};
+    color: white;
     border-radius: 5px;
   }
-  .react-calendar__tile--hasActive:enabled:hover,
+  /* .react-calendar__tile--hasActive:enabled:hover,
   .react-calendar__tile--hasActive:enabled:focus {
-    background: transparent;
-  }
+    background: ${GlobalStyles.Colors.blue};
+  } */
 `;
 export default DatePickerModal;
