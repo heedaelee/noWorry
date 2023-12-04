@@ -30,4 +30,17 @@ export const fullDayFormat = (date: DateType) =>
  * @param date
  */
 export const yearMonth = (date: DateType) =>
+  normalizeDate(date).format('YY년 M월');
+/**
+ * YY.M.D 포맷 형식
+ * @param date
+ */
+export const yearMonthDay = (date: DateType) =>
   normalizeDate(date).format('YY. M. D.');
+/**
+ * YY.M.D 포맷 형식
+ * @param date,date
+ */
+export const compareMonth = (date: Date, data2: Date) => {
+  return date.getMonth() === new Date(data2).getMonth();
+};
