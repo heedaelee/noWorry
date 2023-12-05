@@ -1,12 +1,10 @@
 import {Outlet} from 'react-router-dom';
 import styled from 'styled-components';
 
-import {GlobalStyles, bottomTapWrapper, mainPadding} from 'styles/globalStyles';
 import BottomNavigation from 'components/bottomNavigation/BottomNavigation';
-import {useRecoilState} from 'recoil';
-import {pagesState} from 'store/pages';
 import Headers from 'components/headers/Headers';
 import {useChangePages} from 'hooks/useChagePages';
+import {GlobalStyles} from 'styles/globalStyles';
 
 interface ContainerProps {}
 
