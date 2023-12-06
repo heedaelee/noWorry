@@ -1,8 +1,23 @@
 import styled from 'styled-components';
-import {HorizontalPaddingWrapper} from 'styles/globalStyles';
+import {
+  HeightBetweenHeaderAndContents,
+  HorizontalPaddingWrapper,
+} from 'styles/globalStyles';
 
 const Statics = () => {
-  return <HorizontalPaddingWrapper>테스트</HorizontalPaddingWrapper>;
+  return (
+    <HorizontalPaddingWrapper>
+      <StaticsHeader></StaticsHeader>
+    </HorizontalPaddingWrapper>
+  );
 };
+
+const StaticsHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: ${HeightBetweenHeaderAndContents}px;
+  align-items: center;
+  /* border: 1px solid black; */
+`;
 
 export default Statics;
