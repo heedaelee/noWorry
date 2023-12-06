@@ -5,6 +5,7 @@ interface TextProps {
   children: string;
   type:
     | 'h1'
+    | 'h15'
     | 'h2'
     | 'h3'
     | 'sub1'
@@ -26,6 +27,10 @@ const Text = ({children, type, color, style, onClick}: TextProps) => {
   const fontType = {
     h1: {
       $size: '32px',
+      $family: fontFamilyType.bold,
+    },
+    h15: {
+      $size: '24px',
       $family: fontFamilyType.bold,
     },
     h2: {
