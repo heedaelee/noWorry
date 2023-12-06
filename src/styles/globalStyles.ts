@@ -51,7 +51,7 @@ const GlobalStyles = {
 const {headWrapper, monthWrapper, switchWrapper, bottomTapWrapper, fullHeight} =
   GlobalStyles.Layout.heights;
 const {mainPadding} = GlobalStyles.Layout;
-const HeightBetweenHeaderAndContents = monthWrapper + switchWrapper;
+const HeightBetweenHeaderAndContents = monthWrapper + switchWrapper - 25 * 2;
 
 /* MainComponent */
 /* 컨텐츠 제외한 높이 : 이유, 컨텐츠 높이 dynamic하게 fix하기 위해 */
