@@ -26,9 +26,9 @@ import {
   switchWrapper,
 } from 'styles/globalStyles';
 import {WorryItem, WorryStatus, sortMenuType} from 'types/common';
+import {yearMonth} from 'utils/data';
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
-import {yearMonth, yearMonthDay} from 'utils/data';
 
 const Main = () => {
   const sortDropdownRef = useRef<HTMLDivElement>(null);
@@ -175,7 +175,7 @@ const Main = () => {
       },
       onCancelButtonClick: () => closeModal(modals.datePicker),
     });
-  }, [closeModal, openModal]);
+  }, [closeModal, openModal, setCalendaDate]);
 
   return (
     <HorizontalPaddingWrapper>
