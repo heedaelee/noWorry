@@ -14,6 +14,7 @@ export const useChangePages: useChagePagesType = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
+    console.log('호출', pages);
     const changePages = (page: PageType) => {
       switch (page) {
         case 'list':
@@ -23,6 +24,9 @@ export const useChangePages: useChagePagesType = () => {
           navigate(`/register`);
           break;
         case 'register':
+          navigate(`/${page}`);
+          break;
+        case 'statics':
           navigate(`/${page}`);
           break;
         default:

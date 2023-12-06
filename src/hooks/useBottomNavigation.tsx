@@ -1,8 +1,8 @@
-import {Dispatch, SetStateAction, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {SetterOrUpdater, useRecoilState} from 'recoil';
 import {bottomTapState} from 'store/bottom-tap';
 import {BottomTapType} from 'types/common';
+import {useChangePages} from './useChagePages';
 
 type useBottomNavigationType = () => [
   BottomTapType,
@@ -16,20 +16,20 @@ type useBottomNavigationType = () => [
  */
 export const useBottomNavigation: useBottomNavigationType = () => {
   const [activeTapName, setActiveTapName] = useRecoilState(bottomTapState);
-
-  const navigate = useNavigate();
+  const [page, setPage] = useChangePages();
 
   const handleBottomTapPress = (title: BottomTapType) => {
+    console.log('title', title);
     setActiveTapName(title);
     switch (title) {
       case '통계':
-        navigate('/Statics');
+        setPage('statics');
         break;
       case '홈':
-        navigate('/');
+        setPage('list');
         break;
       default:
-        navigate('/');
+        setPage('list');
         break;
     }
   };
