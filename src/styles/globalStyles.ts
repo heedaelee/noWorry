@@ -57,21 +57,15 @@ const {mainPadding} = GlobalStyles.Layout;
 const heightOhterThanContents =
   headWrapper + monthWrapper + switchWrapper + bottomTapWrapper;
 /* 컨텐츠 높이 = 전체 높이 - (컨텐츠 제외한 top,bottom padding 높이 + 상단 마진 높이) */
-const contentsHeight = fullHeight - (heightOhterThanContents + mainPadding);
-
-/* 높이 체크:log */
-
-/* console.log(`fullHeight : ${fullHeight}`);
-console.log(
-  `heightOhterThanContents + mainPadding : ${
-    heightOhterThanContents + mainPadding
-  }`,
-);
-console.log(`contentsHeight : ${contentsHeight}`); */
+const mainContentsHeight = fullHeight - (heightOhterThanContents + mainPadding);
 
 const HorizontalPaddingWrapper = styled.div`
   padding: 0px ${mainPadding}px 0px ${mainPadding}px;
 `;
+
+const staticsContentsHeight =
+  fullHeight - (headWrapper + bottomTapWrapper + 85 + mainPadding);
+console.log(staticsContentsHeight);
 
 export {
   GlobalStyles,
@@ -82,6 +76,7 @@ export {
   fullHeight,
   heightOhterThanContents,
   mainPadding,
-  contentsHeight,
+  mainContentsHeight,
   HorizontalPaddingWrapper,
+  staticsContentsHeight,
 };
