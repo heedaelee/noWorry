@@ -1,12 +1,11 @@
 import Switch from 'components/switch/Switch';
 import Text from 'components/text/Text';
+import {useState} from 'react';
 import styled from 'styled-components';
-import {
-  HeightBetweenHeaderAndContents,
-  HorizontalPaddingWrapper,
-} from 'styles/globalStyles';
+import {HorizontalPaddingWrapper} from 'styles/globalStyles';
 
 const Statics = () => {
+  const [isMonth, setIsMonth] = useState(false);
   return (
     <HorizontalPaddingWrapper>
       <StaticsHeader>
@@ -14,9 +13,14 @@ const Statics = () => {
           <Text type='h15'>전체</Text>
         </TitleWrapper>
         <SwitchWrapper>
-          <Switch menuText={['전체', '월별']} />
+          <Switch
+            menuText={['전체', '월간']}
+            active={isMonth}
+            setActive={setIsMonth}
+          />
         </SwitchWrapper>
       </StaticsHeader>
+      <StaticsContents></StaticsContents>
     </HorizontalPaddingWrapper>
   );
 };
@@ -24,12 +28,10 @@ const Statics = () => {
 const StaticsHeader = styled.div`
   display: flex;
   flex-direction: row;
-  height: ${HeightBetweenHeaderAndContents}px;
   justify-content: center;
   align-items: center;
   position: relative;
-  margin: 25px 0px;
-  border: 1px solid black;
+  margin: 15px 0px;
 `;
 const TitleWrapper = styled.div`
   display: flex;
@@ -39,11 +41,19 @@ const TitleWrapper = styled.div`
 `;
 const SwitchWrapper = styled.div`
   position: absolute;
-  top: 21px;
-  right: 16px;
-  width: 107px;
+  top: 5px;
+  right: 0px;
+  width: 115px;
   height: 38px;
-  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+const StaticsContents = styled.div`
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export default Statics;
