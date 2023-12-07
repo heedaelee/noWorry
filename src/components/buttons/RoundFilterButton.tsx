@@ -1,5 +1,4 @@
 import Text from 'components/text/Text';
-import {useState} from 'react';
 import styled from 'styled-components';
 import {GlobalStyles} from 'styles/globalStyles';
 import {WorryStatus} from 'types/common';
