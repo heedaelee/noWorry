@@ -21,7 +21,7 @@ import {useRecoilState} from 'recoil';
 import {worryListState} from 'store/worry-list';
 import {
   HorizontalPaddingWrapper,
-  contentsHeight,
+  mainContentsHeight,
   monthWrapper,
   switchWrapper,
 } from 'styles/globalStyles';
@@ -268,7 +268,7 @@ const UpDonwIcon = styled.div`
   margin-left: 5px;
 `;
 const ContentsWrapper = styled.div`
-  height: ${contentsHeight}px;
+  height: ${mainContentsHeight}px;
   padding: 0px 2px;
 
   overflow-y: auto; /* 컨텐츠 부분에 대해서만 세로 스크롤 활성화 */
