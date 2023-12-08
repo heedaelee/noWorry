@@ -6,6 +6,18 @@ import {
   HorizontalPaddingWrapper,
   staticsContentsHeight,
 } from 'styles/globalStyles';
+import {ResponsivePie} from '@nivo/pie';
+
+const data = [
+  {
+    id: 'A',
+    value: 33,
+  },
+  {
+    id: 'B',
+    value: 67,
+  },
+];
 
 const Statics = () => {
   const [isMonth, setIsMonth] = useState(false);
@@ -26,7 +38,20 @@ const Statics = () => {
       <StaticsContents>
         <ContentsWrapper>
           <Text type='sub1'>걱정이 일어나지 않을 확률</Text>
-          <GraphWrapper></GraphWrapper>
+          <GraphWrapper>
+            <ResponsivePie
+              data={data}
+              startAngle={-90}
+              endAngle={90}
+              innerRadius={0.5}
+              padAngle={0.7}
+              cornerRadius={3}
+              colors={{scheme: 'nivo'}}
+              borderWidth={1}
+              borderColor={{from: 'color', modifiers: [['darker', 0.2]]}}
+              animate={true}
+            />
+          </GraphWrapper>
           <Text
             style={{
               whiteSpace: 'pre-wrap',
@@ -76,6 +101,9 @@ const ContentsWrapper = styled.div`
   align-items: center;
   gap: 60px;
 `;
-const GraphWrapper = styled.div``;
+const GraphWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 export default Statics;
