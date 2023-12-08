@@ -1,29 +1,27 @@
+import PieChart from 'components/chart/PieChart';
 import Switch from 'components/switch/Switch';
 import Text from 'components/text/Text';
+import useCalculatePercentage from 'hooks/useCalculatePercentage';
 import {useState} from 'react';
+import {useRecoilValue} from 'recoil';
+import {worryListState} from 'store/worry-list';
 import styled from 'styled-components';
 import {
   HorizontalPaddingWrapper,
   staticsContentsHeight,
 } from 'styles/globalStyles';
-import {ResponsivePie} from '@nivo/pie';
-
-const data = [
-  {
-    id: '1',
-    value: '95.0',
-    color: '#2663D6',
-  },
-  {
-    id: '2',
-    value: 10,
-    color: '#CCCCCC',
-  },
-];
-const colors = ['#2663D6', '#CCCCCC']; // 90%의 세그먼트와 나머지 세그먼트의 색상
+import {Logger} from 'utils/logger';
 
 const Statics = () => {
   const [isMonth, setIsMonth] = useState(false);
+  const worryState = useRecoilValue(worryListState);
+  const {worryList} = worryState;
+
+  const logger = new Logger(true);
+  logger.log('statics', '데이터', worryList);
+
+  const {data} = useCalculatePercentage(worryList);
+
   return (
     <HorizontalPaddingWrapper>
       <StaticsHeader>
@@ -44,29 +42,8 @@ const Statics = () => {
             걱정이 일어나지 않을 확률
           </Text>
           <GraphWrapper>
-            <ResponsivePie
-              data={data}
-              // margin={{top: 0, right: 80, bottom: 80, left: 80}}
-              startAngle={90}
-              endAngle={-90}
-              sortByValue={true}
-              innerRadius={0.85}
-              colors={colors}
-              enableArcLinkLabels={false}
-              enableArcLabels={false}
-              animate={true}
-              tooltip={() => null}
-            />
-            <div
-              style={{
-                marginTop: '-44px',
-                fontSize: '44px',
-                fontStyle: 'normal',
-                fontWeight: 200,
-                textAlign: 'center',
-              }}>
-              {`${data[0].value}%`}
-            </div>
+            {/* 모듈화 */}
+            <PieChart data={data} />
           </GraphWrapper>
           <Text
             color='#222222'
