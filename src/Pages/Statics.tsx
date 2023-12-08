@@ -10,14 +10,17 @@ import {ResponsivePie} from '@nivo/pie';
 
 const data = [
   {
-    id: 'A',
-    value: 33,
+    id: '1',
+    value: '95.0',
+    color: '#2663D6',
   },
   {
-    id: 'B',
-    value: 67,
+    id: '2',
+    value: 10,
+    color: '#CCCCCC',
   },
 ];
+const colors = ['#2663D6', '#CCCCCC']; // 90%의 세그먼트와 나머지 세그먼트의 색상
 
 const Statics = () => {
   const [isMonth, setIsMonth] = useState(false);
@@ -37,22 +40,36 @@ const Statics = () => {
       </StaticsHeader>
       <StaticsContents>
         <ContentsWrapper>
-          <Text type='sub1'>걱정이 일어나지 않을 확률</Text>
+          <Text color='#222222' type='sub1'>
+            걱정이 일어나지 않을 확률
+          </Text>
           <GraphWrapper>
             <ResponsivePie
               data={data}
-              startAngle={-90}
-              endAngle={90}
-              innerRadius={0.5}
-              padAngle={0.7}
-              cornerRadius={3}
-              colors={{scheme: 'nivo'}}
-              borderWidth={1}
-              borderColor={{from: 'color', modifiers: [['darker', 0.2]]}}
+              // margin={{top: 0, right: 80, bottom: 80, left: 80}}
+              startAngle={90}
+              endAngle={-90}
+              sortByValue={true}
+              innerRadius={0.85}
+              colors={colors}
+              enableArcLinkLabels={false}
+              enableArcLabels={false}
               animate={true}
+              tooltip={() => null}
             />
+            <div
+              style={{
+                marginTop: '-44px',
+                fontSize: '44px',
+                fontStyle: 'normal',
+                fontWeight: 200,
+                textAlign: 'center',
+              }}>
+              {`${data[0].value}%`}
+            </div>
           </GraphWrapper>
           <Text
+            color='#222222'
             style={{
               whiteSpace: 'pre-wrap',
             }}
@@ -96,14 +113,15 @@ const ContentsWrapper = styled.div`
   border-radius: 12px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.08);
   display: flex;
-  padding: 40px var(--space-0, 0px);
+  padding: 40px 0px 20px 0px;
   flex-direction: column;
   align-items: center;
-  gap: 60px;
+  gap: 30px;
 `;
 const GraphWrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 226px;
+  height: 113px;
+  position: relative;
 `;
 
 export default Statics;
