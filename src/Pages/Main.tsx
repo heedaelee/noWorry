@@ -6,7 +6,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import {FaChevronDown} from 'react-icons/fa';
 import styled from 'styled-components';
 
 import RoundAddButton from 'components/buttons/RoundAddButton';
@@ -26,9 +25,11 @@ import {
   switchWrapper,
 } from 'styles/globalStyles';
 import {WorryItem, WorryStatus, sortMenuType} from 'types/common';
-import {yearMonth} from 'utils/data';
+
 import {useChangePages} from '../hooks/useChagePages';
 import {useOutsideClick} from '../hooks/useOutsideClick';
+import MonthsSelector from 'components/monthsSelector/index';
+import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
 
 const Main = () => {
   const sortDropdownRef = useRef<HTMLDivElement>(null);
@@ -55,6 +56,12 @@ const Main = () => {
     setCalendaDate,
     worryListCompleted,
   ] = useFilter(worryList);
+
+  const {handleDatePickerPress} = useDatePickerButtonPress({
+    openModal,
+    closeModal,
+    setCalendaDate,
+  });
 
   let lastCalled = 0;
   /* sort 열고 닫기 */
@@ -91,8 +98,6 @@ const Main = () => {
 
   const handleFilterButtonPress = useCallback(
     (worryStatus: WorryStatus) => {
-      /* TODO: 로직 */
-      console.log(worryStatus);
       setFilterState(worryStatus);
     },
     [setFilterState],
@@ -100,10 +105,8 @@ const Main = () => {
 
   const handleDropdownPress = useCallback(
     (menuTypeText: string) => {
-      /* TODO: 로직 */
       setSortState(menuTypeText as sortMenuType);
 
-      console.log('클릭');
       onClickSortBtn();
     },
     [onClickSortBtn, setSortState],
@@ -166,24 +169,14 @@ const Main = () => {
     [setWorryState, worryList],
   );
 
-  const handleDatePickerPress = useCallback(() => {
-    openModal(modals.datePicker, {
-      message: '언제로 이동할까요?',
-      onConfirmButtonClick: (date: Date) => {
-        setCalendaDate(date);
-        closeModal(modals.datePicker);
-      },
-      onCancelButtonClick: () => closeModal(modals.datePicker),
-    });
-  }, [closeModal, openModal, setCalendaDate]);
-
   return (
     <HorizontalPaddingWrapper>
-      <MonthWrapper onClick={handleDatePickerPress}>
-        <Text style={{marginRight: 10}} type='h2'>
-          {yearMonth(calendarDate)}
-        </Text>
-        <FaChevronDown size={12} />
+      {/* 분리 */}
+      <MonthWrapper>
+        <MonthsSelector
+          calendarDate={calendarDate}
+          handleDatePickerPress={handleDatePickerPress}
+        />
       </MonthWrapper>
       <SwitchWrapper>
         {filterTextType.map((text, index) => (
@@ -236,14 +229,6 @@ const Main = () => {
   );
 };
 
-const MonthWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: ${monthWrapper}px;
-  /* border: 1px solid black; */
-`;
 const SwitchWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -275,5 +260,12 @@ const ContentsWrapper = styled.div`
     margin-bottom: 10px; /* 여백 크기 조절 가능 */
   }
 `;
-
+const MonthWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: ${monthWrapper}px;
+  /* border: 1px solid black; */
+`;
 export default Main;
