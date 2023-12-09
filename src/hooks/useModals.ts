@@ -2,6 +2,17 @@ import {ComponentProps, FunctionComponent, useCallback} from 'react';
 import {useRecoilState} from 'recoil';
 import {modalOpenAtom} from 'store/modals-open';
 
+/* TODO: 구현 다 되면 공통 타입 모듈로 묶어두기
+export type openModalType = <T extends FunctionComponent<any>>(
+  Component: T,
+  props: Omit<ComponentProps<T>, 'open'>, // open 프로퍼티는 커스터마이징 해줌
+) => void;
+
+export type closeModalType = <T extends FunctionComponent<any>>(
+  Component: T,
+) => void;
+*/
+
 const useModals = () => {
   // 모달들의 list를 보관하는 state.
   const [modals, setModals] = useRecoilState(modalOpenAtom);
@@ -14,7 +25,6 @@ const useModals = () => {
   const openModal = useCallback(
     <T extends FunctionComponent<any>>(
       Component: T,
-      // open 프로퍼티는 커스터마이징 해줌
       props: Omit<ComponentProps<T>, 'open'>,
     ) => {
       setModals(modalsPrev => [
