@@ -29,8 +29,8 @@ const useCalculatePercentage = (worryList: WorryList) => {
 
     return data;
   };
-  const data = makeData();
-  return {data, totalItemsCount, notHappenedItemCount};
+  const dataForChart = makeData();
+  return {dataForChart, totalItemsCount, notHappenedItemCount};
 };
 
 export default useCalculatePercentage;
