@@ -141,7 +141,7 @@ const Main = () => {
 
   const handlePressCardButtons = useCallback(
     (buttonType: 'yes' | 'no', currentWorryStatus: WorryStatus, id: string) => {
-      console.log(id, currentWorryStatus, buttonType);
+      // console.log(id, currentWorryStatus, buttonType);
 
       if (
         (buttonType === 'yes' && currentWorryStatus === '일어남') ||
@@ -179,7 +179,6 @@ const Main = () => {
 
   return (
     <HorizontalPaddingWrapper>
-      {/* <Headers /> */}
       <MonthWrapper onClick={handleDatePickerPress}>
         <Text style={{marginRight: 10}} type='h2'>
           {yearMonth(calendarDate)}
