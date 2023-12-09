@@ -20,7 +20,9 @@ const Statics = () => {
   const logger = new Logger(true);
   logger.log('statics', '데이터', worryList);
 
-  const {data} = useCalculatePercentage(worryList);
+  const {data, totalItemsCount, notHappenedItemCount} =
+    useCalculatePercentage(worryList);
+  const noData = totalItemsCount === 0; // 데이터가 없을 때
 
   return (
     <HorizontalPaddingWrapper>
@@ -50,7 +52,11 @@ const Statics = () => {
             style={{
               whiteSpace: 'pre-wrap',
             }}
-            type='sub1'>{`통계를 낼 수 있는\n기록이 없어요!`}</Text>
+            type='sub1'>
+            {noData
+              ? `통계를 낼 수 있는\n기록이 없어요!`
+              : `총 ${totalItemsCount}개의 걱정 중\n${notHappenedItemCount}개는일어나지 않을 확률이에요!`}
+          </Text>
         </ContentsWrapper>
       </StaticsContents>
     </HorizontalPaddingWrapper>
