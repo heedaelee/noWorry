@@ -22,7 +22,7 @@ const useFilter: useFilterType = worryList => {
   /* calendar */
   const [calendarDate, setCalendaDate] = useState(new Date());
 
-  /* stauts에 따른 fiter */
+  /* stauts와 월별에 따른 fiter */
   const worryListFiltered = useMemo(
     () =>
       worryList.filter(v => {
