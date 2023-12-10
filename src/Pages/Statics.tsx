@@ -70,7 +70,7 @@ const Statics = () => {
           </Text>
           <GraphWrapper>
             {/* 모듈화 */}
-            <PieChart data={dataForChart} />
+            <PieChart data={dataForChart} totalItemsCount={totalItemsCount} />
           </GraphWrapper>
           <Text
             color='#222222'

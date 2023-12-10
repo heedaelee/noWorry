@@ -13,11 +13,13 @@ const useCalculatePercentage = (worryList: WorryList) => {
   }, [worryList]);
 
   const makeData = () => {
+    let notHappenedRate;
     if (totalItemsCount === 0) {
-      return [];
+      /* 0/0 -> NAN 방지 하기 위해  0을 대입하고 계산을 피함*/
+      notHappenedRate = 0;
+    } else {
+      notHappenedRate = (notHappenedItemCount / totalItemsCount) * 100;
     }
-    const notHappenedRate = (notHappenedItemCount / totalItemsCount) * 100;
-    logger.log('notHappenedItemCount', notHappenedItemCount, totalItemsCount);
     /* 데이터set 만들기 */
     const data: PieChartProps['data'] = [
       //  일어나지않음: 파란색

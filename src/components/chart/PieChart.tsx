@@ -4,23 +4,11 @@ import styled from 'styled-components';
 
 export interface PieChartProps {
   data: {id: string; value: number}[] | [];
+  totalItemsCount: number;
 }
 
-const PieChart: React.FC<PieChartProps> = ({data}) => {
-  const noData = data.length === 0;
-  if (noData) {
-    data = [
-      //  일어남
-      {
-        id: '0',
-        value: 0,
-      }, //  일어나지 않음
-      {
-        id: '1',
-        value: 100,
-      },
-    ];
-  }
+const PieChart: React.FC<PieChartProps> = ({data, totalItemsCount}) => {
+  const noData = totalItemsCount === 0;
 
   return (
     <>
