@@ -1,7 +1,11 @@
 import PieChart from 'components/chart/PieChart';
+import MonthsSelector from 'components/monthsSelector';
 import Switch from 'components/switch/Switch';
 import Text from 'components/text/Text';
 import useCalculatePercentage from 'hooks/useCalculatePercentage';
+import useCalendar from 'hooks/useCalendar';
+import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
+import useModals from 'hooks/useModals';
 import {useState} from 'react';
 import {useRecoilValue} from 'recoil';
 import {worryListState} from 'store/worry-list';
@@ -14,21 +18,42 @@ import {Logger} from 'utils/logger';
 
 const Statics = () => {
   const [isMonth, setIsMonth] = useState(false);
+  const {closeModal, openModal} = useModals();
   const worryState = useRecoilValue(worryListState);
   const {worryList} = worryState;
 
   const logger = new Logger(true);
-  logger.log('statics', '데이터', worryList);
 
-  const {data, totalItemsCount, notHappenedItemCount} =
-    useCalculatePercentage(worryList);
+  const {calendarDate, setCalendaDate, worryListFiltered} = useCalendar({
+    worryList,
+  });
+
+  logger.log('statics', '필터된 데이터', worryListFiltered);
+
+  const {handleDatePickerPress} = useDatePickerButtonPress({
+    openModal,
+    closeModal,
+    setCalendaDate,
+  });
+
+  const {dataForChart, totalItemsCount, notHappenedItemCount} =
+    useCalculatePercentage(isMonth ? worryListFiltered : worryList);
+  logger.log('statics', 'dataForChart', dataForChart);
+
   const noData = totalItemsCount === 0; // 데이터가 없을 때
 
   return (
     <HorizontalPaddingWrapper>
       <StaticsHeader>
         <TitleWrapper>
-          <Text type='h15'>전체</Text>
+          {isMonth ? (
+            <MonthsSelector
+              calendarDate={calendarDate}
+              handleDatePickerPress={handleDatePickerPress}
+            />
+          ) : (
+            <Text type='h2'>전체</Text>
+          )}
         </TitleWrapper>
         <SwitchWrapper>
           <Switch
@@ -45,7 +70,7 @@ const Statics = () => {
           </Text>
           <GraphWrapper>
             {/* 모듈화 */}
-            <PieChart data={data} />
+            <PieChart data={dataForChart} />
           </GraphWrapper>
           <Text
             color='#222222'
@@ -77,7 +102,7 @@ const SwitchWrapper = styled.div`
   position: absolute;
   top: 5px;
   right: 0px;
-  width: 115px;
+  width: 110px;
   height: 38px;
   display: flex;
   flex-direction: row;

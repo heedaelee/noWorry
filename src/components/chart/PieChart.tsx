@@ -3,10 +3,25 @@ import {ResponsivePie} from '@nivo/pie';
 import styled from 'styled-components';
 
 export interface PieChartProps {
-  data: {id: string; value: number}[];
+  data: {id: string; value: number}[] | [];
 }
 
 const PieChart: React.FC<PieChartProps> = ({data}) => {
+  const noData = data.length === 0;
+  if (noData) {
+    data = [
+      //  일어남
+      {
+        id: '0',
+        value: 0,
+      }, //  일어나지 않음
+      {
+        id: '1',
+        value: 100,
+      },
+    ];
+  }
+
   return (
     <>
       <ResponsivePie
@@ -22,8 +37,10 @@ const PieChart: React.FC<PieChartProps> = ({data}) => {
         // tooltip={ () => null}
       />
       <TextWrapper>
-        <PieChartText>{`${data[0].value.toFixed(1)}`}</PieChartText>
-        <Percent>%</Percent>
+        <PieChartText>
+          {noData ? `?` : `${data[0].value.toFixed(1)}`}
+        </PieChartText>
+        <Percent> {noData ? '' : '%'} </Percent>
       </TextWrapper>
     </>
   );
