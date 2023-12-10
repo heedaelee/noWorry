@@ -1,6 +1,7 @@
 import {PieChartProps} from 'components/chart/PieChart';
 import {useMemo} from 'react';
 import {WorryList} from 'types/common';
+import {logger} from 'workbox-core/_private';
 
 const useCalculatePercentage = (worryList: WorryList) => {
   const totalItemsCount = worryList.filter(
@@ -12,15 +13,19 @@ const useCalculatePercentage = (worryList: WorryList) => {
   }, [worryList]);
 
   const makeData = () => {
+    if (totalItemsCount === 0) {
+      return [];
+    }
     const notHappenedRate = (notHappenedItemCount / totalItemsCount) * 100;
+    logger.log('notHappenedItemCount', notHappenedItemCount, totalItemsCount);
     /* 데이터set 만들기 */
     const data: PieChartProps['data'] = [
-      //  일어남
+      //  일어나지않음: 파란색
       {
         id: '0',
         value: notHappenedRate,
       },
-      //  일어나지 않음
+      //  일어남 : 회색
       {
         id: '1',
         value: 100 - notHappenedRate,
