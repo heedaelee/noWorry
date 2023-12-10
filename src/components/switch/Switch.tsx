@@ -14,7 +14,6 @@ const Switch = ({menuText, style, active, setActive}: SwitchProps) => {
     const {checked} = e.target;
     setActive(checked);
   };
-  console.log(active);
 
   return (
     <SwitchWrapper style={style}>
