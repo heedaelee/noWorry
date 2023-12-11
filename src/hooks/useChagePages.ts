@@ -23,14 +23,8 @@ export const useChangePages: useChagePagesType = () => {
         case 'editor':
           navigate(`/register`);
           break;
-        case 'register':
-          navigate(`/${page}`);
-          break;
-        case 'statics':
-          navigate(`/${page}`);
-          break;
         default:
-          navigate('/');
+          navigate(`/${page}`);
           break;
       }
     };
