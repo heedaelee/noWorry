@@ -2,7 +2,7 @@ import {IconType} from 'react-icons/lib';
 
 export type DateType = Date | number | string;
 
-/* Recoil 자료 */
+/* Recoil 자료, NOTE: 페이지 추가시 추가 */
 export type PageType = 'list' | 'editor' | 'register' | 'statics' | 'setting';
 
 export type BottomTapType = '홈' | '통계';
