@@ -12,23 +12,21 @@ type useChagePagesType = () => [PageType, SetterOrUpdater<PageType>];
 export const useChangePages: useChagePagesType = () => {
   const [pages, setPages] = useRecoilState(pagesState);
 
+  console.log('호출', pages);
   const navigate = useNavigate();
+
   useEffect(() => {
-    console.log('호출', pages);
-    const changePages = (page: PageType) => {
-      switch (page) {
-        case 'list':
-          navigate('/');
-          break;
-        case 'editor':
-          navigate(`/register`);
-          break;
-        default:
-          navigate(`/${page}`);
-          break;
-      }
-    };
-    changePages(pages);
+    switch (pages) {
+      case 'list':
+        navigate('/');
+        break;
+      case 'editor':
+        navigate(`/register`);
+        break;
+      default:
+        navigate(`/${pages}`);
+        break;
+    }
   }, [navigate, pages]);
 
   return [pages, setPages];
