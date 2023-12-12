@@ -27,7 +27,6 @@ const Loading = (
  */
 const Modals = () => {
   const {modals} = useModals();
-
   return (
     <>
       {modals.map(({Component, props}, index) => {
