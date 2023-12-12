@@ -58,6 +58,8 @@ const heightOhterThanContents =
   headWrapper + monthWrapper + switchWrapper + bottomTapWrapper;
 /* 컨텐츠 높이 = 전체 높이 - (컨텐츠 제외한 top,bottom padding 높이 + 상단 마진 높이) */
 const mainContentsHeight = fullHeight - (heightOhterThanContents + mainPadding);
+const contentHeight =
+  fullHeight - (headWrapper + bottomTapWrapper + mainPadding);
 
 const HorizontalPaddingWrapper = styled.div`
   padding: 0px ${mainPadding}px 0px ${mainPadding}px;
@@ -79,4 +81,5 @@ export {
   mainContentsHeight,
   HorizontalPaddingWrapper,
   staticsContentsHeight,
+  contentHeight,
 };
