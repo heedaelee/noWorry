@@ -1,9 +1,11 @@
 import PieChart from 'components/chart/PieChart';
+import {CiCircleInfo} from 'react-icons/ci';
 import MonthsSelector from 'components/monthsSelector';
 import Switch from 'components/switch/Switch';
 import Text from 'components/text/Text';
 import useCalculatePercentage from 'hooks/useCalculatePercentage';
 import useCalendar from 'hooks/useCalendar';
+import {useChangePages} from 'hooks/useChagePages';
 import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
 import useModals from 'hooks/useModals';
 import {useState} from 'react';
@@ -11,6 +13,7 @@ import {useRecoilValue} from 'recoil';
 import {worryListState} from 'store/worry-list';
 import styled from 'styled-components';
 import {
+  GlobalStyles,
   HorizontalPaddingWrapper,
   staticsContentsHeight,
 } from 'styles/globalStyles';
@@ -27,6 +30,7 @@ const Statics = () => {
   const {calendarDate, setCalendaDate, worryListFiltered} = useCalendar({
     worryList,
   });
+  const [pages, setPages] = useChangePages();
 
   logger.log('statics', '필터된 데이터', worryListFiltered);
 
@@ -41,6 +45,10 @@ const Statics = () => {
   logger.log('statics', 'dataForChart', dataForChart);
 
   const noData = totalItemsCount === 0; // 데이터가 없을 때
+
+  const handlePressLink = () => {
+    setPages('list');
+  };
 
   return (
     <HorizontalPaddingWrapper>
@@ -83,6 +91,21 @@ const Statics = () => {
               : `총 ${totalItemsCount}개의 걱정 중\n${notHappenedItemCount}개는일어나지 않을 확률이에요!`}
           </Text>
         </ContentsWrapper>
+        <BottomTextWrapper>
+          <IconWrapper>
+            <CiCircleInfo size={20} color={GlobalStyles.Colors.gray} />
+          </IconWrapper>
+          <TextWrapper>
+            <Text
+              type='sub2'
+              style={{
+                whiteSpace: 'pre-wrap',
+                display: 'inline',
+                color: '#505869',
+              }}>{`걱정한 일의 결과가 체크되지 않은 걱정은 통계에서\n제외돼요`}</Text>
+            <TextLinked onClick={handlePressLink}>체크하기</TextLinked>
+          </TextWrapper>
+        </BottomTextWrapper>
       </StaticsContents>
     </HorizontalPaddingWrapper>
   );
@@ -130,6 +153,28 @@ const GraphWrapper = styled.div`
   width: 226px;
   height: 113px;
   position: relative;
+`;
+const BottomTextWrapper = styled.div`
+  padding-top: 15px;
+  display: flex;
+  flex-direction: row;
+`;
+const IconWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 5px;
+`;
+const TextWrapper = styled.div`
+  flex: 9;
+`;
+const TextLinked = styled.div`
+  color: #1a6dff;
+  margin-left: 5px;
+  font-size: 14px;
+  font-family: ${GlobalStyles.fontFamilyType.medium};
+  display: inline;
 `;
 
 export default Statics;
