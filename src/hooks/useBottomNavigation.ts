@@ -6,7 +6,6 @@ import {useChangePages} from './useChagePages';
 
 type useBottomNavigationType = () => [
   BottomTapType,
-  SetterOrUpdater<BottomTapType>,
   (title: BottomTapType) => void,
 ];
 
@@ -34,5 +33,5 @@ export const useBottomNavigation: useBottomNavigationType = () => {
     }
   };
 
-  return [activeTapName, setActiveTapName, handleBottomTapPress];
+  return [activeTapName, handleBottomTapPress];
 };
