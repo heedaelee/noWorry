@@ -11,6 +11,7 @@ interface headerConstantType {
   };
 }
 
+/* NOTE: 페이지 추가시 추가 */
 export const headerConstant: headerConstantType = {
   page: {
     list: {title: '나의 걱정들', IconComponent: RxGear},
