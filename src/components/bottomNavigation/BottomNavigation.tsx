@@ -9,8 +9,7 @@ import {GlobalStyles, bottomTapWrapper} from 'styles/globalStyles';
 interface BottomNavigationProps {}
 
 const BottomNavigation = ({}: BottomNavigationProps) => {
-  const [activeTapName, setActiveTapName, handleBottomTapPress] =
-    useBottomNavigation();
+  const [activeTapName, handleBottomTapPress] = useBottomNavigation();
 
   return (
     <BottomTapWrapper>
