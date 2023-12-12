@@ -26,10 +26,10 @@ import {
 } from 'styles/globalStyles';
 import {WorryItem, WorryStatus, sortMenuType} from 'types/common';
 
-import {useChangePages} from '../hooks/useChagePages';
-import {useOutsideClick} from '../hooks/useOutsideClick';
 import MonthsSelector from 'components/monthsSelector/index';
 import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
+import {useChangePages} from '../hooks/useChagePages';
+import {useOutsideClick} from '../hooks/useOutsideClick';
 
 const Main = () => {
   const sortDropdownRef = useRef<HTMLDivElement>(null);
@@ -64,6 +64,7 @@ const Main = () => {
   });
 
   let lastCalled = 0;
+
   /* sort 열고 닫기 */
   const onClickSortBtn = useCallback(() => {
     /* 중복호출방지 : 디바운싱*/
@@ -77,6 +78,7 @@ const Main = () => {
     });
     lastCalled = now;
   }, [isSortActive, setIsSortActive]);
+
   const onDelete = useCallback(
     (id: string) => {
       try {
@@ -145,7 +147,6 @@ const Main = () => {
   const handlePressCardButtons = useCallback(
     (buttonType: 'yes' | 'no', currentWorryStatus: WorryStatus, id: string) => {
       // console.log(id, currentWorryStatus, buttonType);
-
       if (
         (buttonType === 'yes' && currentWorryStatus === '일어남') ||
         (buttonType === 'no' && currentWorryStatus == '일어나지 않음')
