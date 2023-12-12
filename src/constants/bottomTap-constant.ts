@@ -1,6 +1,6 @@
-import {BottomTapType} from 'types/common';
 import {IconType} from 'react-icons/lib';
 import {MdDataSaverOff, MdOutlineHome} from 'react-icons/md';
+import {BottomTapType} from 'types/common';
 
 export const TapItems: {
   title: BottomTapType;
