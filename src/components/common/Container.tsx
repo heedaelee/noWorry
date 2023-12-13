@@ -9,15 +9,16 @@ import {GlobalStyles} from 'styles/globalStyles';
 interface ContainerProps {}
 
 const Container = ({}: ContainerProps) => {
-  const [pages, setPages] = useChangePages();
-
+  console.log('containter');
+  const [pages] = useChangePages();
+  const hasBottomNavi = ['list', 'statics', 'setting'].includes(pages);
   return (
     <Wrapper>
       <Headers />
       {/* 자식 라우터 시작 --> */}
       <Outlet />
       {/*  -->  끝 */}
-      {(pages === 'list' || pages === 'statics') && <BottomNavigation />}
+      {hasBottomNavi && <BottomNavigation />}
     </Wrapper>
   );
 };
