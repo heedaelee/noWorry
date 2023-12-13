@@ -1,7 +1,6 @@
 import Text from 'components/text/Text';
-import {FaChevronDown} from 'react-icons/fa';
+import {FaChevronDown} from '@react-icons/all-files/fa/FaChevronDown';
 import styled from 'styled-components';
-import {monthWrapper} from 'styles/globalStyles';
 import {yearMonth} from 'utils/data';
 
 interface MonthsSelectorProps {
