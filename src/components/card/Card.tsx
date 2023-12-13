@@ -2,13 +2,14 @@ import Dropdown from 'components/dropdown/Dropdown';
 import Text from 'components/text/Text';
 import {useOutsideClick} from 'hooks/useOutsideClick';
 import {Dispatch, useCallback, useRef} from 'react';
-import {BsThreeDots} from 'react-icons/bs';
+import {BsThreeDots} from '@react-icons/all-files/bs/BsThreeDots';
 import styled from 'styled-components';
 import {GlobalStyles, mainPadding} from 'styles/globalStyles';
 import {WorryItem, WorryStatus, onCardButtonsClick} from 'types/common';
 import {fullDayFormat, yearMonth} from 'utils/data';
-import {CiCalendar} from 'react-icons/ci';
-import {FaLightbulb, FaPersonCircleQuestion} from 'react-icons/fa6';
+import {FaRegCalendarCheck} from '@react-icons/all-files/fa/FaRegCalendarCheck';
+import {FaLightbulb} from '@react-icons/all-files/fa/FaLightbulb';
+import {IoAccessibilityOutline} from '@react-icons/all-files/io5/IoAccessibilityOutline';
 import Buttons from './buttons/Buttons';
 
 interface CardProps {
@@ -75,7 +76,7 @@ export const Card = ({
           <MiddleRow>
             <ContentRow>
               <IconWrapper>
-                <FaPersonCircleQuestion size={15} />
+                <IoAccessibilityOutline size={15} />
               </IconWrapper>
               <Text type='button'>{cardItem.worryContent}</Text>
             </ContentRow>
@@ -93,7 +94,7 @@ export const Card = ({
           <BottomRow>
             <ExpectedDayRow>
               <IconWrapper>
-                <CiCalendar size={15} />
+                <FaRegCalendarCheck size={15} />
               </IconWrapper>
               <Text type='caption3'>{`예상 날짜 ${
                 cardItem.worryExpectedDate!

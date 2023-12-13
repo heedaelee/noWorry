@@ -1,13 +1,14 @@
-import {CiCalendar} from 'react-icons/ci';
-import {FaLightbulb, FaPersonCircleQuestion} from 'react-icons/fa6';
+import {FaRegCalendarCheck} from '@react-icons/all-files/fa/FaRegCalendarCheck';
+import {FaLightbulb} from '@react-icons/all-files/fa/FaLightbulb';
 import {FormConstantType} from 'types/common';
+import {IoAccessibilityOutline} from '@react-icons/all-files/io5/IoAccessibilityOutline';
 
 const formConstant: FormConstantType = [
   {
     name: 'worryContent',
     question: '어떤 걱정을 하고 계시나요?*',
     placeholder: '구체적으로 적을 수록 좋아요.',
-    component: FaPersonCircleQuestion,
+    component: IoAccessibilityOutline,
   },
   {
     name: 'worryPrepareContent',
@@ -19,7 +20,7 @@ const formConstant: FormConstantType = [
     name: 'worryExpectedDate',
     question: '그 일이 언제 일어날 것 같나요?*',
     placeholder: '날짜 선택하기',
-    component: CiCalendar,
+    component: FaRegCalendarCheck,
   },
 ];
 

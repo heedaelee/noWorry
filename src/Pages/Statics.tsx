@@ -1,5 +1,5 @@
 import PieChart from 'components/chart/PieChart';
-import {CiCircleInfo} from 'react-icons/ci';
+import {IoIosInformationCircleOutline} from '@react-icons/all-files/io/IoIosInformationCircleOutline';
 import MonthsSelector from 'components/monthsSelector';
 import Switch from 'components/switch/Switch';
 import Text from 'components/text/Text';
@@ -93,7 +93,10 @@ const Statics = () => {
         </ContentsWrapper>
         <BottomTextWrapper>
           <IconWrapper>
-            <CiCircleInfo size={20} color={GlobalStyles.Colors.gray} />
+            <IoIosInformationCircleOutline
+              size={20}
+              color={GlobalStyles.Colors.gray}
+            />
           </IconWrapper>
           <TextWrapper>
             <Text

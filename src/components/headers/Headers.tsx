@@ -1,11 +1,11 @@
-import {IoIosArrowBack} from 'react-icons/io';
+import {useCallback} from 'react';
 import styled from 'styled-components';
 
+import {IoIosArrowBack} from '@react-icons/all-files/io/IoIosArrowBack';
 import Text from 'components/text/Text';
 import {headerConstant} from 'constants/header-constant';
 import {useChangePages} from 'hooks/useChagePages';
 import {headWrapper, mainPadding} from 'styles/globalStyles';
-import {useCallback} from 'react';
 
 const Headers = () => {
   const [pages, setPages] = useChangePages();

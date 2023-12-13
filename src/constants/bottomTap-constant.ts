@@ -1,5 +1,6 @@
 import {IconType} from 'react-icons/lib';
-import {MdDataSaverOff, MdOutlineHome} from 'react-icons/md';
+import {IoHomeOutline} from '@react-icons/all-files/io5/IoHomeOutline';
+import {MdDataUsage} from '@react-icons/all-files/md/MdDataUsage';
 import {BottomTapType} from 'types/common';
 
 export const TapItems: {
@@ -8,10 +9,10 @@ export const TapItems: {
 }[] = [
   {
     title: '홈',
-    component: MdOutlineHome,
+    component: IoHomeOutline,
   },
   {
     title: '통계',
-    component: MdDataSaverOff,
+    component: MdDataUsage,
   },
 ];
