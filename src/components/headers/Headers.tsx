@@ -19,6 +19,15 @@ const Headers = () => {
     setPages('list');
   }, [setPages]);
 
+  const handlePressIcons = useCallback(() => {
+    switch (pages) {
+      case 'list':
+        setPages('setting');
+        break;
+      default:
+    }
+  }, []);
+
   return (
     <HeadWrapper $isActiveBackButton={isActiveBackButton}>
       {isActiveBackButton && (
@@ -27,7 +36,9 @@ const Headers = () => {
         </BackButton>
       )}
       <Text type='h1'>{title}</Text>
-      {Others.IconComponent && <Others.IconComponent />}
+      {Others.IconComponent && (
+        <Others.IconComponent onClick={handlePressIcons} />
+      )}
     </HeadWrapper>
   );
 };
@@ -42,7 +53,6 @@ const HeadWrapper = styled.div<{$isActiveBackButton: boolean}>`
   align-items: center;
   height: ${headWrapper}px;
   padding: ${mainPadding}px ${mainPadding}px 0px ${mainPadding}px;
-  /* border: 1px solid black; */
 `;
 
 const BackButton = styled.button`
