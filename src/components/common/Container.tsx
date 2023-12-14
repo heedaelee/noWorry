@@ -9,8 +9,8 @@ import {GlobalStyles} from 'styles/globalStyles';
 interface ContainerProps {}
 
 const Container = ({}: ContainerProps) => {
-  console.log('containter');
   const [pages] = useChangePages();
+  // console.log('containter, page: ', pages);
   const hasBottomNavi = ['list', 'statics', 'setting'].includes(pages);
   return (
     <Wrapper>

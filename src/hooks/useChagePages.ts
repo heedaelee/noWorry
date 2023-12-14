@@ -4,30 +4,33 @@ import {SetterOrUpdater, useRecoilState} from 'recoil';
 import {pagesState} from 'store/pages';
 import {PageType} from 'types/common';
 
-type useChagePagesType = () => [PageType, SetterOrUpdater<PageType>];
+type useChagePagesType = () => [PageType, (pagesParam: PageType) => void];
 /**
  * @param
  * @return [pages, setPages, changePages]
  */
 export const useChangePages: useChagePagesType = () => {
   const [pages, setPages] = useRecoilState(pagesState);
-
-  console.log('호출', pages);
   const navigate = useNavigate();
+  console.log('Page호출', pages);
 
-  useEffect(() => {
-    switch (pages) {
-      case 'list':
-        navigate('/');
-        break;
-      case 'editor':
-        navigate(`/register`);
-        break;
-      default:
-        navigate(`/${pages}`);
-        break;
+  const changePageHandler = (pagesParam: PageType) => {
+    if (pages !== pagesParam) {
+      console.log('changePageHandler 호출', pagesParam);
+      setPages(pagesParam);
+      switch (pagesParam) {
+        case 'list':
+          navigate('/');
+          break;
+        case 'editor':
+          navigate(`/register`);
+          break;
+        default:
+          navigate(`/${pagesParam}`);
+          break;
+      }
     }
-  }, [navigate, pages]);
+  };
 
-  return [pages, setPages];
+  return [pages, changePageHandler];
 };
