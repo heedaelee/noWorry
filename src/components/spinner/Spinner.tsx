@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, {keyframes, CSSProperties} from 'styled-components';
 
 const rotate = keyframes`
   from {
@@ -18,11 +18,14 @@ const SpinnerWrapper = styled.div`
   border-right: none;
   margin: 10rem auto;
   animation: ${rotate} 1s linear infinite;
-  /* position: absolute; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
-const Spinner = () => {
-  return <SpinnerWrapper />;
+const Spinner = (style?: CSSProperties) => {
+  return <SpinnerWrapper style={style} />;
 };
 
 export default Spinner;
