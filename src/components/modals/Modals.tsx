@@ -1,7 +1,6 @@
-import React, {Suspense, lazy} from 'react';
+import {Suspense, lazy} from 'react';
 
-import Text from 'components/text/Text';
-import {GlobalStyles} from 'styles/globalStyles';
+import Spinner from 'components/spinner/Spinner';
 import useModals from 'hooks/useModals';
 
 /* 코드스플리팅, 동적import */
@@ -14,12 +13,7 @@ export const modals = {
   datePicker: DatePickerModal,
 };
 
-/* 로딩 TODO: 추후 수정 */
-const Loading = (
-  <Text color={GlobalStyles.ColorText.SubText} type='h3'>
-    Loading ....
-  </Text>
-);
+const Loading = <Spinner />;
 
 /**
  * Modals 컴포넌트는 <Recoil> 자식,  <App /> 상단에 위치해
