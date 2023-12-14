@@ -146,7 +146,6 @@ const Main = () => {
 
   const handlePressCardButtons = useCallback(
     (buttonType: 'yes' | 'no', currentWorryStatus: WorryStatus, id: string) => {
-      // console.log(id, currentWorryStatus, buttonType);
       if (
         (buttonType === 'yes' && currentWorryStatus === '일어남') ||
         (buttonType === 'no' && currentWorryStatus == '일어나지 않음')
@@ -191,7 +190,6 @@ const Main = () => {
         <DropdownWrapper
           ref={sortDropdownRef}
           onClick={() => {
-            // setView(!view);
             onClickSortBtn();
           }}>
           <Text type='button'>최근 작성중</Text>{' '}
@@ -223,7 +221,6 @@ const Main = () => {
             />
           ))
         )}
-
         <RoundAddButton onClick={handlePressAddButton} />
       </ContentsWrapper>
     </HorizontalPaddingWrapper>
