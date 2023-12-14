@@ -7,24 +7,25 @@ const GlobalHtmlStyles = createGlobalStyle`
 /*아래 폰트*/
 @font-face {
   font-family: "NotoSansKR-Bold";
-  src: url(${NotoSansKRBold}) format('woff2') ;
+  src: local( 'NotoSansKR-Bold'), url(${NotoSansKRBold}) format('woff2');
+  font-display: swap; /* 레이아웃이 바로 전환되도록 함 */
 }
 
 @font-face {
   font-family: "NotoSansKR-Medium";
-  src: url(${NotoSansKRMedium}) format('woff2');
+  src: local( 'NotoSansKR-Medium'),url(${NotoSansKRMedium}) format('woff2');
+  font-display: swap;
 }
 
 @font-face {
   font-family: "NotoSansKR-Regular" ;
-  src: url(${NotoSansKRRegular}) format('woff2');
+  src:local( 'NotoSansKR-Regular'), url(${NotoSansKRRegular}) format('woff2');
+  font-display: swap;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: NotoSansKR-Medium, sans-serif;
-  /* box-sizing: border-box; */
 }
 * {
   box-sizing: inherit;
