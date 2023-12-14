@@ -1,7 +1,7 @@
 import {useCallback} from 'react';
 import styled from 'styled-components';
-
 import {IoIosArrowBack} from '@react-icons/all-files/io/IoIosArrowBack';
+
 import Text from 'components/text/Text';
 import {headerConstant} from 'constants/header-constant';
 import {useChangePages} from 'hooks/useChagePages';
@@ -26,7 +26,7 @@ const Headers = () => {
         break;
       default:
     }
-  }, []);
+  }, [pages, setPages]);
 
   return (
     <HeadWrapper $isActiveBackButton={isActiveBackButton}>
