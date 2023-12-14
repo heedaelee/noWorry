@@ -1,3 +1,4 @@
+import Spinner from 'components/spinner/Spinner';
 import {Suspense, lazy} from 'react';
 import {Route, Routes} from 'react-router-dom';
 
@@ -18,7 +19,7 @@ const Setting = lazy(() => import('pages/Setting'));
 
 function App() {
   return (
-    <Suspense fallback={<Spinnner />}>
+    <Suspense fallback={<Spinner />}>
       <Routes>
         <Route path='/' Component={Container}>
           <Route path='/' Component={Main} />
