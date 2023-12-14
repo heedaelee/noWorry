@@ -2,14 +2,7 @@ import Spinner from 'components/spinner/Spinner';
 import {Suspense, lazy} from 'react';
 import {Route, Routes} from 'react-router-dom';
 
-// import Container from 'components/common/Container';
-// import Main from 'pages/Main';
-// import Statics from 'pages/Statics';
-// import Registor from 'pages/Registor';
-// import Setting from 'pages/Setting';
-
 // Route-based 코드스플리팅
-
 const Container = lazy(() => import('components/common/Container'));
 
 const Main = lazy(() => import('pages/Main'));
