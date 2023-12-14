@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components';
 
 import Text from 'components/text/Text';
@@ -6,9 +5,7 @@ import {TapItems} from 'constants/bottomTap-constant';
 import {useBottomNavigation} from 'hooks/useBottomNavigation';
 import {GlobalStyles, bottomTapWrapper} from 'styles/globalStyles';
 
-interface BottomNavigationProps {}
-
-const BottomNavigation = ({}: BottomNavigationProps) => {
+const BottomNavigation = () => {
   const [activeTapName, handleBottomTapPress] = useBottomNavigation();
 
   return (

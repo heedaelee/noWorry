@@ -35,7 +35,7 @@ const Main = () => {
   const sortDropdownRef = useRef<HTMLDivElement>(null);
   const [pages, changePages] = useChangePages();
   const [worryState, setWorryState] = useRecoilState(worryListState);
-  const {selectedId, worryList} = worryState;
+  const {worryList} = worryState;
   const {closeModal, openModal} = useModals();
   const [loading, setLoading] = useState(false);
   const [isSortActive, setIsSortActive] = useOutsideClick(
@@ -63,14 +63,15 @@ const Main = () => {
     setCalendaDate,
   });
 
-  let lastCalled = 0;
-
   /* sort 열고 닫기 */
+  let lastCalled = 0; // 마지막 호출 시간_디바운싱
   const onClickSortBtn = useCallback(() => {
-    /* 중복호출방지 : 디바운싱*/
+    /**
+     * 중복호출방지 : 디바운싱
+     * 1초 내에 중복 호출 방지, 1초 후에 호출이면 now - lastCalled > 1000 이므로 호출 진행
+     */
     const now = Date.now();
     if (now - lastCalled < 1000) {
-      // 1초 내에 중복 호출 방지
       return;
     }
     setIsSortActive(prev => {
