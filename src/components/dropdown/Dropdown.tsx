@@ -5,7 +5,7 @@ import {MenuTextType} from 'types/common';
 
 interface DropdownProps {
   onClick: (
-    text: string,
+    text: MenuTextType,
     data?: string,
     passFunction?: Dispatch<React.SetStateAction<boolean>>,
   ) => void;
