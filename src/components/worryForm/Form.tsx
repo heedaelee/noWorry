@@ -1,4 +1,3 @@
-import NormalButton from 'components/buttons/NormalButton';
 import InputBox from 'components/input/InputBox';
 import {useChangePages} from 'hooks/useChagePages';
 import useForm, {InitialValue} from 'hooks/useForm';
@@ -8,6 +7,7 @@ import {worryListState} from 'store/worry-list';
 import styled from 'styled-components';
 import {WorryItem} from 'types/common';
 import {v4 as uuidv4} from 'uuid';
+import FormButtons from './FormButtons';
 
 const Form = () => {
   const [page, setPage] = useChangePages();
@@ -101,17 +101,11 @@ const Form = () => {
   return (
     <Wrapper>
       <InputBox values={values} error={error} getInputProps={getInputProps} />
-      <ButtonRow>
-        <NormalButton buttonType='cancel' onClick={handlePressCancel}>
-          취소
-        </NormalButton>
-        <NormalButton
-          disabled={!activeSubmitButton}
-          buttonType='ok'
-          onClick={handlePressSave}>
-          저장
-        </NormalButton>
-      </ButtonRow>
+      <FormButtons
+        handlePressCancel={handlePressCancel}
+        handlePressSave={handlePressSave}
+        activeSubmitButton={activeSubmitButton}
+      />
     </Wrapper>
   );
 };
@@ -122,16 +116,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`;
-const ButtonRow = styled.div`
-  :first-child {
-    margin-right: 10px;
-  }
-  width: 100%;
-  height: 65px;
-  /* background-color: yellow; */
-  padding-bottom: 11px;
-  display: flex;
 `;
 
 export default Form;
