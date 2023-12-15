@@ -5,8 +5,8 @@ import {Route, Routes} from 'react-router-dom';
 // Route-based 코드스플리팅
 const Container = lazy(() => import('components/common/Container'));
 
-const Main = lazy(() => import('pages/Main'));
-const Registor = lazy(() => import('pages/Registor'));
+const Main = lazy(() => import('pages/Main/Main'));
+const Registor = lazy(() => import('pages/Registor/Registor'));
 const Statics = lazy(() => import('pages/Statics'));
 const Setting = lazy(() => import('pages/Setting'));
 
