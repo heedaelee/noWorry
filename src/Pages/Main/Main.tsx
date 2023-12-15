@@ -6,30 +6,20 @@ import {
   useRef,
   useState,
 } from 'react';
-import styled from 'styled-components';
 
-import RoundAddButton from 'components/buttons/RoundAddButton';
-import RoundFilterButton from 'components/buttons/RoundFilterButton';
-import {Card as CardStyled} from 'components/card/Card';
-import Dropdown from 'components/dropdown/Dropdown';
 import {modals} from 'components/modals/Modals';
-import Text from 'components/text/Text';
 import useFilter from 'hooks/useFilter';
 import useModals from 'hooks/useModals';
 import {useRecoilState} from 'recoil';
 import {worryListState} from 'store/worry-list';
-import {
-  HorizontalPaddingWrapper,
-  mainContentsHeight,
-  monthWrapper,
-  switchWrapper,
-} from 'styles/globalStyles';
+import {HorizontalPaddingWrapper} from 'styles/globalStyles';
 import {WorryItem, WorryStatus, sortMenuType} from 'types/common';
-
-import MonthsSelector from 'components/monthsSelector/index';
 import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
-import {useChangePages} from '../hooks/useChagePages';
-import {useOutsideClick} from '../hooks/useOutsideClick';
+import {useChangePages} from '../../hooks/useChagePages';
+import {useOutsideClick} from '../../hooks/useOutsideClick';
+import Contents from './Contents';
+import Months from './Months';
+import Switch from './Switch';
 
 const Main = () => {
   const sortDropdownRef = useRef<HTMLDivElement>(null);
@@ -109,7 +99,6 @@ const Main = () => {
   const handleDropdownPress = useCallback(
     (menuTypeText: string) => {
       setSortState(menuTypeText as sortMenuType);
-
       onClickSortBtn();
     },
     [onClickSortBtn, setSortState],
@@ -153,7 +142,6 @@ const Main = () => {
       ) {
         return;
       }
-
       const worryNewArray = worryList.map((v: WorryItem, i) => {
         return v.id === id
           ? {
@@ -172,99 +160,27 @@ const Main = () => {
 
   return (
     <HorizontalPaddingWrapper>
-      {/* 분리 */}
-      <MonthWrapper>
-        <MonthsSelector
-          calendarDate={calendarDate}
-          handleDatePickerPress={handleDatePickerPress}
-        />
-      </MonthWrapper>
-      <SwitchWrapper>
-        {filterTextType.map((text, index) => (
-          <RoundFilterButton
-            key={index}
-            buttonText={text}
-            onClick={handleFilterButtonPress}
-            $isSelected={filterState === text}
-          />
-        ))}
-        <DropdownWrapper
-          ref={sortDropdownRef}
-          onClick={() => {
-            onClickSortBtn();
-          }}>
-          <Text type='button'>최근 작성중</Text>{' '}
-          <UpDonwIcon>{isSortActive ? '▲' : '▼'}</UpDonwIcon>
-          {isSortActive && (
-            <Dropdown
-              WrapperStyle={{top: 30, left: -23, width: '130%'}}
-              onClick={handleDropdownPress}
-              menuTexts={['최근 작성순', '예상날짜 빠른순']}
-            />
-          )}
-        </DropdownWrapper>
-      </SwitchWrapper>
-      <ContentsWrapper>
-        {worryListCompleted.length === 0 ? (
-          <CardStyled
-            id={''}
-            addButtonClick={handlePressAddButton}
-            type={'NoData'}
-          />
-        ) : (
-          worryListCompleted.map((cardItem, i) => (
-            <CardStyled
-              key={i}
-              cardItem={cardItem}
-              id={cardItem.id}
-              dropDownClick={handleThreeDoctsDropDownPress}
-              onCardButtonsClick={handlePressCardButtons}
-            />
-          ))
-        )}
-        <RoundAddButton onClick={handlePressAddButton} />
-      </ContentsWrapper>
+      <Months
+        calendarDate={calendarDate}
+        handleDatePickerPress={handleDatePickerPress}
+      />
+      <Switch
+        filterTextType={filterTextType}
+        filterState={filterState}
+        onClickSortBtn={onClickSortBtn}
+        handleFilterButtonPress={handleFilterButtonPress}
+        handleDropdownPress={handleDropdownPress}
+        sortDropdownRef={sortDropdownRef}
+        isSortActive={isSortActive}
+      />
+      <Contents
+        worryListCompleted={worryListCompleted}
+        handlePressAddButton={handlePressAddButton}
+        handleThreeDoctsDropDownPress={handleThreeDoctsDropDownPress}
+        handlePressCardButtons={handlePressCardButtons}
+      />
     </HorizontalPaddingWrapper>
   );
 };
 
-const SwitchWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: ${switchWrapper}px;
-  /* margin: 25px 0px; */
-  /* border: 1px solid black; */
-`;
-const DropdownWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 62px;
-  /* border: 1px solid black; */
-`;
-const UpDonwIcon = styled.div`
-  color: #7a7a7a;
-  font-size: 10px;
-  margin-left: 5px;
-`;
-const ContentsWrapper = styled.div`
-  height: ${mainContentsHeight}px;
-  padding: 0px 2px;
-
-  overflow-y: auto; /* 컨텐츠 부분에 대해서만 세로 스크롤 활성화 */
-  & > div {
-    margin-bottom: 10px; /* 여백 크기 조절 가능 */
-  }
-`;
-const MonthWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: ${monthWrapper}px;
-  /* border: 1px solid black; */
-`;
 export default Main;
