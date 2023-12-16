@@ -11,6 +11,7 @@ import {ChangeEvent, useRef, useState} from 'react';
 import {GlobalStyles} from 'styles/globalStyles';
 import {DateType, InputTypes} from 'types/common';
 import {fullDayFormat} from 'utils/data';
+import Qeustions from './Questions';
 
 interface InputBoxType {
   getInputProps: (inputName: keyof InputTypes) => {
@@ -42,13 +43,8 @@ const InputBox = ({getInputProps, values, error}: InputBoxType) => {
         );
         return (
           <Wrapper key={index}>
-            <QuestionWrapper>
-              <IconWrapper>
-                <Input.component size={22} />
-              </IconWrapper>
-              <Text type='body2'>{Input.question}</Text>
-            </QuestionWrapper>
-            <TextareaWrapper>
+            <Qeustions question={Input.question} Icon={Input.component} />
+            <InputWrapper>
               {Input.name !== 'worryExpectedDate' ? (
                 <>
                   <TextareaAutosize
@@ -115,7 +111,7 @@ const InputBox = ({getInputProps, values, error}: InputBoxType) => {
                   </CheckBoxWrapper>
                 </>
               )}
-            </TextareaWrapper>
+            </InputWrapper>
           </Wrapper>
         );
       })}
@@ -132,16 +128,7 @@ const Block = styled.div`
 `;
 const Wrapper = styled.div``;
 
-const QuestionWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-`;
-const IconWrapper = styled.div`
-  margin-right: 5px;
-`;
-const TextareaWrapper = styled.div`
+const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 6px;
