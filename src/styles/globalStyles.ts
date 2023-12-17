@@ -67,7 +67,6 @@ const HorizontalPaddingWrapper = styled.div`
 
 const staticsContentsHeight =
   fullHeight - (headWrapper + bottomTapWrapper + 85 + mainPadding);
-console.log(staticsContentsHeight);
 
 export {
   GlobalStyles,
