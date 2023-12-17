@@ -1,7 +1,6 @@
 import {ChangeEvent, useState} from 'react';
 import {DateType, InputTypes} from 'types/common';
 
-/* TODO: NOTE: 정리하기 */
 export type InitialValue = {
   [K in keyof InputTypes]: InputTypes[K];
 };

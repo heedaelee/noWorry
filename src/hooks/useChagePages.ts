@@ -1,6 +1,5 @@
-import {useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {SetterOrUpdater, useRecoilState} from 'recoil';
+import {useRecoilState} from 'recoil';
 import {pagesState} from 'store/pages';
 import {PageType} from 'types/common';
 

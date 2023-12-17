@@ -1,5 +1,4 @@
-import {useNavigate} from 'react-router-dom';
-import {SetterOrUpdater, useRecoilState} from 'recoil';
+import {useRecoilState} from 'recoil';
 import {bottomTapState} from 'store/bottom-tap';
 import {BottomTapType} from 'types/common';
 import {useChangePages} from './useChagePages';

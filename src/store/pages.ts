@@ -1,4 +1,4 @@
-import {BOTTOM_TAP_NAME, PAGES} from 'constants/atom-constant';
+import {PAGES} from 'constants/atom-constant';
 import {atom} from 'recoil';
 import {PageType} from 'types/common';
 

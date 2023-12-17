@@ -1,4 +1,4 @@
-import {useCallback, useState, Dispatch, SetStateAction} from 'react';
+import {Dispatch, SetStateAction, useState} from 'react';
 
 type useToggleType = (
   initialValue: boolean,
