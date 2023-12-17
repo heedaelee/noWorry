@@ -1,7 +1,6 @@
 import {PieChartProps} from 'components/chart/PieChart';
 import {useMemo} from 'react';
 import {WorryList} from 'types/common';
-import {logger} from 'workbox-core/_private';
 
 const useCalculatePercentage = (worryList: WorryList) => {
   const totalItemsCount = worryList.filter(
