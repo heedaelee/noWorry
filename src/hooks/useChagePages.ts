@@ -12,11 +12,9 @@ type useChagePagesType = () => [PageType, (pagesParam: PageType) => void];
 export const useChangePages: useChagePagesType = () => {
   const [pages, setPages] = useRecoilState(pagesState);
   const navigate = useNavigate();
-  console.log('Page호출', pages);
 
   const changePageHandler = (pagesParam: PageType) => {
     if (pages !== pagesParam) {
-      console.log('changePageHandler 호출', pagesParam);
       setPages(pagesParam);
       switch (pagesParam) {
         case 'list':
