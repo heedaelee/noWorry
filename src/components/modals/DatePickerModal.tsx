@@ -30,7 +30,6 @@ const DatePickerModal = ({
   };
 
   const handleSelect = (time: Date) => {
-    console.log(time);
     setDate(time);
   };
 
