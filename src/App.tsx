@@ -7,8 +7,8 @@ const Container = lazy(() => import('components/common/Container'));
 
 const Main = lazy(() => import('pages/Main/Main'));
 const Registor = lazy(() => import('pages/Registor/Registor'));
-const Statics = lazy(() => import('pages/Statics'));
-const Setting = lazy(() => import('pages/Setting'));
+const Statics = lazy(() => import('pages/Statics/Statics'));
+const Setting = lazy(() => import('pages/Setting/Setting'));
 
 function App() {
   return (
