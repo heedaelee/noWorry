@@ -18,6 +18,7 @@ import {
   staticsContentsHeight,
 } from 'styles/globalStyles';
 import {Logger} from 'utils/logger';
+import {isDev, isPro} from 'utils/isDev';
 
 const Statics = () => {
   const [isMonth, setIsMonth] = useState(false);
@@ -25,7 +26,7 @@ const Statics = () => {
   const worryState = useRecoilValue(worryListState);
   const {worryList} = worryState;
 
-  const logger = new Logger(true);
+  const logger = new Logger((isPro && false) || true);
 
   const {calendarDate, setCalendaDate, worryListFiltered} = useCalendar({
     worryList,
