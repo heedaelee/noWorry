@@ -1,7 +1,5 @@
-import PieChart from 'components/chart/PieChart';
 import {IoIosInformationCircleOutline} from '@react-icons/all-files/io/IoIosInformationCircleOutline';
-import MonthsSelector from 'components/monthsSelector';
-import Switch from 'components/switch/Switch';
+import PieChart from 'components/chart/PieChart';
 import Text from 'components/text/Text';
 import useCalculatePercentage from 'hooks/useCalculatePercentage';
 import useCalendar from 'hooks/useCalendar';
@@ -17,22 +15,20 @@ import {
   HorizontalPaddingWrapper,
   staticsContentsHeight,
 } from 'styles/globalStyles';
+import {isPro} from 'utils/isDev';
 import {Logger} from 'utils/logger';
-import {isDev, isPro} from 'utils/isDev';
+import StaticsHeader from './StaticsHeader';
 
 const Statics = () => {
   const [isMonth, setIsMonth] = useState(false);
   const {closeModal, openModal} = useModals();
   const worryState = useRecoilValue(worryListState);
   const {worryList} = worryState;
-
   const logger = new Logger((isPro && false) || true);
-
   const {calendarDate, setCalendaDate, worryListFiltered} = useCalendar({
     worryList,
   });
   const [pages, setPages] = useChangePages();
-
   logger.log('statics', '필터된 데이터', worryListFiltered);
 
   const {handleDatePickerPress} = useDatePickerButtonPress({
@@ -53,25 +49,12 @@ const Statics = () => {
 
   return (
     <HorizontalPaddingWrapper>
-      <StaticsHeader>
-        <TitleWrapper>
-          {isMonth ? (
-            <MonthsSelector
-              calendarDate={calendarDate}
-              handleDatePickerPress={handleDatePickerPress}
-            />
-          ) : (
-            <Text type='h2'>전체</Text>
-          )}
-        </TitleWrapper>
-        <SwitchWrapper>
-          <Switch
-            menuText={['전체', '월간']}
-            active={isMonth}
-            setActive={setIsMonth}
-          />
-        </SwitchWrapper>
-      </StaticsHeader>
+      <StaticsHeader
+        isMonth={isMonth}
+        setIsMonth={setIsMonth}
+        calendarDate={calendarDate}
+        handleDatePickerPress={handleDatePickerPress}
+      />
       <StaticsContents>
         <ContentsWrapper>
           <Text color='#222222' type='sub1'>
@@ -115,26 +98,6 @@ const Statics = () => {
   );
 };
 
-const StaticsHeader = styled.div`
-  position: relative;
-  margin: 15px 0px 35px 0px;
-`;
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-const SwitchWrapper = styled.div`
-  position: absolute;
-  top: 5px;
-  right: 0px;
-  width: 110px;
-  height: 38px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
 const StaticsContents = styled.div`
   width: 358px;
   height: ${staticsContentsHeight}px;
