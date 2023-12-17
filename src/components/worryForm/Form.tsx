@@ -54,7 +54,6 @@ const Form = () => {
           worryStatus: '현재 걱정',
           regDate: new Date(),
         };
-        console.log(newWorryItme);
         newWorryList = {
           ...worryState,
           worryList: worryList.concat(newWorryItme),
