@@ -1,4 +1,5 @@
 import {useEffect, useState, Dispatch, SetStateAction} from 'react';
+
 // 선택된 요소(el), Active 초기값(initialState)을 넘겨받는다.
 type UseOutsideClickType = (
   element: React.RefObject<HTMLDivElement>,
