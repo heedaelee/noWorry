@@ -78,7 +78,6 @@ const Wrapper = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   width: 270px;
   border-radius: 20px;
@@ -112,7 +111,6 @@ const DatePickerWrapper = styled.div`
 `;
 
 const StyledCalendar = styled(Calendar)`
-  /* Add your custom styles here */
   & {
     border: none;
   }
@@ -126,7 +124,6 @@ const StyledCalendar = styled(Calendar)`
     align-items: center;
     padding: 0px 20px;
   }
-
   .react-calendar__navigation button {
     width: 24px;
     height: 24px;
@@ -137,12 +134,10 @@ const StyledCalendar = styled(Calendar)`
     font-size: 18px;
     font-weight: 700;
   }
-
   .react-calendar__navigation__prev2-button,
   .react-calendar__navigation__next2-button {
     display: none;
   }
-
   .react-calendar__navigation__prev-button {
     position: absolute;
     right: 28px;
@@ -158,7 +153,6 @@ const StyledCalendar = styled(Calendar)`
       content: '';
     }
   }
-
   .react-calendar__navigation__next-button {
     position: absolute;
     right: 51px;
@@ -174,29 +168,22 @@ const StyledCalendar = styled(Calendar)`
       content: '';
     }
   }
-
   .react-calendar__tile {
     font-size: 18px;
     padding: 1em 0.5em;
     border: none;
     text-align: center;
   }
-
   .react-calendar__tile--now {
     background-color: #2663d657;
     color: white;
     border-radius: 5px;
   }
-
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
     background-color: ${GlobalStyles.Colors.blue};
     color: white;
     border-radius: 5px;
   }
-  /* .react-calendar__tile--hasActive:enabled:hover,
-  .react-calendar__tile--hasActive:enabled:focus {
-    background: ${GlobalStyles.Colors.blue};
-  } */
 `;
 export default DatePickerModal;

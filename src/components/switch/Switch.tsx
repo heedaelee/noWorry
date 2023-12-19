@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import styled, {CSSProperties} from 'styled-components';
 import {GlobalStyles} from 'styles/globalStyles';
 
@@ -52,7 +52,6 @@ const LabelStyled = styled.label`
   flex-direction: row;
   align-items: center;
 `;
-
 const SwitchButton = styled.div<{$active: boolean}>`
   /* state가 false일 때의 after */
   display: flex;
@@ -70,7 +69,6 @@ const SwitchButton = styled.div<{$active: boolean}>`
   z-index: 0;
 `;
 const EntireText = styled.div<{$active: boolean}>`
-  // border: 1px solid black;
   color: ${props => (!props.$active ? 'white' : GlobalStyles.Colors.gray)};
   text-align: center;
   flex: 1;

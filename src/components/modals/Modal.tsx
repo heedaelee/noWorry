@@ -1,5 +1,6 @@
-import {ReactNode, useState} from 'react';
+import {ReactNode} from 'react';
 import styled from 'styled-components';
+
 interface ModalType {
   isVisible?: boolean;
   closeModal?: () => void;

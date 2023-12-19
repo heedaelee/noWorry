@@ -32,7 +32,6 @@ const ButtonRow = styled.div`
   }
   width: 100%;
   height: 65px;
-  /* background-color: yellow; */
   padding-bottom: 11px;
   display: flex;
 `;

@@ -12,9 +12,7 @@ export const modals = {
   confirm: ConfirmModal,
   datePicker: DatePickerModal,
 };
-
 const Loading = <Spinner />;
-
 /**
  * Modals 컴포넌트는 <Recoil> 자식,  <App /> 상단에 위치해
  * <App /> 이전에 전체 모달들을 호출한다.
