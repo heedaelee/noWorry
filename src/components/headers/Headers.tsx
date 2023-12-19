@@ -54,7 +54,6 @@ const HeadWrapper = styled.div<{$isActiveBackButton: boolean}>`
   height: ${headWrapper}px;
   padding: ${mainPadding}px ${mainPadding}px 0px ${mainPadding}px;
 `;
-
 const BackButton = styled.button`
   position: absolute;
   left: ${mainPadding}px;

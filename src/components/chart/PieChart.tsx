@@ -9,7 +9,6 @@ export interface PieChartProps {
 
 const PieChart: React.FC<PieChartProps> = ({data, totalItemsCount}) => {
   const noData = totalItemsCount === 0;
-
   return (
     <>
       <ResponsivePie

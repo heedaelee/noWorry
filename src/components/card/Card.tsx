@@ -151,7 +151,6 @@ const Inner = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  /* background-color: yellow; */
 `;
 const TopRow = styled.div`
   display: flex;
