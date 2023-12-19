@@ -1,7 +1,8 @@
 import {FaRegCalendarCheck} from '@react-icons/all-files/fa/FaRegCalendarCheck';
-import {FaLightbulb} from '@react-icons/all-files/fa/FaLightbulb';
-import {FormConstantType} from 'types/common';
 import {IoAccessibilityOutline} from '@react-icons/all-files/io5/IoAccessibilityOutline';
+import {FaLightbulb} from '@react-icons/all-files/fa/FaLightbulb';
+
+import {FormConstantType} from 'types/common';
 
 const formConstant: FormConstantType = [
   {

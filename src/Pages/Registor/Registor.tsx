@@ -1,4 +1,3 @@
-import Form from 'components/worryForm/Form';
 import styled from 'styled-components';
 import {
   HorizontalPaddingWrapper,
@@ -6,6 +5,8 @@ import {
   headWrapper,
   mainPadding,
 } from 'styles/globalStyles';
+
+import Form from 'components/worryForm/Form';
 
 const Registor = () => {
   const $marginTop = 30;
@@ -20,7 +21,6 @@ const Registor = () => {
 };
 
 const Wrapper = styled.div<{$marginTop: number}>`
-  /* background-color: yellow; */
   height: ${({$marginTop}) =>
     fullHeight - (headWrapper + mainPadding + $marginTop)}px;
 `;

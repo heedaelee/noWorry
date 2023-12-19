@@ -1,14 +1,17 @@
-import useCalculatePercentage from 'hooks/useCalculatePercentage';
-import useCalendar from 'hooks/useCalendar';
-import {useChangePages} from 'hooks/useChagePages';
-import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
-import useModals from 'hooks/useModals';
 import {useState} from 'react';
 import {useRecoilValue} from 'recoil';
+
+import useModals from 'hooks/useModals';
+import useCalendar from 'hooks/useCalendar';
+import {useChangePages} from 'hooks/useChagePages';
+import useCalculatePercentage from 'hooks/useCalculatePercentage';
+import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
+
 import {worryListState} from 'store/worry-list';
 import {HorizontalPaddingWrapper} from 'styles/globalStyles';
 import {isPro} from 'utils/isDev';
 import {Logger} from 'utils/logger';
+
 import StaticsContents from './StaticsContents';
 import StaticsHeader from './StaticsHeader';
 

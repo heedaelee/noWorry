@@ -1,9 +1,10 @@
+import styled from 'styled-components';
+
+import {switchWrapper} from 'styles/globalStyles';
+import {WorryStatus} from 'types/common';
 import RoundFilterButton from 'components/buttons/RoundFilterButton';
 import Dropdown from 'components/dropdown/Dropdown';
 import Text from 'components/text/Text';
-import styled from 'styled-components';
-import {switchWrapper} from 'styles/globalStyles';
-import {WorryStatus} from 'types/common';
 
 interface SwitchProps {
   onClickSortBtn: () => void;
@@ -59,8 +60,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   height: ${switchWrapper}px;
-  /* margin: 25px 0px; */
-  /* border: 1px solid black; */
 `;
 const DropdownWrapper = styled.div`
   position: relative;
@@ -68,7 +67,6 @@ const DropdownWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   margin-left: 62px;
-  /* border: 1px solid black; */
 `;
 const UpDonwIcon = styled.div`
   color: #7a7a7a;

@@ -1,5 +1,6 @@
-import {PieChartProps} from 'components/chart/PieChart';
 import {useMemo} from 'react';
+
+import {PieChartProps} from 'components/chart/PieChart';
 import {WorryList} from 'types/common';
 
 const useCalculatePercentage = (worryList: WorryList) => {

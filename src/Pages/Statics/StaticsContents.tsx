@@ -1,9 +1,9 @@
-import {IoIosInformationCircleOutline} from '@react-icons/all-files/io/IoIosInformationCircleOutline';
 import styled from 'styled-components';
+import {IoIosInformationCircleOutline} from '@react-icons/all-files/io/IoIosInformationCircleOutline';
 
-import PieChart, {PieChartProps} from 'components/chart/PieChart';
-import Text from 'components/text/Text';
 import {GlobalStyles, staticsContentsHeight} from 'styles/globalStyles';
+import Text from 'components/text/Text';
+import PieChart, {PieChartProps} from 'components/chart/PieChart';
 
 interface StaticsContentsProps {
   noData: boolean;
