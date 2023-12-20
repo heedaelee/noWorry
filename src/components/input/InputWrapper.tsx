@@ -15,16 +15,17 @@ const InputWrapper = ({
   values,
   error,
 }: inputWrapperProps) => {
-  const {handleDateChange, handleTextAreatChange, value} = getInputProps(
+  const {handleDateChange, handleTextAreaChange, value} = getInputProps(
     input.name,
   );
+
   return (
     <Wrapper>
       {input.name !== 'worryExpectedDate' ? (
         <>
           <TextareaAutosize
-            value={typeof value === 'string' ? value : undefined}
-            onChange={handleTextAreatChange}
+            value={value as string}
+            onChange={handleTextAreaChange}
             placeholder={input.placeholder}
             maxRows={4}
             maxLength={
