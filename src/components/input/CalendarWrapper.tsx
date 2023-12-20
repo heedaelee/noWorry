@@ -79,11 +79,11 @@ const CalendarButton = styled.button`
   height: 17px;
   display: flex;
   padding: 8px;
-  border: 1px solid ${GlobalStyles.Colors.lightGrray};
+  border: 1px solid ${GlobalStyles.Colors.lightGray};
   border-radius: 8px;
   font-family: 'monospace';
   background-color: ${({disabled}) =>
-    disabled ? GlobalStyles.Colors.lightGrray : 'white'};
+    disabled ? GlobalStyles.Colors.lightGray : 'white'};
   color: rgb(152, 153, 155);
   text-align: left;
 `;

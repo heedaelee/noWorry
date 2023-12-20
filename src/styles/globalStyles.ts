@@ -17,7 +17,7 @@ const GlobalStyles = {
     green: '#42AA9D',
     blue: '#2663D6',
     gray: '#ACACAC',
-    lightGrray: 'rgb(219, 222, 227)',
+    lightGray: 'rgb(219, 222, 227)',
   },
   ColorText: {
     Default: '#000000',
