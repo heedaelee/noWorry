@@ -48,9 +48,15 @@ const useForm = (initialValue: InitialValue) => {
     switch (inputName) {
       case 'worryContent':
         value.length === 101 && (message = '100자 이내로 입력해주세요:)');
+        error.worryContent &&
+          value.length < 101 &&
+          setError({...error, worryContent: ''});
         break;
       case 'worryPrepareContent':
         value.length === 201 && (message = '200자 이내로 입력해주세요:)');
+        error.worryPrepareContent &&
+          value.length < 201 &&
+          setError({...error, worryPrepareContent: ''});
         break;
     }
     message !== '' &&
