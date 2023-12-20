@@ -10,7 +10,7 @@ export class Logger {
   log(
     page: PageType = 'list',
     functionName: '데이터' | string = '데이터',
-    data: string | object,
+    data: string | object | boolean | number | null | undefined,
   ): void {
     if (this.enabled) {
       console.log(`[${page}] ${functionName}: `, data);
