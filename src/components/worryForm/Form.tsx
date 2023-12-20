@@ -3,11 +3,11 @@ import {useRecoilState} from 'recoil';
 import styled from 'styled-components';
 import {v4 as uuidv4} from 'uuid';
 
+import InputBox from 'components/input/InputBox';
 import {useChangePages} from 'hooks/useChagePages';
 import useForm, {InitialValue} from 'hooks/useForm';
-import {WorryItem} from 'types/common';
 import {worryListState} from 'store/worry-list';
-import InputBox from 'components/input/InputBox';
+import {WorryItem} from 'types/common';
 import FormButtons from './FormButtons';
 
 const Form = () => {
@@ -44,7 +44,6 @@ const Form = () => {
   const handlePressSave = useCallback(() => {
     let newWorryList;
     try {
-      console.log('handlePressSave  실행');
       /* 걱정등록 */
       if (page === 'register') {
         const newWorryItme: WorryItem = {
@@ -100,7 +99,9 @@ const Form = () => {
 
   return (
     <Wrapper>
+      {/* 인풋 */}
       <InputBox values={values} error={error} getInputProps={getInputProps} />
+      {/* 하단 버튼 */}
       <FormButtons
         handlePressCancel={handlePressCancel}
         handlePressSave={handlePressSave}
