@@ -44,10 +44,15 @@ const InputWrapper = ({
               borderColor: '#DBDEE3',
               resize: 'none',
               borderRadius: 8,
+              position: 'relative',
             }}
-            autoComplete='off'
-          />
-          {error[input.name] && <ErrorText>{error[input.name]}</ErrorText>}
+            autoComplete='off'></TextareaAutosize>
+          <TextWrapper>
+            {error[input.name] && <ErrorText>{error[input.name]}</ErrorText>}
+            <TextCounter>{`${value?.toString().length}/${
+              input.name === 'worryContent' ? '100' : '200'
+            }`}</TextCounter>
+          </TextWrapper>
         </>
       ) : (
         <CalendarWrapper handleDateChange={handleDateChange} values={values} />
@@ -69,6 +74,19 @@ const ErrorText = styled.div`
     0px;
   color: #f6afaf;
   font-family: ${GlobalStyles.fontFamilyType.regular};
+  position: absolute;
+  left: 0px;
 `;
-
+const TextWrapper = styled.div`
+  width: 100%;
+  height: 10px;
+  position: relative;
+`;
+const TextCounter = styled.div`
+  position: absolute;
+  font-size: 12px;
+  color: ${GlobalStyles.Colors.gray};
+  top: 2px;
+  right: 0px;
+`;
 export default InputWrapper;
