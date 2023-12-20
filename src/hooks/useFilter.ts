@@ -28,10 +28,7 @@ const useFilter: useFilterType = worryList => {
     () =>
       worryList.filter(v => {
         if (v.worryStatus === filterState) {
-          if (
-            v.worryExpectedDate === '' ||
-            compareMonth(calendarDate, v.worryExpectedDate as Date)
-          ) {
+          if (compareMonth(calendarDate, v.regDate as Date)) {
             return v;
           }
         }
