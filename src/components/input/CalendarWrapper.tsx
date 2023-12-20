@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import Text from 'components/text/Text';
 import {InitialValue, handleDateChangeType} from 'hooks/useForm';
 import {useOutsideClick} from 'hooks/useOutsideClick';
@@ -6,6 +6,8 @@ import Calendar from 'react-calendar';
 import styled from 'styled-components';
 import {fullDayFormat} from 'utils/data';
 import {GlobalStyles} from 'styles/globalStyles';
+import {useRecoilValue} from 'recoil';
+import {pagesState} from 'store/pages';
 
 interface CalendarWrapperProps {
   handleDateChange: handleDateChangeType;
@@ -13,13 +15,23 @@ interface CalendarWrapperProps {
 }
 
 const CalendarWrapper = ({handleDateChange, values}: CalendarWrapperProps) => {
+  const currentPage = useRecoilValue(pagesState);
   const calendarRef = useRef<HTMLDivElement>(null);
 
   const [showCalendar, setShowCalendar] = useOutsideClick(calendarRef, false);
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    /* 수정페이지에서, 걱정예상기간이 비어있다면 */
+    if (currentPage === 'editor' && values.worryExpectedDate === '') {
+      setIsChecked(true);
+    }
+  }, [currentPage, values.worryExpectedDate]);
+
   const handleToggleCalendar = () => {
     setShowCalendar(!showCalendar);
   };
+
   const handleCheckboxChange = (handleDateChange: handleDateChangeType) => {
     handleDateChange('');
     setIsChecked(!isChecked);
