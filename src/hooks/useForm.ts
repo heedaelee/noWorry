@@ -33,7 +33,8 @@ const useForm = (initialValue: InitialValue) => {
     */
     setValues({
       ...values,
-      [inputName]: typeof value === 'string' ? value.trim() : value,
+      /* trim  */
+      [inputName]: value,
     });
   };
   /**
@@ -60,21 +61,25 @@ const useForm = (initialValue: InitialValue) => {
   };
   /*  */
   const getInputProps = (inputName: keyof InputTypes) => {
-    const handleTextAreatChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const handleTextAreaChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
       const {value} = event.target;
+
       handleChangeValue(inputName, value);
       handleValidationError(inputName, value);
     };
+
     const handleDateChange: handleDateChangeType = (
       value: DateType | '',
       // event: React.MouseEvent<HTMLButtonElement>,
     ) => {
       handleChangeValue(inputName, value);
     };
+
     const value = values[inputName];
+
     return {
       value,
-      handleTextAreatChange,
+      handleTextAreaChange,
       handleDateChange,
     };
   };
