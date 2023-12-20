@@ -33,7 +33,6 @@ const Form = () => {
         };
       }
     });
-    console.log('initialValue :', initialValue);
   }
   /* 등록페이지면 초기값, 수정페이지면 위의 리코일 worryList 할당  */
   const formHookProps = useForm(initialValue);
@@ -45,6 +44,7 @@ const Form = () => {
   const handlePressSave = useCallback(() => {
     let newWorryList;
     try {
+      console.log('handlePressSave  실행');
       /* 걱정등록 */
       if (page === 'register') {
         const newWorryItme: WorryItem = {
