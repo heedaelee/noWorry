@@ -10,7 +10,7 @@ import InputWrapper from './InputWrapper';
 export interface InputBoxType {
   getInputProps: (inputName: keyof InputTypes) => {
     value: string | DateType | null;
-    handleTextAreatChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+    handleTextAreaChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
     handleDateChange: handleDateChangeType;
   };
   values: InitialValue;
