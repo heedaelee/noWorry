@@ -20,7 +20,7 @@ const Form = () => {
   let initialValue: InitialValue = {
     worryContent: '',
     worryPrepareContent: '',
-    worryExpectedDate: '',
+    worryExpectedDate: null,
   };
   /* 페이지가 수정일떄 */
   if (selectedId !== '' && page === 'editor') {
@@ -95,8 +95,10 @@ const Form = () => {
   const activeSubmitButton =
     !!values.worryContent &&
     !(error.worryContent && error.worryPrepareContent) &&
-    values.worryExpectedDate !== undefined;
+    values.worryExpectedDate !== null;
 
+  console.log(values);
+  console.log(activeSubmitButton);
   return (
     <Wrapper>
       {/* 인풋 */}

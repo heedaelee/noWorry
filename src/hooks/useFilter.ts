@@ -1,6 +1,12 @@
 import {Dispatch, SetStateAction, useState, useMemo} from 'react';
 
-import {WorryItem, WorryList, WorryStatus, sortMenuType} from 'types/common';
+import {
+  DateType,
+  WorryItem,
+  WorryList,
+  WorryStatus,
+  sortMenuType,
+} from 'types/common';
 import {compareMonth} from 'utils/data';
 
 type useFilterType = (
@@ -55,7 +61,8 @@ const useFilter: useFilterType = worryList => {
     worryListCompleted = hasExpectedDateList
       .sort(
         (a, b) =>
-          +new Date(a.worryExpectedDate) - +new Date(b.worryExpectedDate),
+          +new Date(a.worryExpectedDate as DateType) -
+          +new Date(b.worryExpectedDate as DateType),
       )
       .concat(hasNotExpectedDateList);
   }

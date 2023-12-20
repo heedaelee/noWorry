@@ -14,7 +14,7 @@ export interface WorryItem {
   id: string;
   worryContent: string;
   worryPrepareContent: string;
-  worryExpectedDate: DateType | '';
+  worryExpectedDate: DateType | null;
   regDate: DateType;
   worryStatus: WorryStatus;
 }
