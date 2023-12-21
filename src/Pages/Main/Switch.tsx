@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import {switchWrapper} from 'styles/globalStyles';
-import {WorryStatus} from 'types/common';
+import {WorryStatus, sortMenuType} from 'types/common';
 import RoundFilterButton from 'components/buttons/RoundFilterButton';
 import Dropdown from 'components/dropdown/Dropdown';
 import Text from 'components/text/Text';
@@ -14,6 +14,7 @@ interface SwitchProps {
   handleFilterButtonPress: (text: WorryStatus) => void;
   filterTextType: Array<WorryStatus>;
   filterState: string;
+  sortState: sortMenuType;
 }
 
 const Switch = ({
@@ -24,23 +25,26 @@ const Switch = ({
   handleFilterButtonPress,
   filterTextType,
   filterState,
+  sortState,
 }: SwitchProps) => {
   return (
     <Wrapper>
-      {filterTextType.map((text, index) => (
-        <RoundFilterButton
-          key={index}
-          buttonText={text}
-          onClick={handleFilterButtonPress}
-          $isSelected={filterState === text}
-        />
-      ))}
+      <FilterButtonsWrapper>
+        {filterTextType.map((text, index) => (
+          <RoundFilterButton
+            key={index}
+            buttonText={text}
+            onClick={handleFilterButtonPress}
+            $isSelected={filterState === text}
+          />
+        ))}
+      </FilterButtonsWrapper>
       <DropdownWrapper
         ref={sortDropdownRef}
         onClick={() => {
           onClickSortBtn();
         }}>
-        <Text type='button'>최근 작성중</Text>{' '}
+        <Text type='button'>{sortState}</Text>{' '}
         <UpDonwIcon>{isSortActive ? '▲' : '▼'}</UpDonwIcon>
         {isSortActive && (
           <Dropdown
@@ -61,12 +65,17 @@ const Wrapper = styled.div`
   align-items: center;
   height: ${switchWrapper}px;
 `;
+const FilterButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+`;
 const DropdownWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 62px;
+  /* margin-left: 62px; */
 `;
 const UpDonwIcon = styled.div`
   color: #7a7a7a;

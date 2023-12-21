@@ -175,6 +175,7 @@ const Main = () => {
         handleDropdownPress={handleDropdownPress}
         sortDropdownRef={sortDropdownRef}
         isSortActive={isSortActive}
+        sortState={sortState}
       />
       <Contents
         worryListCompleted={worryListCompleted}
