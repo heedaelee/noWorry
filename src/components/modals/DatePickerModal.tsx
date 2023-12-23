@@ -138,9 +138,10 @@ const StyledCalendar = styled(Calendar)`
   .react-calendar__navigation__next2-button {
     display: none;
   }
+  /* 이전 버튼 */
   .react-calendar__navigation__prev-button {
     position: absolute;
-    right: 28px;
+    right: 61px;
     font-size: 0;
 
     &::before {
@@ -149,13 +150,13 @@ const StyledCalendar = styled(Calendar)`
       height: 10px;
       border-top: 2px solid #5f44ff;
       border-right: 2px solid #5f44ff;
-      transform: rotate(45deg);
+      transform: rotate(225deg);
       content: '';
     }
   }
   .react-calendar__navigation__next-button {
     position: absolute;
-    right: 51px;
+    right: 28px;
     font-size: 0;
 
     &::before {
@@ -164,7 +165,7 @@ const StyledCalendar = styled(Calendar)`
       height: 10px;
       border-top: 2px solid #8674e9;
       border-right: 2px solid #5f44ff;
-      transform: rotate(-135deg);
+      transform: rotate(45deg);
       content: '';
     }
   }
