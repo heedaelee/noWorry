@@ -3,22 +3,23 @@ import {
   Dispatch,
   SetStateAction,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
 import {useRecoilState} from 'recoil';
 
-import {HorizontalPaddingWrapper} from 'styles/globalStyles';
-import {worryListState} from 'store/worry-list';
-import {WorryItem, WorryStatus, sortMenuType} from 'types/common';
 import {modals} from 'components/modals/Modals';
+import {worryListState} from 'store/worry-list';
+import {HorizontalPaddingWrapper} from 'styles/globalStyles';
+import {WorryItem, WorryStatus, sortMenuType} from 'types/common';
 
+import {useChangePages} from 'hooks/useChagePages';
+import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
 import useFilter from 'hooks/useFilter';
 import useModals from 'hooks/useModals';
-import {useChangePages} from 'hooks/useChagePages';
 import {useOutsideClick} from 'hooks/useOutsideClick';
-import useDatePickerButtonPress from 'hooks/useDatePickerButtonPress';
 
 import Contents from './Contents';
 import Months from './Months';
@@ -55,6 +56,12 @@ const Main = () => {
     closeModal,
     setCalendaDate,
   });
+
+  useEffect(() => {
+    /* 유저가 백버튼이 아닌 안드로이드서 제공되는 백키를눌렀을때 pages 변수 조정
+     */
+    pages !== 'list' && location.pathname === '/' && changePages('list');
+  }, []);
 
   /* sort 열고 닫기 */
   let lastCalled = 0; // 마지막 호출 시간_디바운싱
