@@ -18,8 +18,8 @@ const Button = styled.button`
   background-color: ${GlobalStyles.Colors.blue};
   border-radius: 100%;
   justify-content: flex-end;
-  bottom: 84px;
-  right: 20px;
+  bottom: 40px;
+  right: 30px;
   border: none;
   font-size: 40px;
   color: white;

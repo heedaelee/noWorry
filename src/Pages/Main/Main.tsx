@@ -169,7 +169,7 @@ const Main = () => {
   );
 
   return (
-    <HorizontalPaddingWrapper>
+    <HorizontalPaddingWrapper style={{position: 'relative'}}>
       <Months
         calendarDate={calendarDate}
         handleDatePickerPress={handleDatePickerPress}
