@@ -58,11 +58,11 @@ const Main = () => {
   });
 
   useEffect(() => {
-    /* 유저가 백버튼이 아닌 안드로이드서 제공되는 백키를눌렀을때 pages 변수 조정
+    /* 유저가 백버튼이 아닌 안드로이드서 제공되는 백키를눌렀을때 pages 변수 조정, 
+    요거 안해주면 뒤로가기 눌렀을때, 해당 url에 맞게 바텀 탭이 바뀌지 않음  
      */
-    console.log(pages, location.pathname);
-    pages !== 'list' && location.pathname === '/' && changePages('list');
-  }, []);
+    pages !== 'list' && changePages('list');
+  }, [pages, changePages]);
 
   /* sort 열고 닫기 */
   let lastCalled = 0; // 마지막 호출 시간_디바운싱

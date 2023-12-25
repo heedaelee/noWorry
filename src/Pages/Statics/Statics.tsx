@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useRecoilValue} from 'recoil';
 
 import useModals from 'hooks/useModals';
@@ -25,13 +25,18 @@ const Statics = () => {
     worryList,
   });
   const [pages, setPages] = useChangePages();
-  logger.log('statics', '필터된 데이터', worryListFiltered);
 
   const {handleDatePickerPress} = useDatePickerButtonPress({
     openModal,
     closeModal,
     setCalendaDate,
   });
+
+  useEffect(() => {
+    /* 유저가 백버튼이 아닌 안드로이드서 제공되는 백키를눌렀을때 pages 변수 조정
+     */
+    pages !== 'statics' && setPages('statics');
+  }, [pages, setPages]);
 
   const {dataForChart, totalItemsCount, notHappenedItemCount} =
     useCalculatePercentage(isMonth ? worryListFiltered : worryList);
