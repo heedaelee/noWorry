@@ -46,6 +46,7 @@ const Headers = () => {
 export default Headers;
 
 const HeadWrapper = styled.div<{$isActiveBackButton: boolean}>`
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: ${({$isActiveBackButton}) =>
