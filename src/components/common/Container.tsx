@@ -9,6 +9,7 @@ import {GlobalStyles} from 'styles/globalStyles';
 const Container = () => {
   const [pages] = useChangePages();
   const hasBottomNavi = ['list', 'statics', 'setting'].includes(pages);
+
   return (
     <Wrapper>
       <Headers />
