@@ -60,6 +60,7 @@ const Main = () => {
   useEffect(() => {
     /* 유저가 백버튼이 아닌 안드로이드서 제공되는 백키를눌렀을때 pages 변수 조정
      */
+    console.log(pages, location.pathname);
     pages !== 'list' && location.pathname === '/' && changePages('list');
   }, []);
 

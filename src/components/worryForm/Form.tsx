@@ -97,8 +97,6 @@ const Form = () => {
     !(error.worryContent && error.worryPrepareContent) &&
     values.worryExpectedDate !== null;
 
-  console.log(values);
-  console.log(activeSubmitButton);
   return (
     <Wrapper>
       {/* 인풋 */}

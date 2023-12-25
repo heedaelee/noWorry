@@ -2,6 +2,7 @@ import {useRecoilState} from 'recoil';
 import {bottomTapState} from 'store/bottom-tap';
 import {BottomTapType} from 'types/common';
 import {useChangePages} from './useChagePages';
+import {useEffect} from 'react';
 
 type useBottomNavigationType = () => [
   BottomTapType,
@@ -15,9 +16,12 @@ type useBottomNavigationType = () => [
 export const useBottomNavigation: useBottomNavigationType = () => {
   const [activeTapName, setActiveTapName] = useRecoilState(bottomTapState);
   const [page, setPage] = useChangePages();
+  useEffect(() => {
+    page === 'list' && activeTapName !== '홈' && setActiveTapName('홈');
+    page === 'statics' && activeTapName !== '통계' && setActiveTapName('통계');
+  }, [activeTapName, page, setActiveTapName]);
 
   const handleBottomTapPress = (title: BottomTapType) => {
-    console.log('title', title);
     setActiveTapName(title);
     switch (title) {
       case '통계':
