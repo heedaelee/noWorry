@@ -11,15 +11,13 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <GlobalHtmlStyles />
-    <BrowserRouter>
-      <RecoilRoot>
-        <Modals />
-        <App />
-      </RecoilRoot>
-    </BrowserRouter>
-  </React.StrictMode>,
+    <RecoilRoot>
+      <Modals />
+      <App />
+    </RecoilRoot>
+  </BrowserRouter>,
 );
 // PWA 활성화
 serviceWorkerRegistration.register();
