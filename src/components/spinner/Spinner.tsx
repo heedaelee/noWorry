@@ -16,12 +16,11 @@ const SpinnerWrapper = styled.div`
   border-radius: 50%;
   border-top: none;
   border-right: none;
-  margin: 10rem auto;
+  /* margin: 10rem auto; */
   animation: ${rotate} 1s linear infinite;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 40%;
 `;
 
 const Spinner = (style?: CSSProperties) => {
