@@ -1,15 +1,15 @@
+import {BsThreeDots} from '@react-icons/all-files/bs/BsThreeDots';
+import {FaLightbulb} from '@react-icons/all-files/fa/FaLightbulb';
+import {FaRegCalendarCheck} from '@react-icons/all-files/fa/FaRegCalendarCheck';
+import {IoAccessibilityOutline} from '@react-icons/all-files/io5/IoAccessibilityOutline';
 import Dropdown from 'components/dropdown/Dropdown';
 import Text from 'components/text/Text';
 import {useOutsideClick} from 'hooks/useOutsideClick';
 import {Dispatch, useCallback, useRef} from 'react';
-import {BsThreeDots} from '@react-icons/all-files/bs/BsThreeDots';
 import styled from 'styled-components';
 import {GlobalStyles, mainPadding} from 'styles/globalStyles';
-import {WorryItem, WorryStatus, onCardButtonsClick} from 'types/common';
-import {fullDayFormat, yearMonth} from 'utils/data';
-import {FaRegCalendarCheck} from '@react-icons/all-files/fa/FaRegCalendarCheck';
-import {FaLightbulb} from '@react-icons/all-files/fa/FaLightbulb';
-import {IoAccessibilityOutline} from '@react-icons/all-files/io5/IoAccessibilityOutline';
+import {WorryItem, onCardButtonsClick} from 'types/common';
+import {fullDayFormat, yearMonthDay} from 'utils/data';
 import Buttons from './buttons/Buttons';
 
 interface CardProps {
@@ -98,7 +98,7 @@ export const Card = ({
               </IconWrapper>
               <Text type='caption3'>{`예상 날짜 ${
                 cardItem.worryExpectedDate!
-                  ? yearMonth(cardItem.worryExpectedDate)
+                  ? yearMonthDay(cardItem.worryExpectedDate)
                   : '모르겠어요'
               }`}</Text>
             </ExpectedDayRow>
@@ -180,7 +180,7 @@ const BottomRow = styled.div`
 const ExpectedDayRow = styled.div`
   display: flex;
   flex-direction: row;
-  flex: 4;
+  flex: 5;
   align-items: center;
 `;
 const QuestionRow = styled.div`
