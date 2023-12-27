@@ -1,20 +1,46 @@
-# noWorry 리액트 PWA 프로젝트
+# noWorry Project
 
-## 프로젝트 소개
+# ⭐️ 프로젝트 소개
 
-## 주요기능
+**자신의 걱정을 실제 발생 통계를 통해 수치로 알려주는 앱**
+<br/>(Mobile & Desktop)
 
-## 사용하는 도구 버전
+# ⭐️ 주요기능
+
+[👉🏻 앱 설치 가기](https://noworry-project.web.app/)
+
+<table>
+    <tr>
+      <td   align="center" width="33%">고민 조회 & 발생 체크</td>
+      <td align="center" width="33%">고민 등록</td>
+      <td align="center" width="34%">통계</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/e5f66168-0e54-4b1f-8aff-641bc794efa6"/></td>
+      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/a71e89bf-cef3-4bc2-a5a6-ffdcfd6b0449"/></td>
+      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/a2431938-73af-4c83-b121-6cbdff3794c1"/></td>
+    </tr>
+ </table>
+<br></br>
+
+# 👨‍💻 기술 스택
+
+- react PWA & typescript
+- recoil
+- styled-components
+
+## 👨‍💻 라이브러리
+
+- @nivo/pie (차트)
+- react-calendar (캘린더)
+
+## 🚗 &nbsp; 사용하는 도구 버전
 
 `[react] v18.~`  
 `[node] v20.9.0`  
-`[java] 11`
+`[java] 11.0.13`
 
-## 투입기간
-
-23.11.14 ~
-
-## GIT convention
+## 🌈 GIT convention
 
 feat: 🐲 새로운 기능을 추가  
 fix: 🐒 버그 수정  
@@ -27,38 +53,3 @@ Chore: 빌드 테스트 업데이트, 패키지 매니저를 설정하는 경우
 Add: 파일 추가
 Rename: 파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우  
 Remove: 파일을 삭제하는 작업만 수행한 경우
-
-## 도구 다운로드
-
-[Nodejs](https://nodejs.org/en/)
-
-# java
-
-export JAVA_HOME=`/usr/libexec/java_home -v 18`
-export PATH=$PATH:$JAVA_HOME/bin
-
-````
-
-```shell
-source ~/.zshrc ## or .bashprofile
-````
-
-## Node 설정
-
-```shell
-sudo ln -s "$(which node)" /usr/local/bin/node
-```
-
-## 실행 환경
-
-```shell
-# STEP 1 Start Meto
-yarn start
-
-# STEP 2 Start Device
-yarn ios || yarn android
-```
-
-## 참고자료
-
-## 에러 발생
