@@ -1,6 +1,8 @@
 import Spinner from 'components/spinner/Spinner';
 import {Suspense, lazy} from 'react';
 import {Route, Routes} from 'react-router-dom';
+import {app, analytics} from './firebase';
+import {logEvent} from 'firebase/analytics';
 
 // Route-based 코드스플리팅
 const Container = lazy(() => import('components/common/Container'));
@@ -10,6 +12,9 @@ const Statics = lazy(() => import('pages/Statics/Statics'));
 const Setting = lazy(() => import('pages/Setting/Setting'));
 
 function App() {
+  // Log a 'page_view' event
+  logEvent(analytics, 'page_view');
+
   return (
     <Suspense fallback={<Spinner />}>
       <Routes>
