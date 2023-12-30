@@ -1,12 +1,12 @@
 import {MouseEventHandler, useState} from 'react';
-import styled from 'styled-components';
 import 'react-calendar/dist/Calendar.css';
+import styled from 'styled-components';
 
-import Modal from './Modal';
 import Text from 'components/text/Text';
-import Button from './Button';
 import Calendar from 'react-calendar';
 import {GlobalStyles} from 'styles/globalStyles';
+import Button from './Button';
+import Modal from './Modal';
 
 interface DatePickerModalProps {
   open: boolean;

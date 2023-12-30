@@ -2,8 +2,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 import styled from 'styled-components';
 import {GlobalStyles} from 'styles/globalStyles';
 import {FormConstantType} from 'types/common';
-import {InputBoxType} from './InputBox';
 import CalendarWrapper from './CalendarWrapper';
+import {InputBoxType} from './InputBox';
 
 interface inputWrapperProps extends InputBoxType {
   input: FormConstantType[0];

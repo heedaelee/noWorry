@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import NormalButton from 'components/buttons/NormalButton';
+import styled from 'styled-components';
 
 interface FormButtonsProps {
   handlePressCancel: () => void;
