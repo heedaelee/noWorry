@@ -11,7 +11,7 @@
 
 <table>
     <tr>
-      <td   align="center" width="33%">고민 조회 & 발생 체크</td>
+      <td  align="center" width="33%">고민 조회 & 발생 체크</td>
       <td align="center" width="33%">고민 등록</td>
       <td align="center" width="34%">통계</td>
     </tr>
