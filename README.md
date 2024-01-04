@@ -23,6 +23,13 @@
  </table>
 <br></br>
 
+# 👨‍💻 주요 특징
+- 모달 커스텀 훅과 Atom을 통해, 컴포넌트와 결합되어 있는 모달을 분리, atom의 전역 상태값으로 저장 관리함. 필요할 때 랜더링 하는 방식으로 모달의 코드 가독성 제고
+- 모달 UI 컴포넌트 및 각 Pages들 lazy 통한 코드스플리팅으로 LCP 개선
+- Firebase 통한 호스팅
+- react-calendar, nivo chart와 같이 가벼운 라이브러리 활용
+
+
 # 👨‍💻 기술 스택
 
 - react PWA & typescript
