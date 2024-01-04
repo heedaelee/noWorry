@@ -16,9 +16,9 @@
       <td align="center" width="34%">통계</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/e5f66168-0e54-4b1f-8aff-641bc794efa6"/></td>
-      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/a71e89bf-cef3-4bc2-a5a6-ffdcfd6b0449"/></td>
-      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/a2431938-73af-4c83-b121-6cbdff3794c1"/></td>
+      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/79699ce8-cc00-49bc-95a7-ed8b74c22119"/></td>
+      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/86e2d354-a224-4591-8f47-cd570cc6a569"/></td>
+      <td><img src="https://github.com/heedaelee/noWorry/assets/37854571/54e19115-deca-4adb-9ccb-aabfa0d54932"/></td>
     </tr>
  </table>
 <br></br>
